@@ -63,23 +63,23 @@ const Pricing = () => {
     General: [
       {
         id: "residential-commercial",
-        question: "Can Sameday AI handle both residential and commercial jobs?",
-        answer: "Yes! Sameday AI adapts to the unique needs of both. It understands the priorities of residential customers and the SLAs of commercial clients, ensuring the right response and scheduling every time."
+        question: "Can Fieson AI handle both residential and commercial jobs?",
+        answer: "Yes! Fieson AI adapts to the unique needs of both. It understands the priorities of residential customers and the SLAs of commercial clients, ensuring the right response and scheduling every time."
       },
       {
         id: "phone-number",
         question: "Do I need to change by business phone number?", 
-        answer: "No! Sameday AI provides a number you can forward calls to or integrate directly with your phone system, like ServiceTitan Phones Pro. Miss a call? Just transfer it to your AI agent."
+        answer: "No! Fieson AI provides a number you can forward calls to or integrate directly with your phone system, like ServiceTitan Phones Pro. Miss a call? Just transfer it to your AI agent."
       },
       {
         id: "contract",
-        question: "Do I have to sign a contract to use Sameday?",
+        question: "Do I have to sign a contract to use Fieson?",
         answer: "No, never! As former home service business owners, we believe in earning your business every day—no long-term commitments, just results."
       },
       {
         id: "sign-up",
-        question: "How do I sign up for Sameday AI?",
-        answer: "Schedule a demo! Our AI experts will walk you through the platform and customize Sameday AI to fit seamlessly into your daily operations. Most people can start taking calls in just 15 minutes."
+        question: "How do I sign up for Fieson AI?",
+        answer: "Schedule a demo! Our AI experts will walk you through the platform and customize Fieson AI to fit seamlessly into your daily operations. Most people can start taking calls in just 15 minutes."
       }
     ],
     Features: [
@@ -92,14 +92,14 @@ const Pricing = () => {
     Integration: [
       {
         id: "servicetitan",
-        question: "Does Sameday integrate with ServiceTitan?", 
-        answer: "Yes! Sameday has deep integration with ServiceTitan and other popular field service management platforms."
+        question: "Does Fieson integrate with ServiceTitan?", 
+        answer: "Yes! Fieson has deep integration with ServiceTitan and other popular field service management platforms."
       }
     ],
     Other: [
       {
         id: "partnership",
-        question: "Are you looking to partner with or resell Sameday's AI?",
+        question: "Are you looking to partner with or resell Fieson's AI?",
         answer: "We would love to help. Give us a call to talk about our partnership and reseller benefits."
       }
     ]
@@ -296,7 +296,7 @@ const Pricing = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="text-3xl font-bold text-foreground mb-6">
-                Are you looking to partner with or resell Sameday's AI?
+                Are you looking to partner with or resell Fieson's AI?
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
                 We would love to help. Give us a call to talk about our partnership and reseller benefits.

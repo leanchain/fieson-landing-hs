@@ -10,11 +10,11 @@ const Industries = () => {
   const features = [
     {
       title: "Material and crew coordination",
-      description: "Sameday efficiently manages logistics for materials delivery and team assignments across multiple job sites."
+      description: "Fieson efficiently manages logistics for materials delivery and team assignments across multiple job sites."
     },
     {
       title: "Smart scope assessment", 
-      description: "Sameday AI gathers initial info about roof type, size, and problems to prepare accurate quotes and dispatch appropriate crews."
+      description: "Fieson AI gathers initial info about roof type, size, and problems to prepare accurate quotes and dispatch appropriate crews."
     },
     {
       title: "Weather-adaptive scheduling",
@@ -33,7 +33,7 @@ const Industries = () => {
     },
     {
       title: "Peak season support",
-      description: "Storm season? No problem. Sameday handles high call volumes during peak seasons without overstretching any member of your team."
+      description: "Storm season? No problem. Fieson handles high call volumes during peak seasons without overstretching any member of your team."
     },
     {
       title: "Automated follow-ups",
@@ -54,7 +54,7 @@ const Industries = () => {
 
   const stats = [
     { value: "~92%", label: "Reported booking rate" },
-    { value: "4.8 out of 5", label: "Satisfaction amongst Sameday customers" },
+    { value: "4.8 out of 5", label: "Satisfaction amongst Fieson customers" },
     { value: "100%", label: "Phone calls answered" }
   ];
 
@@ -96,7 +96,7 @@ const Industries = () => {
                 </h1>
                 <p className="text-xl text-muted-foreground mb-8">
                   Nail down more leads and raise the bar on customer service with 
-                  Sameday AI's dedicated roofer answering service.
+                  Fieson AI's dedicated roofer answering service.
                 </p>
                 <Button variant="demo" size="lg">
                   BOOK A DEMO
@@ -258,7 +258,7 @@ const Industries = () => {
                 Win, again and again
               </h2>
               <p className="text-lg text-muted-foreground">
-                Sameday never misses a call, never forgets to follow up, and always shows up for work.
+                Fieson never misses a call, never forgets to follow up, and always shows up for work.
               </p>
             </div>
 
@@ -288,7 +288,7 @@ const Industries = () => {
         {/* CTA Section */}
         <section className="py-20 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl font-bold mb-6">Give Sameday a try!</h2>
+            <h2 className="text-4xl font-bold mb-6">Give Fieson a try!</h2>
             <p className="text-xl mb-8 opacity-90">
               Turn on the faucet to new, qualified appointments as soon as today. Submit your email and book a demo.
             </p>

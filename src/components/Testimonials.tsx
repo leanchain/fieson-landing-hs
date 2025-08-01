@@ -8,7 +8,7 @@ const Testimonials = () => {
       title: "Owner",
       company: "Thompson Family Plumbing",
       image: "/api/placeholder/80/80",
-      quote: "The Sameday AI team responds so quickly that sometimes we joke that their own employees might be AI.",
+      quote: "The Fieson AI team responds so quickly that sometimes we joke that their own employees might be AI.",
       rating: 5,
       years: "2 years",
       responseTime: "15 mins"
@@ -42,7 +42,7 @@ const Testimonials = () => {
       title: "COO",
       company: "Rove Pest Control",
       image: "/api/placeholder/80/80",
-      quote: "We just had our 2nd week in a row of zero missed Google Local Services calls. This is pretty cool to see since implementing Sameday.",
+      quote: "We just had our 2nd week in a row of zero missed Google Local Services calls. This is pretty cool to see since implementing Fieson.",
       rating: 5
     },
     {
@@ -64,7 +64,7 @@ const Testimonials = () => {
             Hands-on setup and support for optimal AI performance.
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Experience firsthand how the Sameday AI team is renowned for their exceptional support 
+            Experience firsthand how the Fieson AI team is renowned for their exceptional support 
             and lightning-fast response times, often leading customers to think they must be AI themselves.
           </p>
         </div>
@@ -103,7 +103,7 @@ const Testimonials = () => {
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-bold mb-2">{testimonials[0].years}</div>
-                  <div className="text-primary-foreground/80">As a Sameday Customer</div>
+                  <div className="text-primary-foreground/80">As a Fieson Customer</div>
                 </div>
               </div>
             </div>
