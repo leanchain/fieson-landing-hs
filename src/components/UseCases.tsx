@@ -54,21 +54,21 @@ const UseCases = () => {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
           {useCases.map((useCase) => {
             const Icon = useCase.icon;
             return (
               <button
                 key={useCase.id}
                 onClick={() => setActiveTab(useCase.id)}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold smooth-transition ${
+                className={`flex items-center space-x-2 px-6 py-3 font-medium smooth-transition ${
                   activeTab === useCase.id
-                    ? "bg-accent text-accent-foreground shadow-medium"
-                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                    ? "bg-accent text-accent-foreground shadow-medium rounded-full"
+                    : "bg-blue-accent text-white hover:bg-blue-accent/90 rounded-full"
                 }`}
               >
-                <Icon className="w-5 h-5" />
-                <span>{useCase.name}</span>
+                <Icon className="w-4 h-4" />
+                <span className="text-sm">{useCase.name}</span>
               </button>
             );
           })}

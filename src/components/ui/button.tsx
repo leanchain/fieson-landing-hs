@@ -22,6 +22,7 @@ const buttonVariants = cva(
         "accent-outline": "border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground shadow-soft hover:shadow-medium",
         hero: "bg-gradient-primary text-white hover:opacity-90 shadow-medium hover:shadow-large font-bold",
         demo: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-medium hover:shadow-large font-semibold rounded-full",
+        blue: "bg-blue-accent text-white hover:bg-blue-accent/90 shadow-soft",
       },
       size: {
         default: "h-11 px-6 py-3",

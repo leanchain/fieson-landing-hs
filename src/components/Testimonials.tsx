@@ -1,7 +1,11 @@
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
-import { Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 const Testimonials = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
   const testimonials = [
     {
       name: "Devynn Thompson",
@@ -54,6 +58,24 @@ const Testimonials = () => {
       rating: 5
     }
   ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % Math.ceil(testimonials.length / 3));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + Math.ceil(testimonials.length / 3)) % Math.ceil(testimonials.length / 3));
+  };
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const getVisibleTestimonials = () => {
+    const startIndex = currentSlide * 3;
+    return testimonials.slice(startIndex, startIndex + 3);
+  };
 
   return (
     <section className="py-20 bg-gradient-section">
@@ -110,32 +132,76 @@ const Testimonials = () => {
           </Card>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.slice(1).map((testimonial, index) => (
-            <Card key={index} className="p-6 hover:shadow-medium smooth-transition">
-              <div className="flex items-center mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-current text-yellow-400" />
-                ))}
-              </div>
-              <blockquote className="text-muted-foreground mb-6 leading-relaxed">
-                "{testimonial.quote}"
-              </blockquote>
-              <div className="flex items-center space-x-3">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-12 h-12 rounded-full bg-muted"
-                />
-                <div>
-                  <div className="font-semibold text-foreground">{testimonial.name}</div>
-                  <div className="text-sm text-muted-foreground">{testimonial.title}</div>
-                  <div className="text-sm text-muted-foreground font-medium">{testimonial.company}</div>
+        {/* Navigation */}
+        <div className="flex items-center justify-between mb-8">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={prevSlide}
+            className="w-10 h-10 rounded-full p-0"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </Button>
+          
+          <div className="flex space-x-2">
+            {Array.from({ length: Math.ceil(testimonials.length / 3) }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-2 h-2 rounded-full smooth-transition ${
+                  currentSlide === index ? 'bg-accent' : 'bg-muted'
+                }`}
+              />
+            ))}
+          </div>
+          
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={nextSlide}
+            className="w-10 h-10 rounded-full p-0"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </Button>
+        </div>
+
+        {/* Testimonials Slider */}
+        <div className="relative overflow-hidden">
+          <div 
+            className="flex smooth-transition"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {Array.from({ length: Math.ceil(testimonials.slice(1).length / 3) }).map((_, slideIndex) => (
+              <div key={slideIndex} className="w-full flex-shrink-0">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {testimonials.slice(1).slice(slideIndex * 3, slideIndex * 3 + 3).map((testimonial, index) => (
+                    <Card key={index} className="p-6 hover:shadow-medium smooth-transition">
+                      <div className="flex items-center mb-4">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 fill-current text-yellow-400" />
+                        ))}
+                      </div>
+                      <blockquote className="text-muted-foreground mb-6 leading-relaxed">
+                        "{testimonial.quote}"
+                      </blockquote>
+                      <div className="flex items-center space-x-3">
+                        <img
+                          src={testimonial.image}
+                          alt={testimonial.name}
+                          className="w-12 h-12 rounded-full bg-muted"
+                        />
+                        <div>
+                          <div className="font-semibold text-foreground">{testimonial.name}</div>
+                          <div className="text-sm text-muted-foreground">{testimonial.title}</div>
+                          <div className="text-sm text-muted-foreground font-medium">{testimonial.company}</div>
+                        </div>
+                      </div>
+                    </Card>
+                  ))}
                 </div>
               </div>
-            </Card>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -3,6 +3,9 @@ import Hero from "@/components/Hero";
 import CompanyLogos from "@/components/CompanyLogos";
 import UseCases from "@/components/UseCases";
 import HowItWorks from "@/components/HowItWorks";
+import ConversionSection from "@/components/ConversionSection";
+import LeadGenSection from "@/components/LeadGenSection";
+import DemoCallsSection from "@/components/DemoCallsSection";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 
@@ -15,6 +18,9 @@ const Index = () => {
         <CompanyLogos />
         <UseCases />
         <HowItWorks />
+        <ConversionSection />
+        <LeadGenSection />
+        <DemoCallsSection />
         <Testimonials />
       </main>
       <Footer />

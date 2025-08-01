@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Mic, Phone, DollarSign, Users } from "lucide-react";
+import { Mic, Clock, TrendingUp, Shield } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
 
 const Hero = () => {
@@ -81,28 +81,28 @@ const Hero = () => {
 
         {/* Value Proposition Cards */}
         <div className="grid md:grid-cols-3 gap-6 mt-16 pt-16 border-t border-border/50">
-          <div className="text-center p-6 rounded-xl bg-card shadow-soft">
-            <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <Phone className="w-6 h-6 text-accent" />
+          <div className="text-center p-6 rounded-xl bg-card shadow-soft hover:shadow-medium smooth-transition group">
+            <div className="w-16 h-16 bg-gradient-to-br from-accent to-accent-light rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 smooth-transition">
+              <Clock className="w-8 h-8 text-white" />
             </div>
-            <h3 className="font-bold text-lg mb-2">Instant Pickup</h3>
-            <p className="text-sm text-muted-foreground">AI answers 100% of calls, day or night. No more missed emergency calls.</p>
+            <h3 className="font-bold text-xl mb-3">Instant Pickup</h3>
+            <p className="text-muted-foreground leading-relaxed">AI answers 100% of calls, day or night. No more missed emergency calls.</p>
           </div>
           
-          <div className="text-center p-6 rounded-xl bg-card shadow-soft">
-            <div className="w-12 h-12 bg-blue-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <DollarSign className="w-6 h-6 text-blue-accent" />
+          <div className="text-center p-6 rounded-xl bg-card shadow-soft hover:shadow-medium smooth-transition group">
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-accent to-blue-accent-light rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 smooth-transition">
+              <TrendingUp className="w-8 h-8 text-white" />
             </div>
-            <h3 className="font-bold text-lg mb-2">+15-25% Jobs Booked</h3>
-            <p className="text-sm text-muted-foreground">Pay only €3 per booked job during pilot. Zero fixed costs.</p>
+            <h3 className="font-bold text-xl mb-3">+15-25% Jobs Booked</h3>
+            <p className="text-muted-foreground leading-relaxed">Pay only €3 per booked job during pilot. Zero fixed costs.</p>
           </div>
           
-          <div className="text-center p-6 rounded-xl bg-card shadow-soft">
-            <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <Users className="w-6 h-6 text-accent" />
+          <div className="text-center p-6 rounded-xl bg-card shadow-soft hover:shadow-medium smooth-transition group">
+            <div className="w-16 h-16 bg-gradient-to-br from-accent to-accent-light rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 smooth-transition">
+              <Shield className="w-8 h-8 text-white" />
             </div>
-            <h3 className="font-bold text-lg mb-2">Owner Freedom</h3>
-            <p className="text-sm text-muted-foreground">Get your nights and weekends back. 30-minute setup, no apps, no hardware.</p>
+            <h3 className="font-bold text-xl mb-3">Owner Freedom</h3>
+            <p className="text-muted-foreground leading-relaxed">Get your nights and weekends back. 30-minute setup, no apps, no hardware.</p>
           </div>
         </div>
       </div>
