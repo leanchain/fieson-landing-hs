@@ -73,7 +73,7 @@ const Pricing = () => {
       },
       {
         id: "contract",
-        question: "Do I have to sign a contract to use Fieson?",
+        question: "Do I have to sign a contract to use Fieson AI?",
         answer: "No, never! As former home service business owners, we believe in earning your business every day—no long-term commitments, just results."
       },
       {
@@ -296,7 +296,7 @@ const Pricing = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="text-3xl font-bold text-foreground mb-6">
-                Are you looking to partner with or resell Fieson's AI?
+                Are you looking to partner with or resell Fieson AI?
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
                 We would love to help. Give us a call to talk about our partnership and reseller benefits.

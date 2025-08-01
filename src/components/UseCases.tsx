@@ -12,7 +12,7 @@ const UseCases = () => {
       name: "AI DISPATCHER",
       icon: Phone,
       title: "AI Dispatcher",
-      description: "Efficiently prioritize high-value jobs, manage capacity, assign tags, and ensure data accuracy with Fieson's AI Dispatcher.",
+      description: "Efficiently prioritize high-value jobs, manage capacity, assign tags, and ensure data accuracy with Fieson AI's AI Dispatcher.",
       features: ["Job prioritization", "Capacity management", "Tag assignment", "Data accuracy"],
     },
     {
@@ -20,7 +20,7 @@ const UseCases = () => {
       name: "AI CSR",
       icon: MessageSquare,
       title: "AI CSR",
-      description: "Easily handle customer inquiries, billing, rescheduling, follow-ups, and reminders with Fieson's AI CSR.",
+      description: "Easily handle customer inquiries, billing, rescheduling, follow-ups, and reminders with Fieson AI's AI CSR.",
       features: ["Customer inquiries", "Billing support", "Rescheduling", "Follow-ups"],
     },
     {
@@ -28,7 +28,7 @@ const UseCases = () => {
       name: "AI Sales",
       icon: DollarSign,
       title: "AI Salesperson",
-      description: "Sell Memberships, Negotiate Payment Plans, Upsell Packages at Any Hour of the Day with Fieson's AI Sales Agent",
+      description: "Sell Memberships, Negotiate Payment Plans, Upsell Packages at Any Hour of the Day with Fieson AI's AI Sales Agent",
       features: ["Membership sales", "Payment plans", "Upselling", "24/7 availability"],
     },
     {
@@ -36,7 +36,7 @@ const UseCases = () => {
       name: "AI Receptionist",
       icon: Users,
       title: "AI Receptionist",
-      description: "Fieson's AI answering service will speak with customers and book appointments — just like your best salesperson.",
+      description: "Fieson AI's AI answering service will speak with customers and book appointments — just like your best salesperson.",
       features: ["Appointment booking", "Customer service", "Call routing", "Professional communication"],
     },
   ];

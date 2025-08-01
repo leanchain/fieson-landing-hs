@@ -17,7 +17,7 @@ const HowItWorks = () => {
     },
     {
       title: "Job Completed",
-      description: "Your tech fixes the issue. Fieson follows up to ensure satisfaction and requests reviews.",
+      description: "Your tech fixes the issue. Fieson AI follows up to ensure satisfaction and requests reviews.",
       icon: CheckCircle,
       type: "service-update"
     }

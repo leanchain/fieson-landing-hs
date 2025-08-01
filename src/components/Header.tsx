@@ -25,7 +25,7 @@ const Header = () => {
             <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
               <span className="text-accent-foreground font-bold text-lg">F</span>
             </div>
-            <span className="text-xl font-bold text-foreground">Fieson</span>
+            <span className="text-xl font-bold text-foreground">Fieson AI</span>
           </Link>
 
           {/* Desktop Navigation */}

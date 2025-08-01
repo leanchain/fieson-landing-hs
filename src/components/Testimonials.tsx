@@ -46,7 +46,7 @@ const Testimonials = () => {
       title: "COO",
       company: "Rove Pest Control",
       image: "/api/placeholder/80/80",
-      quote: "We just had our 2nd week in a row of zero missed Google Local Services calls. This is pretty cool to see since implementing Fieson.",
+      quote: "We just had our 2nd week in a row of zero missed Google Local Services calls. This is pretty cool to see since implementing Fieson AI.",
       rating: 5
     },
     {
@@ -125,7 +125,7 @@ const Testimonials = () => {
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-bold mb-2">{testimonials[0].years}</div>
-                  <div className="text-primary-foreground/80">As a Fieson Customer</div>
+                  <div className="text-primary-foreground/80">As a Fieson AI Customer</div>
                 </div>
               </div>
             </div>

@@ -51,7 +51,7 @@ const CompanyLogos = () => {
           </div>
           <div className="text-center">
             <div className="text-4xl lg:text-5xl font-bold text-foreground mb-2">96%</div>
-            <p className="text-muted-foreground">Satisfaction from Fieson customers.</p>
+            <p className="text-muted-foreground">Satisfaction from Fieson AI customers.</p>
           </div>
         </div>
       </div>

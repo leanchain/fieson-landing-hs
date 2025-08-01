@@ -95,7 +95,7 @@ const Footer = () => {
               <div className="w-8 h-8 bg-primary-foreground rounded-lg flex items-center justify-center">
                 <span className="text-primary font-bold text-lg">S</span>
               </div>
-              <span className="text-xl font-bold">Fieson</span>
+              <span className="text-xl font-bold">Fieson AI</span>
             </div>
 
             {/* Legal */}
