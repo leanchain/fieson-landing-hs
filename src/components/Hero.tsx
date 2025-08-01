@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Mic } from "lucide-react";
+import { Mic, Phone, DollarSign, Users } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
 
 const Hero = () => {
@@ -15,17 +15,18 @@ const Hero = () => {
           <div className="text-center lg:text-left">
             <div className="mb-6">
               <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-                AI Phone Answering System for Home Services
+                AI Phone System for Plumbing & Heating (SHK)
               </span>
             </div>
             
-            <h1 className="text-5xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
-              AI that books{" "}
-              <span className="text-accent">90% of jobs.</span>
+            <h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+              Every burst-pipe call booked{" "}
+              <span className="text-accent">before your rival answers.</span>
             </h1>
             
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl">
-              Sameday's industry-leading AI CSRs will answer the phone, respond to texts, emails, and book jobs — just like your best salesperson.
+              46% of plumbing/HVAC phone leads become paid jobs — if you answer in &lt;30s. 
+              After-hours emergencies spike 35% post-18:00; most shops miss them.
             </p>
 
             {/* CTA Section */}
@@ -34,12 +35,12 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
                 <Button variant="hero" size="xl" className="group relative overflow-hidden">
                   <Mic className="w-5 h-5 mr-3 group-hover:scale-110 smooth-transition" />
-                  <span>TALK WITH SAMEDAY AI</span>
+                  <span>TALK WITH FIESON AI</span>
                   <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
                 </Button>
                 
                 <div className="text-center sm:text-left">
-                  <p className="text-sm text-muted-foreground mb-2">AI will call you right away</p>
+                  <p className="text-sm text-muted-foreground mb-2">30-minute setup. Zero fixed costs during pilot.</p>
                   <div className="flex items-center space-x-2">
                     <Input 
                       placeholder="Enter your phone number"
@@ -75,6 +76,33 @@ const Hero = () => {
             {/* Floating Elements */}
             <div className="absolute -top-4 -right-4 w-20 h-20 bg-accent rounded-full opacity-80 animate-pulse" />
             <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-blue-accent rounded-full opacity-60 animate-pulse delay-1000" />
+          </div>
+        </div>
+
+        {/* Value Proposition Cards */}
+        <div className="grid md:grid-cols-3 gap-6 mt-16 pt-16 border-t border-border/50">
+          <div className="text-center p-6 rounded-xl bg-card shadow-soft">
+            <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <Phone className="w-6 h-6 text-accent" />
+            </div>
+            <h3 className="font-bold text-lg mb-2">Instant Pickup</h3>
+            <p className="text-sm text-muted-foreground">AI answers 100% of calls, day or night. No more missed emergency calls.</p>
+          </div>
+          
+          <div className="text-center p-6 rounded-xl bg-card shadow-soft">
+            <div className="w-12 h-12 bg-blue-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <DollarSign className="w-6 h-6 text-blue-accent" />
+            </div>
+            <h3 className="font-bold text-lg mb-2">+15-25% Jobs Booked</h3>
+            <p className="text-sm text-muted-foreground">Pay only €3 per booked job during pilot. Zero fixed costs.</p>
+          </div>
+          
+          <div className="text-center p-6 rounded-xl bg-card shadow-soft">
+            <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <Users className="w-6 h-6 text-accent" />
+            </div>
+            <h3 className="font-bold text-lg mb-2">Owner Freedom</h3>
+            <p className="text-sm text-muted-foreground">Get your nights and weekends back. 30-minute setup, no apps, no hardware.</p>
           </div>
         </div>
       </div>

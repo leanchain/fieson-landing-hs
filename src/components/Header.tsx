@@ -22,10 +22,10 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">S</span>
+            <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+              <span className="text-accent-foreground font-bold text-lg">F</span>
             </div>
-            <span className="text-xl font-bold text-foreground">Sameday</span>
+            <span className="text-xl font-bold text-foreground">Fieson</span>
           </Link>
 
           {/* Desktop Navigation */}
