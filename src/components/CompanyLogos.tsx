@@ -26,7 +26,7 @@ const CompanyLogos = () => {
           {companies.map((company) => (
             <div
               key={company.id}
-              className="w-full max-w-[120px] h-12 bg-muted rounded-lg flex items-center justify-center hover:opacity-80 smooth-transition"
+              className="w-full max-w-[120px] h-12 rounded-lg flex items-center justify-center hover:opacity-80 smooth-transition"
             >
               <span className="text-xs font-medium text-muted-foreground text-center px-2">
                 {company.name}

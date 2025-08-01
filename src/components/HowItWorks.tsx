@@ -61,7 +61,7 @@ const HowItWorks = () => {
                 {/* Step Card */}
                 <Card className={`p-6 text-center ${getStepColor(step.type)}`}>
                   <div className="mb-4">
-                    <Icon className="w-8 h-8 text-primary mx-auto" />
+                    <Icon className="w-8 h-8 text-muted-foreground mx-auto" />
                   </div>
                   <h4 className="font-bold text-foreground mb-3">{step.title}</h4>
                   <p className="text-muted-foreground">{step.description}</p>
