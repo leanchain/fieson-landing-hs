@@ -12,7 +12,7 @@ const Hero = () => {
       <div className="container mx-auto px-24 py-16 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left order-2 lg:order-1">
             <div className="mb-6">
               <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
                 AI Phone System for Plumbing & Heating (SHK)
@@ -63,7 +63,7 @@ const Hero = () => {
           </div>
 
           {/* Right Content - Hero Image */}
-          <div className="relative">
+          <div className="relative order-1 lg:order-2">
             <div className="relative rounded-2xl overflow-hidden shadow-large">
               <img
                 src={heroImage}
