@@ -30,33 +30,33 @@ const Hero = () => {
             </p>
 
             {/* CTA Section */}
-            <div className="space-y-6">
-              {/* AI Call Button */}
-              <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
-                <Button variant="hero" size="xl" className="group relative overflow-hidden">
-                  <Mic className="w-5 h-5 mr-3 group-hover:scale-110 smooth-transition" />
-                  <span>TALK WITH FIESON AI</span>
-                  <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
+            <div className="space-y-6 max-w-md mx-auto lg:mx-0">
+              <div className="space-y-4">
+                <Input 
+                  placeholder="Telefonnummer eingeben"
+                  className="w-full h-14 text-lg rounded-xl border-2 border-blue-accent/30 focus:border-blue-accent"
+                />
+                <Button variant="hero" size="xl" className="w-full h-14 text-lg font-semibold">
+                  <span>Jetzt Anruf erhalten</span>
                 </Button>
-                
-                <div className="text-center sm:text-left">
-                  <p className="text-sm text-muted-foreground mb-2">30-minute setup. Zero fixed costs during pilot.</p>
-                  <div className="flex items-center space-x-2">
-                    <Input 
-                      placeholder="Enter your phone number"
-                      className="max-w-xs"
-                    />
-                  </div>
-                </div>
               </div>
-
-              {/* Alternative CTA */}
+              
               <div className="text-center lg:text-left">
-                <p className="text-muted-foreground inline">
-                  Or simply{" "}
-                  <Button variant="link" className="p-0 h-auto text-base font-semibold underline">
-                    book a demo
+                <p className="text-sm text-muted-foreground">
+                  Telefonnummer mit Vorwahl (zb. +49) &{" "}
+                  <br className="hidden sm:block" />
+                  ohne Leerzeichen eingeben.
+                </p>
+                <p className="text-xs text-muted-foreground mt-2">
+                  Mit dem Anruf bestätigst du unsere{" "}
+                  <Button variant="link" className="p-0 h-auto text-xs underline text-blue-accent">
+                    Kontaktaufnahme
                   </Button>
+                  {" "}und unsere{" "}
+                  <Button variant="link" className="p-0 h-auto text-xs underline text-blue-accent">
+                    Datenschutzhinweise
+                  </Button>
+                  {" "}gelesen zu haben.
                 </p>
               </div>
             </div>
