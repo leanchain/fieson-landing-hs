@@ -33,30 +33,30 @@ const Hero = () => {
             <div className="space-y-6 max-w-md mx-auto lg:mx-0">
               <div className="space-y-4">
                 <Input 
-                  placeholder="Telefonnummer eingeben"
+                  placeholder="Enter phone number"
                   className="w-full h-14 text-lg rounded-xl border-2 border-blue-accent/30 focus:border-blue-accent"
                 />
                 <Button variant="hero" size="xl" className="w-full h-14 text-lg font-semibold">
-                  <span>Jetzt Anruf erhalten</span>
+                  <span>Get Call Now</span>
                 </Button>
               </div>
               
               <div className="text-center lg:text-left">
                 <p className="text-sm text-muted-foreground">
-                  Telefonnummer mit Vorwahl (zb. +49) &{" "}
+                  Enter phone number with country code (e.g. +49) &{" "}
                   <br className="hidden sm:block" />
-                  ohne Leerzeichen eingeben.
+                  without spaces.
                 </p>
                 <p className="text-xs text-muted-foreground mt-2">
-                  Mit dem Anruf bestätigst du unsere{" "}
+                  By requesting the call you confirm you have read our{" "}
                   <Button variant="link" className="p-0 h-auto text-xs underline text-blue-accent">
-                    Kontaktaufnahme
+                    contact policy
                   </Button>
-                  {" "}und unsere{" "}
+                  {" "}and our{" "}
                   <Button variant="link" className="p-0 h-auto text-xs underline text-blue-accent">
-                    Datenschutzhinweise
+                    privacy policy
                   </Button>
-                  {" "}gelesen zu haben.
+                  .
                 </p>
               </div>
             </div>
