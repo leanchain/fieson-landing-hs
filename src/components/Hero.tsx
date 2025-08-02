@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mic, Clock, TrendingUp, Shield } from "lucide-react";
+import { useState } from "react";
 import heroImage from "@/assets/hero-image.jpg";
 const Hero = () => {
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [showInstruction, setShowInstruction] = useState(false);
   return <section className="relative min-h-screen flex items-center justify-center bg-gradient-section overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-blue-accent/5" />
@@ -30,18 +33,26 @@ const Hero = () => {
             {/* CTA Section */}
             <div className="space-y-6 max-w-md mx-auto lg:mx-0">
               <div className="space-y-4">
-                <Input placeholder="Enter phone number" className="w-full h-14 text-lg rounded-xl border-2 border-blue-accent/30 focus:border-blue-accent" />
+                <Input 
+                  placeholder="Enter phone number" 
+                  className="w-full h-14 text-lg rounded-xl border-2 border-blue-accent/30 focus:border-blue-accent" 
+                  value={phoneNumber}
+                  onChange={(e) => {
+                    setPhoneNumber(e.target.value);
+                    setShowInstruction(e.target.value.length > 0);
+                  }}
+                />
+                {showInstruction && (
+                  <p className="text-sm text-muted-foreground">
+                    Enter phone number with country code (e.g. +49) without spaces.
+                  </p>
+                )}
                 <Button variant="hero" size="xl" className="w-full h-14 text-lg font-semibold">
                   <span>Talk With Fieson AI</span>
                 </Button>
               </div>
               
               <div className="text-center lg:text-left">
-                <p className="text-sm text-muted-foreground">
-                  Enter phone number with country code (e.g. +49) &{" "}
-                  <br className="hidden sm:block" />
-                  without spaces.
-                </p>
                 <p className="text-xs text-muted-foreground mt-2">
                   By calling, you confirm that you have read our{" "}
                   <Button variant="link" className="p-0 h-auto text-xs underline text-blue-accent">
