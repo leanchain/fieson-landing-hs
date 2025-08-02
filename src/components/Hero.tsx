@@ -5,7 +5,31 @@ import { useState } from "react";
 import heroImage from "@/assets/hero-image.jpg";
 const Hero = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [showInstruction, setShowInstruction] = useState(false);
+  const [showValidation, setShowValidation] = useState(false);
+
+  const validatePhoneNumber = (phone: string) => {
+    if (!phone) return { isValid: false, message: "" };
+    
+    // International phone number regex: starts with +, followed by 1-3 digits for country code, then 4-14 digits
+    const phoneRegex = /^\+[1-9]\d{0,3}\d{4,14}$/;
+    
+    if (!phone.startsWith('+')) {
+      return { isValid: false, message: "Phone number must start with country code (e.g. +49)" };
+    }
+    
+    if (!/^\+[\d\s-()]+$/.test(phone.replace(/\s/g, ''))) {
+      return { isValid: false, message: "Phone number contains invalid characters" };
+    }
+    
+    const cleanPhone = phone.replace(/\s/g, '');
+    if (!phoneRegex.test(cleanPhone)) {
+      return { isValid: false, message: "Please enter a valid international phone number" };
+    }
+    
+    return { isValid: true, message: "Valid phone number" };
+  };
+
+  const validation = validatePhoneNumber(phoneNumber);
   return <section className="relative min-h-screen flex items-center justify-center bg-gradient-section overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-blue-accent/5" />
@@ -35,16 +59,22 @@ const Hero = () => {
               <div className="space-y-4">
                 <Input 
                   placeholder="Enter phone number" 
-                  className="w-full h-14 text-lg rounded-xl border-2 border-blue-accent/30 focus:border-blue-accent" 
+                  className={`w-full h-14 text-lg rounded-xl border-2 ${
+                    showValidation 
+                      ? validation.isValid 
+                        ? 'border-green-500 focus:border-green-500' 
+                        : 'border-red-500 focus:border-red-500'
+                      : 'border-blue-accent/30 focus:border-blue-accent'
+                  }`}
                   value={phoneNumber}
                   onChange={(e) => {
                     setPhoneNumber(e.target.value);
-                    setShowInstruction(e.target.value.length > 0);
+                    setShowValidation(e.target.value.length > 0);
                   }}
                 />
-                {showInstruction && (
-                  <p className="text-sm text-muted-foreground">
-                    Enter phone number with country code (e.g. +49) without spaces.
+                {showValidation && validation.message && (
+                  <p className={`text-sm ${validation.isValid ? 'text-green-600' : 'text-red-500'}`}>
+                    {validation.message}
                   </p>
                 )}
                 <Button variant="hero" size="xl" className="w-full h-14 text-lg font-semibold">
