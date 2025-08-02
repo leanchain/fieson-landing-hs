@@ -9,7 +9,7 @@ const Hero = () => {
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-blue-accent/5" />
       
-      <div className="container mx-auto px-4 py-20 relative z-10">
+      <div className="container mx-auto px-24 py-16 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left">
@@ -80,8 +80,8 @@ const Hero = () => {
         </div>
 
         {/* Value Proposition Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mt-16 pt-16 border-t border-border/50">
-          <div className="text-center p-6 rounded-xl bg-card shadow-soft hover:shadow-medium smooth-transition group">
+        <div className="grid md:grid-cols-3 gap-6 mt-16 pt-8 border-t border-border/50">
+          <div className="text-center p-8 rounded-xl bg-card shadow-soft hover:shadow-medium smooth-transition group">
             <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 smooth-transition">
               <Clock className="w-8 h-8 text-muted-foreground" />
             </div>
