@@ -62,8 +62,8 @@ const Hero = () => {
                   className={`w-full h-14 text-lg rounded-xl border-2 ${
                     showValidation 
                       ? validation.isValid 
-                        ? 'border-green-500 focus:border-green-500' 
-                        : 'border-red-500 focus:border-red-500'
+                        ? 'border-green-500 focus:border-blue-accent' 
+                        : 'border-red-500 focus:border-blue-accent'
                       : 'border-blue-accent/30 focus:border-blue-accent'
                   }`}
                   value={phoneNumber}
