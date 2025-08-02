@@ -2,10 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mic, Clock, TrendingUp, Shield } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
-
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-section overflow-hidden">
+  return <section className="relative min-h-screen flex items-center justify-center bg-gradient-section overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-blue-accent/5" />
       
@@ -32,31 +30,28 @@ const Hero = () => {
             {/* CTA Section */}
             <div className="space-y-6 max-w-md mx-auto lg:mx-0">
               <div className="space-y-4">
-                <Input 
-                  placeholder="Enter phone number"
-                  className="w-full h-14 text-lg rounded-xl border-2 border-blue-accent/30 focus:border-blue-accent"
-                />
+                <Input placeholder="Telefonnummer eingeben" className="w-full h-14 text-lg rounded-xl border-2 border-blue-accent/30 focus:border-blue-accent" />
                 <Button variant="hero" size="xl" className="w-full h-14 text-lg font-semibold">
-                  <span>Get Call Now</span>
+                  <span>Talk With Fieson AI</span>
                 </Button>
               </div>
               
               <div className="text-center lg:text-left">
                 <p className="text-sm text-muted-foreground">
-                  Enter phone number with country code (e.g. +49) &{" "}
+                  Telefonnummer mit Vorwahl (zb. +49) &{" "}
                   <br className="hidden sm:block" />
-                  without spaces.
+                  ohne Leerzeichen eingeben.
                 </p>
                 <p className="text-xs text-muted-foreground mt-2">
-                  By requesting the call you confirm you have read our{" "}
+                  Mit dem Anruf bestätigst du unsere{" "}
                   <Button variant="link" className="p-0 h-auto text-xs underline text-blue-accent">
-                    contact policy
+                    Kontaktaufnahme
                   </Button>
-                  {" "}and our{" "}
+                  {" "}und unsere{" "}
                   <Button variant="link" className="p-0 h-auto text-xs underline text-blue-accent">
-                    privacy policy
+                    Datenschutzhinweise
                   </Button>
-                  .
+                  {" "}gelesen zu haben.
                 </p>
               </div>
             </div>
@@ -65,11 +60,7 @@ const Hero = () => {
           {/* Right Content - Hero Image */}
           <div className="relative order-1 lg:order-2">
             <div className="relative rounded-2xl overflow-hidden shadow-large">
-              <img
-                src={heroImage}
-                alt="AI Phone Answering Service"
-                className="w-full h-auto object-cover"
-              />
+              <img src={heroImage} alt="AI Phone Answering Service" className="w-full h-auto object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
             </div>
             
@@ -110,15 +101,9 @@ const Hero = () => {
       {/* Bottom Wave */}
       <div className="absolute bottom-0 left-0 right-0">
         <svg viewBox="0 0 1440 120" className="w-full h-auto">
-          <path
-            fill="currentColor"
-            className="text-background"
-            d="M0,64L48,69.3C96,75,192,85,288,85.3C384,85,480,75,576,64C672,53,768,43,864,48C960,53,1056,75,1152,80C1248,85,1344,75,1392,69.3L1440,64L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
-          />
+          <path fill="currentColor" className="text-background" d="M0,64L48,69.3C96,75,192,85,288,85.3C384,85,480,75,576,64C672,53,768,43,864,48C960,53,1056,75,1152,80C1248,85,1344,75,1392,69.3L1440,64L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z" />
         </svg>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
