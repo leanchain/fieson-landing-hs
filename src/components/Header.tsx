@@ -8,11 +8,8 @@ const Header = () => {
   const location = useLocation();
 
   const navigation = [
-    { name: "About", href: "/about" },
     { name: "Industries", href: "/industries" },
     { name: "Pricing", href: "/pricing" },
-    { name: "Contact Us", href: "/contact" },
-    { name: "Resources", href: "/resources" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -47,12 +44,6 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link
-              to="/login"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground smooth-transition"
-            >
-              Login
-            </Link>
             <Button variant="demo" size="default">
               BOOK A DEMO
             </Button>
@@ -90,13 +81,6 @@ const Header = () => {
                 </Link>
               ))}
               <div className="flex flex-col space-y-3 pt-4">
-                <Link
-                  to="/login"
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Login
-                </Link>
                 <Button variant="demo" size="default" className="w-full">
                   BOOK A DEMO
                 </Button>
