@@ -59,7 +59,7 @@ const Hero = () => {
               <div className="space-y-4">
                 <Input 
                   placeholder="Enter phone number" 
-                  className={`w-full h-14 text-lg rounded-xl border-2 ${
+                  className={`w-full h-14 text-lg rounded-xl border-2 focus-visible:ring-0 focus-visible:ring-offset-0 ${
                     showValidation 
                       ? validation.isValid 
                         ? 'border-green-500 focus:border-blue-accent' 
