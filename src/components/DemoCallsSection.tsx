@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Play, Pause, Wrench, Droplets, Flame, Thermometer, Zap } from "lucide-react";
 
 const DemoCallsSection = () => {
   const [playingCall, setPlayingCall] = useState<string | null>(null);
-  const [currentMobileSlide, setCurrentMobileSlide] = useState(0);
+  const [currentMobileSlide, setCurrentMobileSlide] = useState(2); // Start with middle item
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Scroll to middle item on mobile on initial load
+    if (containerRef.current && window.innerWidth < 768) {
+      const cardWidth = 280 + 16; // card width + gap
+      const scrollPosition = cardWidth * 2; // scroll to 3rd item (index 2)
+      containerRef.current.scrollLeft = scrollPosition;
+    }
+  }, []);
 
   const demoCalls = [
     {
@@ -87,7 +97,7 @@ const DemoCallsSection = () => {
           </p>
         </div>
 
-        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 md:gap-6 flex md:flex-none overflow-x-auto snap-x snap-mandatory gap-4 pl-[calc(50vw-140px)] pr-[calc(50vw-140px)] md:px-0 pb-4 md:pb-0 scrollbar-hide">
+        <div ref={containerRef} className="md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 md:gap-6 flex md:flex-none overflow-x-auto snap-x snap-mandatory gap-4 pl-[calc(50vw-140px)] pr-[calc(50vw-140px)] md:px-0 pb-4 md:pb-0 scrollbar-hide">
           {demoCalls.map((call) => {
             const Icon = call.icon;
             const isPlaying = playingCall === call.id;
