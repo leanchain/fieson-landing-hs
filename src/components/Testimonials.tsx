@@ -92,38 +92,6 @@ const Testimonials = () => {
         </div>
 
 
-        {/* Navigation */}
-        <div className="flex items-center justify-between mb-8">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={prevSlide}
-            className="w-10 h-10 rounded-full p-0"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </Button>
-          
-          <div className="flex space-x-2">
-            {Array.from({ length: Math.ceil(testimonials.length / 3) }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-2 h-2 rounded-full smooth-transition ${
-                  currentSlide === index ? 'bg-accent' : 'bg-muted'
-                }`}
-              />
-            ))}
-          </div>
-          
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={nextSlide}
-            className="w-10 h-10 rounded-full p-0"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </Button>
-        </div>
 
         {/* Testimonials Slider */}
         <div className="relative overflow-hidden">
@@ -162,6 +130,39 @@ const Testimonials = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Navigation */}
+        <div className="flex items-center justify-between mt-8">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={prevSlide}
+            className="w-10 h-10 rounded-full p-0"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </Button>
+          
+          <div className="flex space-x-2">
+            {Array.from({ length: Math.ceil(testimonials.length / 3) }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-2 h-2 rounded-full smooth-transition ${
+                  currentSlide === index ? 'bg-accent' : 'bg-muted'
+                }`}
+              />
+            ))}
+          </div>
+          
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={nextSlide}
+            className="w-10 h-10 rounded-full p-0"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </Button>
         </div>
       </div>
     </section>
