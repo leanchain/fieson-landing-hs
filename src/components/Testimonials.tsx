@@ -92,20 +92,20 @@ const Testimonials = () => {
         {/* Testimonials Slider */}
         <div className="relative overflow-hidden">
           <div 
-            className="flex smooth-transition"
-            style={{ transform: `translateX(-${currentSlide * (100/3)}%)` }}
+            className="flex gap-6 smooth-transition"
+            style={{ transform: `translateX(-${currentSlide * 33.33}%)` }}
           >
             {testimonials.slice(1).map((testimonial, index) => (
-              <Card key={index} className="p-6 hover:shadow-medium smooth-transition flex-shrink-0 w-1/3">
+              <Card key={index} className="p-6 hover:shadow-medium smooth-transition flex-shrink-0 w-[calc(33.33%-1rem)] min-h-[300px] flex flex-col">
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-current text-yellow-400" />
                   ))}
                 </div>
-                <blockquote className="text-muted-foreground mb-6 leading-relaxed">
+                <blockquote className="text-muted-foreground mb-6 leading-relaxed flex-grow">
                   "{testimonial.quote}"
                 </blockquote>
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-3 mt-auto">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
