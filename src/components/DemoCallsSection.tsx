@@ -86,13 +86,13 @@ const DemoCallsSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 md:gap-6 flex md:flex-none overflow-x-auto snap-x snap-mandatory gap-4 px-4 md:px-0 pb-4 md:pb-0 scrollbar-hide">
           {demoCalls.map((call) => {
             const Icon = call.icon;
             const isPlaying = playingCall === call.id;
             
             return (
-              <Card key={call.id} className="p-6 hover:shadow-medium smooth-transition group cursor-pointer">
+              <Card key={call.id} className="p-6 hover:shadow-medium smooth-transition group cursor-pointer flex-shrink-0 w-[280px] md:w-auto snap-center">
                 <div className="space-y-4">
                   {/* Icon and Play Button */}
                   <div className="flex items-center justify-between">
