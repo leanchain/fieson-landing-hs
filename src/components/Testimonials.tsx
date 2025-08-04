@@ -133,7 +133,7 @@ const Testimonials = () => {
         </div>
 
         {/* Navigation */}
-        <div className="flex items-center justify-between mt-8">
+        <div className="flex items-center justify-center gap-4 mt-8">
           <Button
             variant="outline"
             size="sm"
