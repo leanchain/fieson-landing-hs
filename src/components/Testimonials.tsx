@@ -67,10 +67,6 @@ const Testimonials = () => {
     setCurrentSlide((prev) => (prev - 1 + Math.ceil(testimonials.length / 3)) % Math.ceil(testimonials.length / 3));
   };
 
-  useEffect(() => {
-    const timer = setInterval(nextSlide, 5000);
-    return () => clearInterval(timer);
-  }, []);
 
   const getVisibleTestimonials = () => {
     const startIndex = currentSlide * 3;
@@ -101,7 +97,7 @@ const Testimonials = () => {
           >
             {Array.from({ length: Math.ceil(testimonials.slice(1).length / 3) }).map((_, slideIndex) => (
               <div key={slideIndex} className="w-full flex-shrink-0">
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="flex gap-6 min-h-[300px]">
                   {testimonials.slice(1).slice(slideIndex * 3, slideIndex * 3 + 3).map((testimonial, index) => (
                     <Card key={index} className="p-6 hover:shadow-medium smooth-transition">
                       <div className="flex items-center mb-4">
