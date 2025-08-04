@@ -5,17 +5,46 @@ import { Play, Pause, Wrench, Droplets, Flame, Thermometer, Zap } from "lucide-r
 
 const DemoCallsSection = () => {
   const [playingCall, setPlayingCall] = useState<string | null>(null);
-  const [currentMobileSlide, setCurrentMobileSlide] = useState(2); // Start with middle item
+  const [currentSlide, setCurrentSlide] = useState(2); // Start with middle item
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Scroll to middle item on mobile on initial load
-    if (containerRef.current && window.innerWidth < 768) {
+    // Scroll to middle item on initial load for carousel view
+    if (containerRef.current && window.innerWidth < 1280) { // xl breakpoint
       const cardWidth = 280 + 16; // card width + gap
       const scrollPosition = cardWidth * 2; // scroll to 3rd item (index 2)
       containerRef.current.scrollLeft = scrollPosition;
     }
   }, []);
+
+  // Handle scroll to update current slide indicator
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      if (window.innerWidth >= 1280) return; // Skip for grid view
+      
+      const cardWidth = 280 + 16; // card width + gap
+      const scrollLeft = container.scrollLeft;
+      const slideIndex = Math.round(scrollLeft / cardWidth);
+      setCurrentSlide(Math.max(0, Math.min(slideIndex, demoCalls.length - 1)));
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSlide = (index: number) => {
+    if (!containerRef.current) return;
+    const cardWidth = 280 + 16; // card width + gap
+    const scrollPosition = cardWidth * index;
+    containerRef.current.scrollTo({
+      left: scrollPosition,
+      behavior: 'smooth'
+    });
+    setCurrentSlide(index);
+  };
 
   const demoCalls = [
     {
@@ -97,13 +126,13 @@ const DemoCallsSection = () => {
           </p>
         </div>
 
-        <div ref={containerRef} className="md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 md:gap-6 flex md:flex-none overflow-x-auto snap-x snap-mandatory gap-4 pl-[calc(50vw-140px)] pr-[calc(50vw-140px)] md:px-0 pb-4 md:pb-0 scrollbar-hide">
+        <div ref={containerRef} className="xl:grid xl:grid-cols-5 xl:gap-6 flex xl:flex-none overflow-x-auto snap-x snap-mandatory gap-4 pl-[calc(50vw-140px)] pr-[calc(50vw-140px)] xl:px-0 xl:pl-0 xl:pr-0 pb-4 xl:pb-0 scrollbar-hide">
           {demoCalls.map((call) => {
             const Icon = call.icon;
             const isPlaying = playingCall === call.id;
             
             return (
-              <Card key={call.id} className="p-6 hover:shadow-medium smooth-transition group cursor-pointer flex-shrink-0 w-[280px] md:w-auto snap-center bg-muted/30">
+              <Card key={call.id} className="p-6 hover:shadow-medium smooth-transition group cursor-pointer flex-shrink-0 w-[280px] xl:w-auto snap-center bg-muted/30">
                 <div className="space-y-4">
                   {/* Icon and Play Button */}
                   <div className="flex items-center justify-between">
@@ -161,14 +190,14 @@ const DemoCallsSection = () => {
           })}
         </div>
 
-        {/* Mobile Navigation Dots */}
-        <div className="flex justify-center gap-2 mt-8 md:hidden">
+        {/* Carousel Navigation Dots */}
+        <div className="flex justify-center gap-2 mt-8 xl:hidden">
           {demoCalls.map((_, index) => (
             <button
               key={index}
-              onClick={() => setCurrentMobileSlide(index)}
+              onClick={() => scrollToSlide(index)}
               className={`w-2 h-2 rounded-full smooth-transition ${
-                currentMobileSlide === index ? 'bg-accent' : 'bg-muted'
+                currentSlide === index ? 'bg-accent' : 'bg-muted'
               }`}
             />
           ))}
