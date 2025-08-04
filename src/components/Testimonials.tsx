@@ -91,46 +91,6 @@ const Testimonials = () => {
           </p>
         </div>
 
-        {/* Featured Testimonial */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <Card className="p-8 lg:p-12 shadow-large bg-primary text-primary-foreground">
-            <div className="grid lg:grid-cols-3 gap-8 items-center">
-              <div className="lg:col-span-2">
-                <div className="flex items-center mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-current text-yellow-400" />
-                  ))}
-                </div>
-                <blockquote className="text-xl lg:text-2xl font-medium mb-6 leading-relaxed">
-                  "{testimonials[0].quote}"
-                </blockquote>
-                <div className="flex items-center space-x-4">
-                  <img
-                    src={testimonials[0].image}
-                    alt={testimonials[0].name}
-                    className="w-16 h-16 rounded-full bg-primary-foreground/20"
-                  />
-                  <div>
-                    <div className="font-semibold text-lg">{testimonials[0].name}</div>
-                    <div className="text-primary-foreground/80">{testimonials[0].title}</div>
-                    <div className="text-primary-foreground/80 font-medium">{testimonials[0].company}</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="space-y-6">
-                <div className="text-center">
-                  <div className="text-4xl font-bold mb-2">{testimonials[0].responseTime}</div>
-                  <div className="text-primary-foreground/80">Avg Response Time</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold mb-2">{testimonials[0].years}</div>
-                  <div className="text-primary-foreground/80">As a Fieson AI Customer</div>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </div>
 
         {/* Navigation */}
         <div className="flex items-center justify-between mb-8">
