@@ -75,7 +75,7 @@ const Testimonials = () => {
 
   return (
     <section className="py-20 bg-gradient-section">
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <p className="text-accent font-semibold uppercase tracking-wide mb-4">CUSTOMER SUPPORT</p>
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">

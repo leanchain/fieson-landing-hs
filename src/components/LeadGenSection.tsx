@@ -5,7 +5,7 @@ import { Phone, MessageSquare, Calendar, Star } from "lucide-react";
 const LeadGenSection = () => {
   return (
     <section className="py-20 bg-gradient-section">
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Visual */}
           <div className="relative">
