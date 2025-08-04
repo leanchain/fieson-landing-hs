@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Play, Pause, Wrench, Droplets, Flame, Thermometer, Zap } from "lucide-react";
@@ -6,6 +6,9 @@ import { Play, Pause, Wrench, Droplets, Flame, Thermometer, Zap } from "lucide-r
 const DemoCallsSection = () => {
   const [playingCall, setPlayingCall] = useState<string | null>(null);
   const [currentSlide, setCurrentSlide] = useState(2); // Start with middle item (index 2)
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollStart, setScrollStart] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -45,6 +48,56 @@ const DemoCallsSection = () => {
     });
     setCurrentSlide(index);
   };
+
+  // Drag functionality
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    if (window.innerWidth >= 1280) return; // Skip for grid view
+    setIsDragging(true);
+    setStartX(e.pageX);
+    setScrollStart(containerRef.current?.scrollLeft || 0);
+    e.preventDefault();
+  }, []);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!isDragging || window.innerWidth >= 1280) return;
+    e.preventDefault();
+    const container = containerRef.current;
+    if (!container) return;
+    
+    const x = e.pageX;
+    const walk = (x - startX) * 2; // Multiply by 2 for faster scrolling
+    container.scrollLeft = scrollStart - walk;
+  }, [isDragging, startX, scrollStart]);
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  // Touch functionality
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    if (window.innerWidth >= 1280) return; // Skip for grid view
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX);
+    setScrollStart(containerRef.current?.scrollLeft || 0);
+  }, []);
+
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
+    if (!isDragging || window.innerWidth >= 1280) return;
+    const container = containerRef.current;
+    if (!container) return;
+    
+    const x = e.touches[0].pageX;
+    const walk = (x - startX) * 2;
+    container.scrollLeft = scrollStart - walk;
+  }, [isDragging, startX, scrollStart]);
+
+  const handleTouchEnd = useCallback(() => {
+    setIsDragging(false);
+  }, []);
 
   const demoCalls = [
     {
@@ -126,7 +179,18 @@ const DemoCallsSection = () => {
           </p>
         </div>
 
-        <div ref={containerRef} className="xl:grid xl:grid-cols-5 xl:gap-6 flex xl:flex-none overflow-x-auto snap-x snap-mandatory gap-4 pl-[calc(50vw-140px)] pr-[calc(50vw-140px)] xl:px-0 xl:pl-0 xl:pr-0 pb-4 xl:pb-0 scrollbar-hide">
+        <div 
+          ref={containerRef} 
+          className={`xl:grid xl:grid-cols-5 xl:gap-6 flex xl:flex-none overflow-x-auto snap-x snap-mandatory gap-4 pl-[calc(50vw-140px)] pr-[calc(50vw-140px)] xl:px-0 xl:pl-0 xl:pr-0 pb-4 xl:pb-0 scrollbar-hide ${isDragging ? 'cursor-grabbing' : 'cursor-grab'} xl:cursor-default`}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          style={{ userSelect: isDragging ? 'none' : 'auto' }}
+        >
           {demoCalls.map((call) => {
             const Icon = call.icon;
             const isPlaying = playingCall === call.id;
