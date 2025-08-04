@@ -5,7 +5,7 @@ import { Play, Pause, Wrench, Droplets, Flame, Thermometer, Zap } from "lucide-r
 
 const DemoCallsSection = () => {
   const [playingCall, setPlayingCall] = useState<string | null>(null);
-  const [currentSlide, setCurrentSlide] = useState(2); // Start with middle item
+  const [currentSlide, setCurrentSlide] = useState(2); // Start with middle item (index 2)
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
