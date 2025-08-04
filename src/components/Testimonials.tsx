@@ -60,11 +60,11 @@ const Testimonials = () => {
   ];
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % Math.ceil(testimonials.length / 3));
+    setCurrentSlide((prev) => (prev + 1) % (testimonials.length - 1));
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + Math.ceil(testimonials.length / 3)) % Math.ceil(testimonials.length / 3));
+    setCurrentSlide((prev) => (prev - 1 + (testimonials.length - 1)) % (testimonials.length - 1));
   };
 
 
@@ -93,37 +93,31 @@ const Testimonials = () => {
         <div className="relative overflow-hidden">
           <div 
             className="flex smooth-transition"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            style={{ transform: `translateX(-${currentSlide * (100/3)}%)` }}
           >
-            {Array.from({ length: Math.ceil(testimonials.slice(1).length / 3) }).map((_, slideIndex) => (
-              <div key={slideIndex} className="w-full flex-shrink-0">
-                <div className="flex gap-6 min-h-[300px]">
-                  {testimonials.slice(1).slice(slideIndex * 3, slideIndex * 3 + 3).map((testimonial, index) => (
-                    <Card key={index} className="p-6 hover:shadow-medium smooth-transition">
-                      <div className="flex items-center mb-4">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-current text-yellow-400" />
-                        ))}
-                      </div>
-                      <blockquote className="text-muted-foreground mb-6 leading-relaxed">
-                        "{testimonial.quote}"
-                      </blockquote>
-                      <div className="flex items-center space-x-3">
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="w-12 h-12 rounded-full bg-muted"
-                        />
-                        <div>
-                          <div className="font-semibold text-foreground">{testimonial.name}</div>
-                          <div className="text-sm text-muted-foreground">{testimonial.title}</div>
-                          <div className="text-sm text-muted-foreground font-medium">{testimonial.company}</div>
-                        </div>
-                      </div>
-                    </Card>
+            {testimonials.slice(1).map((testimonial, index) => (
+              <Card key={index} className="p-6 hover:shadow-medium smooth-transition flex-shrink-0 w-1/3">
+                <div className="flex items-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-current text-yellow-400" />
                   ))}
                 </div>
-              </div>
+                <blockquote className="text-muted-foreground mb-6 leading-relaxed">
+                  "{testimonial.quote}"
+                </blockquote>
+                <div className="flex items-center space-x-3">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full bg-muted"
+                  />
+                  <div>
+                    <div className="font-semibold text-foreground">{testimonial.name}</div>
+                    <div className="text-sm text-muted-foreground">{testimonial.title}</div>
+                    <div className="text-sm text-muted-foreground font-medium">{testimonial.company}</div>
+                  </div>
+                </div>
+              </Card>
             ))}
           </div>
         </div>
@@ -140,7 +134,7 @@ const Testimonials = () => {
           </Button>
           
           <div className="flex space-x-2">
-            {Array.from({ length: Math.ceil(testimonials.length / 3) }).map((_, index) => (
+            {Array.from({ length: testimonials.length - 3 }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
