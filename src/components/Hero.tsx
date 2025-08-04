@@ -34,7 +34,7 @@ const Hero = () => {
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-blue-accent/5" />
       
-      <div className="container mx-auto px-24 py-16 relative z-10">
+      <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left order-2 lg:order-1">
