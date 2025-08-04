@@ -5,6 +5,7 @@ import { Play, Pause, Wrench, Droplets, Flame, Thermometer, Zap } from "lucide-r
 
 const DemoCallsSection = () => {
   const [playingCall, setPlayingCall] = useState<string | null>(null);
+  const [currentMobileSlide, setCurrentMobileSlide] = useState(0);
 
   const demoCalls = [
     {
@@ -86,13 +87,13 @@ const DemoCallsSection = () => {
           </p>
         </div>
 
-        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 md:gap-6 flex md:flex-none overflow-x-auto snap-x snap-mandatory gap-4 px-4 md:px-0 pb-4 md:pb-0 scrollbar-hide">
+        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 md:gap-6 flex md:flex-none overflow-x-auto snap-x snap-mandatory gap-4 pl-[calc(50vw-140px)] pr-[calc(50vw-140px)] md:px-0 pb-4 md:pb-0 scrollbar-hide">
           {demoCalls.map((call) => {
             const Icon = call.icon;
             const isPlaying = playingCall === call.id;
             
             return (
-              <Card key={call.id} className="p-6 hover:shadow-medium smooth-transition group cursor-pointer flex-shrink-0 w-[280px] md:w-auto snap-center">
+              <Card key={call.id} className="p-6 hover:shadow-medium smooth-transition group cursor-pointer flex-shrink-0 w-[280px] md:w-auto snap-center bg-muted/30">
                 <div className="space-y-4">
                   {/* Icon and Play Button */}
                   <div className="flex items-center justify-between">
@@ -148,6 +149,19 @@ const DemoCallsSection = () => {
               </Card>
             );
           })}
+        </div>
+
+        {/* Mobile Navigation Dots */}
+        <div className="flex justify-center gap-2 mt-8 md:hidden">
+          {demoCalls.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentMobileSlide(index)}
+              className={`w-2 h-2 rounded-full smooth-transition ${
+                currentMobileSlide === index ? 'bg-accent' : 'bg-muted'
+              }`}
+            />
+          ))}
         </div>
 
         <div className="text-center mt-12">
