@@ -3,26 +3,25 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle, Cloud, Users, Wrench, Zap } from "lucide-react";
+import NotFound from "./NotFound";
 
-interface IndustryPageProps {
-  industryName: string;
-  heroImage?: string;
-  features?: { title: string; description: string; }[];
-  benefits?: { title: string; description: string; }[];
-  struggles?: string[];
-  stats?: { value: string; label: string; }[];
-  testimonials?: { name: string; title: string; quote: string; image: string; }[];
-}
+import { useParams } from "react-router-dom";
+import { industryContent } from "../data/industryContent";
 
-const IndustryPage: React.FC<IndustryPageProps> = ({
-  industryName,
-  heroImage = "/public/placeholder.svg",
-  features = [],
-  benefits = [],
-  struggles = [],
-  stats = [],
-  testimonials = [],
-}) => {
+const IndustryPage = () => {
+  const { industryName: paramIndustryName } = useParams<{ industryName: string }>();
+  const toCamelCase = (str: string) => {
+    return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+  };
+  const industryKey = toCamelCase(paramIndustryName || '') as keyof typeof industryContent;
+  const industry = industryContent[industryKey];
+
+  if (!industry) {
+    return <NotFound />;
+  }
+
+  const { industryName, heroImage, features, benefits, struggles, stats, testimonials } = industry;
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
