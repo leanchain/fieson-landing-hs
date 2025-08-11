@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Industries from "./pages/Industries";
 import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
+import MarkdownPage from "./pages/MarkdownPage";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/terms-europe" element={<MarkdownPage filename="terms-europe" />} />
+          <Route path="/markdown/:filename" element={<MarkdownPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Mic, Clock, TrendingUp, Shield } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
@@ -11,6 +12,8 @@ const Hero = () => {
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>("");
   const [isLoading, setIsLoading] = useState(false);
   const [isPhoneInputFocused, setIsPhoneInputFocused] = useState(false);
+  const [showDisclaimer, setShowDisclaimer] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const phoneInputRef = useRef<HTMLInputElement>(null);
   const iti = useRef<any>(null); // To store the intlTelInput instance
 
@@ -19,7 +22,8 @@ const Hero = () => {
       iti.current = intlTelInput(phoneInputRef.current, {
         initialCountry: "auto",
         separateDialCode: true,
-        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js", // For validation
+        utilsScript:
+          "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js", // For validation
         geoIpLookup: (callback) => {
           fetch("https://ipapi.co/json/")
             .then((res) => res.json())
@@ -100,7 +104,8 @@ const Hero = () => {
   };
 
   const validatePhoneNumber = (phone: string | undefined) => {
-    if (!phone || !iti.current) return { isValid: false, message: "Phone number is required." };
+    if (!phone || !iti.current)
+      return { isValid: false, message: "Phone number is required." };
 
     if (!iti.current.isValidNumber()) {
       return { isValid: false, message: "Please enter a valid phone number." };
@@ -139,8 +144,19 @@ const Hero = () => {
                     ref={phoneInputRef}
                     placeholder="Enter phone number"
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                    onFocus={() => setIsPhoneInputFocused(true)}
-                    onBlur={() => setIsPhoneInputFocused(false)}
+                    onFocus={() => {
+                      setIsPhoneInputFocused(true);
+                      setShowDisclaimer(true);
+                      if (timeoutRef.current) {
+                        clearTimeout(timeoutRef.current);
+                      }
+                    }}
+                    onBlur={() => {
+                      setIsPhoneInputFocused(false);
+                      timeoutRef.current = setTimeout(() => {
+                        setShowDisclaimer(false);
+                      }, 30000); // 30 seconds
+                    }}
                     className={cn(
                       "form-input iti-input-custom", // Custom class for styling
                       validation.isValid === false && phoneNumber !== ""
@@ -164,24 +180,28 @@ const Hero = () => {
               </div>
 
               <div className="text-center lg:text-left h-10 overflow-hidden transition-all duration-300 ease-in-out">
-                <p className={cn(
-                  "text-xs text-muted-foreground mt-2",
-                  isPhoneInputFocused ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full"
-                )}>
+                <p
+                  className={cn(
+                    "text-xs text-muted-foreground mt-2",
+                    showDisclaimer
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-full"
+                  )}
+                >
                   By calling, you confirm that you have read our{" "}
-                  <Button
-                    variant="link"
+                  <Link
+                    to="/terms-europe"
                     className="p-0 h-auto text-xs underline text-blue-accent"
                   >
                     Contact Terms
-                  </Button>{" "}
+                  </Link>{" "}
                   and our{" "}
-                  <Button
-                    variant="link"
+                  <Link
+                    to="/terms-europe"
                     className="p-0 h-auto text-xs underline text-blue-accent"
                   >
                     Privacy Policy
-                  </Button>
+                  </Link>
                   .
                 </p>
               </div>

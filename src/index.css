@@ -170,8 +170,6 @@
   .bounce-transition {
     transition: var(--transition-bounce);
   }
-
-  
 }
 
 /* Hide scrollbar */
@@ -184,54 +182,54 @@
   display: none; /* WebKit */
 }
 
-  /* Custom styles for intl-tel-input */
-  /* Custom styles for intl-tel-input */
-  .iti.iti--allow-dropdown {
-    @apply w-full;
-  }
+/* Custom styles for intl-tel-input */
+/* Custom styles for intl-tel-input */
+.iti.iti--allow-dropdown {
+  @apply w-full;
+}
 
-  .iti__flag-container {
-    @apply h-full;
-  }
+.iti__flag-container {
+  @apply h-full;
+}
 
-  .iti__selected-flag {
-    @apply h-full rounded-l-xl border-r-2 border-border bg-muted text-foreground focus:outline-none;
-  }
+.iti__selected-flag {
+  @apply h-full rounded-l-xl border-r-2 border-border bg-muted text-foreground focus:outline-none;
+}
 
-  .iti__country-list {
-    @apply rounded-md shadow-lg bg-popover text-popover-foreground p-2;
-  }
+.iti__country-list {
+  @apply rounded-md shadow-lg bg-popover text-popover-foreground p-2;
+}
 
-  .iti__country {
-    @apply p-2 hover:bg-muted cursor-pointer rounded-md text-base;
-  }
+.iti__country {
+  @apply p-2 hover:bg-muted cursor-pointer rounded-md text-base;
+}
 
-  .iti__country.highlight {
-    @apply bg-muted;
-  }
+.iti__country.highlight {
+  @apply bg-muted;
+}
 
-  .iti__dial-code {
-    @apply text-base;
-  }
+.iti__dial-code {
+  @apply text-base;
+}
 
-  .iti__search-input {
-    @apply w-full p-2 border-b border-border focus:outline-none focus:border-blue-accent text-base rounded-t-md;
-  }
+.iti__search-input {
+  @apply w-full p-2 border-b border-border focus:outline-none focus:border-blue-accent text-base rounded-t-md;
+}
 
-  .iti-input-custom {
-    @apply flex h-14 w-full rounded-xl border-2 bg-background px-4 py-2 text-xl ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 !important;
-    padding-left: 5rem !important; /* Adjust based on flag and dial code width */
-    outline: none !important;
-    box-shadow: none !important;
-  }
+.iti-input-custom {
+  @apply flex h-14 w-full rounded-xl border-2 bg-background px-4 py-2 text-xl ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 !important;
+  padding-left: 5rem !important; /* Adjust based on flag and dial code width */
+  outline: none !important;
+  box-shadow: none !important;
+}
 
-  .iti-input-custom:focus {
-    outline: none !important;
-    box-shadow: none !important;
-  }
+.iti-input-custom:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
 
-  .iti__selected-flag:focus,
-  .iti__selected-flag:focus-visible {
-    outline: none !important;
-    box-shadow: none !important;
-  }
+.iti__selected-flag:focus,
+.iti__selected-flag:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}

@@ -27,7 +27,9 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Industries */}
           <div>
-            <h3 className="font-semibold text-lg mb-4 uppercase tracking-wide">INDUSTRIES</h3>
+            <h3 className="font-semibold text-lg mb-4 uppercase tracking-wide">
+              INDUSTRIES
+            </h3>
             <ul className="space-y-3">
               {industries.map((industry) => (
                 <li key={industry.name}>
@@ -44,7 +46,9 @@ const Footer = () => {
 
           {/* Resources */}
           <div>
-            <h3 className="font-semibold text-lg mb-4 uppercase tracking-wide">RESOURCES</h3>
+            <h3 className="font-semibold text-lg mb-4 uppercase tracking-wide">
+              RESOURCES
+            </h3>
             <ul className="space-y-3">
               <li>
                 <Link
@@ -59,7 +63,9 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h3 className="font-semibold text-lg mb-4 uppercase tracking-wide">COMPANY</h3>
+            <h3 className="font-semibold text-lg mb-4 uppercase tracking-wide">
+              COMPANY
+            </h3>
             <ul className="space-y-3">
               {company.map((item) => (
                 <li key={item.name}>
@@ -76,12 +82,31 @@ const Footer = () => {
 
           {/* CTA */}
           <div>
-            <h3 className="font-semibold text-lg mb-4 uppercase tracking-wide">GET STARTED</h3>
+            <h3 className="font-semibold text-lg mb-4 uppercase tracking-wide">
+              GET STARTED
+            </h3>
             <div className="space-y-4">
-              <Button variant="demo" size="lg" className="w-full" onClick={() => window.open('https://cal.com/bart-rosier/session-bart', '_blank')}>
+              <Button
+                variant="demo"
+                size="lg"
+                className="w-full"
+                onClick={() =>
+                  window.open(
+                    "https://cal.com/bart-rosier/session-bart",
+                    "_blank"
+                  )
+                }
+              >
                 Book a demo
               </Button>
-              <Button variant="hero" size="xl" className="w-full h-14 text-lg font-semibold" onClick={() => window.dispatchEvent(new Event('focusPhoneInput'))}>
+              <Button
+                variant="hero"
+                size="xl"
+                className="w-full h-14 text-lg font-semibold"
+                onClick={() =>
+                  window.dispatchEvent(new Event("focusPhoneInput"))
+                }
+              >
                 Talk to Fieson AI
               </Button>
             </div>
@@ -102,12 +127,15 @@ const Footer = () => {
             {/* Legal */}
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-sm">
               <Link
-                to="/terms-europe.html"
+                to="/terms-europe"
                 className="text-primary-foreground/80 hover:text-primary-foreground smooth-transition uppercase"
               >
                 TERMS OF USE
               </Link>
-              <Link to="/privacy-policy-europe.html" className="hover:text-foreground">
+              <Link
+                to="/terms-europe"
+                className="text-primary-foreground/80 hover:text-primary-foreground smooth-transition uppercase"
+              >
                 privacy policy
               </Link>
             </div>
@@ -116,11 +144,6 @@ const Footer = () => {
             <div className="text-sm text-primary-foreground/80">
               © Fieson AI Inc. 2025
             </div>
-          </div>
-
-          {/* Social Media */}
-          <div className="mt-8 text-center">
-            <p className="text-primary-foreground/80 uppercase tracking-wide text-sm">SOCIAL MEDIA</p>
           </div>
         </div>
       </div>
