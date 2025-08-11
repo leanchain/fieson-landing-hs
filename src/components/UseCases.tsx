@@ -45,11 +45,7 @@ const UseCases = () => {
 
   return (
     <section className="py-20 bg-gradient-section">
-<<<<<<< HEAD
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-24">
-=======
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
->>>>>>> b258d63ba3d9ba82c2e9a4e86c3ff3fce42f5484
         <div className="text-center mb-16">
           <p className="text-blue-500 font-semibold uppercase tracking-wide mb-4">USE CASES</p>
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">

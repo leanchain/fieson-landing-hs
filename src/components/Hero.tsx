@@ -1,40 +1,78 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Mic, Clock, TrendingUp, Shield } from "lucide-react";
 import { useState } from "react";
+import { Phone } from "lucide-react";
+import { toast } from "./ui/use-toast";
+import { cn } from "@/lib/utils";
 import heroImage from "@/assets/hero-image.jpg";
-const Hero = () => {
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [showValidation, setShowValidation] = useState(false);
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
-  const validatePhoneNumber = (phone: string) => {
-    if (!phone) return { isValid: false, message: "" };
-    
-    // International phone number regex: starts with +, followed by 1-3 digits for country code, then 4-14 digits
-    const phoneRegex = /^\+[1-9]\d{0,3}\d{4,14}$/;
-    
-    if (!phone.startsWith('+')) {
-      return { isValid: false, message: "Phone number must start with country code (e.g. +49)" };
+const Hero = () => {
+  const [phoneNumber, setPhoneNumber] = useState<string | undefined>("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleInitiateCall = async () => {
+    const validationResult = validatePhoneNumber(phoneNumber);
+
+    if (!validationResult.isValid) {
+      toast({
+        title: "Validation Error",
+        description: validationResult.message,
+        variant: "destructive",
+      });
+      return;
     }
-    
-    if (!/^\+[\d\s-()]+$/.test(phone.replace(/\s/g, ''))) {
-      return { isValid: false, message: "Phone number contains invalid characters" };
+
+    setIsLoading(true);
+    try {
+      const response = await fetch("http://localhost:8000/api/initiate-call", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ phoneNumber }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail?.error || "Failed to initiate call");
+      }
+
+      const result = await response.json();
+      console.log("Call initiated successfully:", result);
+      toast({
+        title: "Call Initiated",
+        description: "Fieson AI is calling your number now!",
+      });
+    } catch (error) {
+      console.error("Error initiating call:", error);
+      toast({
+        title: "Call Failed",
+        description: error.message || "There was an error initiating the call.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
     }
-    
-    const cleanPhone = phone.replace(/\s/g, '');
-    if (!phoneRegex.test(cleanPhone)) {
-      return { isValid: false, message: "Please enter a valid international phone number" };
+  };
+
+  const validatePhoneNumber = (phone: string | undefined) => {
+    if (!phone) return { isValid: false, message: "Phone number is required." };
+
+    if (!isValidPhoneNumber(phone)) {
+      return { isValid: false, message: "Please enter a valid phone number." };
     }
-    
+
     return { isValid: true, message: "Valid phone number" };
   };
 
   const validation = validatePhoneNumber(phoneNumber);
-  return <section className="relative min-h-screen flex items-center justify-center bg-gradient-section overflow-hidden">
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-section overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-blue-accent/5" />
-<<<<<<< HEAD
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
@@ -50,44 +88,52 @@ const Hero = () => {
               <span className="text-accent">before your rival answers.</span>
             </h1>
 
-            
-
             {/* CTA Section */}
             <div className="space-y-6 max-w-md mx-auto lg:mx-0">
               <div className="space-y-4">
-                <Input 
-                  placeholder="Enter phone number" 
-                  className={`w-full h-14 text-lg rounded-xl border-2 focus-visible:ring-0 focus-visible:ring-offset-0 ${
-                    showValidation 
-                      ? validation.isValid 
-                        ? 'border-green-500 focus:border-blue-accent' 
-                        : 'border-red-500 focus:border-blue-accent'
-                      : 'border-blue-accent/30 focus:border-blue-accent'
-                  }`}
-                  value={phoneNumber}
-                  onChange={(e) => {
-                    setPhoneNumber(e.target.value);
-                    setShowValidation(e.target.value.length > 0);
-                  }}
-                />
-                {showValidation && validation.message && (
-                  <p className={`text-sm ${validation.isValid ? 'text-green-600' : 'text-red-500'}`}>
-                    {validation.message}
-                  </p>
+                <div className="relative">
+                  <PhoneInput
+                    placeholder="Enter phone number"
+                    value={phoneNumber}
+                    onChange={setPhoneNumber}
+                    defaultCountry="US"
+                    className={cn(
+                      "flex h-14 w-full rounded-xl border-2 bg-background px-12 py-2 text-lg ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+                      validation.isValid === false && phoneNumber !== ""
+                        ? "border-red-500 focus:border-blue-accent"
+                        : "border-blue-accent/30 focus:border-blue-accent"
+                    )}
+                  />
+                  <Phone className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                </div>
+                {validation.isValid === false && phoneNumber !== "" && (
+                  <p className={`text-sm text-red-500`}>{validation.message}</p>
                 )}
-                <Button variant="hero" size="xl" className="w-full h-14 text-lg font-semibold">
-                  <span>Talk With Fieson AI</span>
+                <Button
+                  variant="hero"
+                  size="xl"
+                  className="w-full h-14 text-lg font-semibold"
+                  onClick={handleInitiateCall}
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Calling..." : "Talk With Fieson AI"}
                 </Button>
               </div>
-              
+
               <div className="text-center lg:text-left">
                 <p className="text-xs text-muted-foreground mt-2">
                   By calling, you confirm that you have read our{" "}
-                  <Button variant="link" className="p-0 h-auto text-xs underline text-blue-accent">
+                  <Button
+                    variant="link"
+                    className="p-0 h-auto text-xs underline text-blue-accent"
+                  >
                     Contact Terms
-                  </Button>
-                  {" "}and our{" "}
-                  <Button variant="link" className="p-0 h-auto text-xs underline text-blue-accent">
+                  </Button>{" "}
+                  and our{" "}
+                  <Button
+                    variant="link"
+                    className="p-0 h-auto text-xs underline text-blue-accent"
+                  >
                     Privacy Policy
                   </Button>
                   .
@@ -99,7 +145,11 @@ const Hero = () => {
           {/* Right Content - Hero Image */}
           <div className="relative order-1 lg:order-2">
             <div className="relative rounded-2xl overflow-hidden shadow-large">
-              <img src={heroImage} alt="AI Phone Answering Service" className="w-full h-auto object-cover" />
+              <img
+                src={heroImage}
+                alt="AI Phone Answering Service"
+                className="w-full h-auto object-cover"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
             </div>
 
@@ -144,18 +194,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-      {/* Bottom Wave */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 120" className="w-full h-auto">
-          <path fill="currentColor" className="text-background" d="M0,64L48,69.3C96,75,192,85,288,85.3C384,85,480,75,576,64C672,53,768,43,864,48C960,53,1056,75,1152,80C1248,85,1344,75,1392,69.3L1440,64L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z" />
-        </svg>
-      </div>
-    </section>;
+    </section>
+  );
 };
-<<<<<<< HEAD
-
 export default Hero;
-=======
-export default Hero;
->>>>>>> b258d63ba3d9ba82c2e9a4e86c3ff3fce42f5484

@@ -151,6 +151,27 @@
   .bounce-transition {
     transition: var(--transition-bounce);
   }
+
+  /* Custom styles for react-phone-number-input */
+  .phone-input-custom {
+    @apply flex h-14 w-full rounded-xl border-2 bg-background text-lg ring-offset-background relative;
+  }
+
+  .phone-input-custom .PhoneInputInput {
+    @apply flex-1 px-4 py-2 text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .phone-input-custom .PhoneInputCountrySelect {
+    @apply h-full rounded-l-xl border-r-2 border-border bg-muted text-foreground focus:outline-none;
+  }
+
+  .phone-input-custom .PhoneInputCountrySelectArrow {
+    @apply text-muted-foreground;
+  }
+
+  .phone-input-custom .PhoneInputCountryIcon {
+    @apply w-6 h-6;
+  }
 }
 
 /* Hide scrollbar */
