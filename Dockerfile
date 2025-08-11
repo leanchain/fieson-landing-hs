@@ -14,7 +14,7 @@ RUN npm install --frozen-lockfile
 COPY . .
 
 # Build the React app
-ENV VITE_BACKEND_URL=https://homeservice-backend-940496280811.europe-west1.run.app
+ENV VITE_BACKEND_URL=https://homeservice-940496280811.europe-west1.run.app
 RUN npm run build
 
 # Use a lightweight web server to serve the static files
