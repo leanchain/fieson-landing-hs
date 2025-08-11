@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import FiesonLogo from "@/components/FiesonLogo";
 
 const Footer = () => {
   const industries = [
@@ -80,8 +81,8 @@ const Footer = () => {
               <Button variant="demo" size="lg" className="w-full" onClick={() => window.open('https://cal.com/bart-rosier/session-bart', '_blank')}>
                 Book a demo
               </Button>
-              <Button variant="outline" size="lg" className="w-full border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-                LOGIN
+              <Button variant="hero" size="xl" className="w-full h-14 text-lg font-semibold" onClick={() => window.dispatchEvent(new Event('focusPhoneInput'))}>
+                Talk to Fieson AI
               </Button>
             </div>
           </div>
@@ -92,8 +93,8 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary-foreground rounded-lg flex items-center justify-center">
-                <span className="text-primary font-bold text-lg">S</span>
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+                <FiesonLogo white className="w-full h-full" />
               </div>
               <span className="text-xl font-bold">Fieson AI</span>
             </div>

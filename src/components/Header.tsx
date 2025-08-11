@@ -29,7 +29,7 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="demo" size="default" onClick={() => window.open('https://cal.com/bart-rosier/session-bart', '_blank')}>
+            <Button variant="headerDemo" size="default" onClick={() => window.open('https://cal.com/bart-rosier/session-bart', '_blank')}>
               BOOK A DEMO
             </Button>
           </div>
@@ -52,7 +52,7 @@ const Header = () => {
           <div className="md:hidden mt-4 pb-4 border-t border-border">
             <nav className="flex flex-col space-y-4 pt-4">
               <div className="flex flex-col space-y-3 pt-4">
-                <Button variant="demo" size="default" className="w-full">
+                <Button variant="headerDemo" size="default" className="w-full">
                   BOOK A DEMO
                 </Button>
               </div>

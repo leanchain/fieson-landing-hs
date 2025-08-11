@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Mic, Clock, TrendingUp, Shield } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Phone } from "lucide-react";
 import { toast } from "./ui/use-toast";
 import { cn } from "@/lib/utils";
@@ -11,6 +11,21 @@ import "react-phone-number-input/style.css";
 const Hero = () => {
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>("");
   const [isLoading, setIsLoading] = useState(false);
+  const phoneInputRef = useRef<any>(null);
+
+  useEffect(() => {
+    const handleFocusPhoneInput = () => {
+      if (phoneInputRef.current) {
+        phoneInputRef.current.focus();
+      }
+    };
+
+    window.addEventListener('focusPhoneInput', handleFocusPhoneInput);
+
+    return () => {
+      window.removeEventListener('focusPhoneInput', handleFocusPhoneInput);
+    };
+  }, []);
 
   const handleInitiateCall = async () => {
     const validationResult = validatePhoneNumber(phoneNumber);
@@ -93,6 +108,7 @@ const Hero = () => {
               <div className="space-y-4">
                 <div className="relative">
                   <PhoneInput
+                    ref={phoneInputRef}
                     placeholder="Enter phone number"
                     value={phoneNumber}
                     onChange={setPhoneNumber}

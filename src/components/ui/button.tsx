@@ -21,7 +21,8 @@ const buttonVariants = cva(
         accent: "bg-accent text-accent-foreground hover:bg-accent-light shadow-soft hover:shadow-medium",
         "accent-outline": "border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground shadow-soft hover:shadow-medium",
         hero: "bg-gradient-primary text-white hover:opacity-90 shadow-medium hover:shadow-large font-bold",
-        demo: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-medium hover:shadow-large font-semibold rounded-full",
+        demo: "bg-white text-black hover:bg-gray-100 shadow-medium hover:shadow-large font-semibold rounded-full",
+        headerDemo: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-medium hover:shadow-large font-semibold rounded-full",
         blue: "bg-blue-accent text-white hover:bg-blue-accent/90 shadow-soft",
       },
       size: {
