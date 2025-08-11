@@ -1,304 +1,103 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { CheckCircle, Cloud, Users, Wrench, Zap } from "lucide-react";
-import rooferHero from "@/assets/roofer-hero.jpg";
-import companyLogos from "@/assets/company-logos.jpg";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+
+const industries = [
+  {
+    name: "Roofing",
+    description: "Elevate your roofing business with specialized AI answering services.",
+    link: "/industries/roofing",
+    icon: "/public/placeholder.svg"
+  },
+  {
+    name: "HVAC",
+    description: "Keep your HVAC services running smoothly with intelligent call handling.",
+    link: "/industries/hvac",
+    icon: "/public/placeholder.svg"
+  },
+  {
+    name: "Plumbing",
+    description: "Ensure no leak goes unaddressed with responsive AI for your plumbing business.",
+    link: "/industries/plumbing",
+    icon: "/public/placeholder.svg"
+  },
+  {
+    name: "Electrical",
+    description: "Power up your electrical services with efficient and reliable AI support.",
+    link: "/industries/electrical",
+    icon: "/public/placeholder.svg"
+  },
+  {
+    name: "Landscaping",
+    description: "Grow your landscaping business with AI that handles client inquiries seamlessly.",
+    link: "/industries/landscaping",
+    icon: "/public/placeholder.svg"
+  },
+  {
+    name: "Pest Control",
+    description: "Exterminate missed calls and improve customer satisfaction for pest control.",
+    link: "/industries/pest-control",
+    icon: "/public/placeholder.svg"
+  },
+  {
+    name: "Solar",
+    description: "Harness the power of AI to manage your solar installation and service calls.",
+    link: "/industries/solar",
+    icon: "/public/placeholder.svg"
+  },
+  {
+    name: "Window Cleaning",
+    description: "Keep your window cleaning business sparkling with efficient AI call handling.",
+    link: "/industries/window-cleaning",
+    icon: "/public/placeholder.svg"
+  },
+  {
+    name: "Commercial Cleaning",
+    description: "Polish your commercial cleaning operations with smart AI answering services.",
+    link: "/industries/commercial-cleaning",
+    icon: "/public/placeholder.svg"
+  }
+];
 
 const Industries = () => {
-  const features = [
-    {
-      title: "Material and crew coordination",
-      description: "Fieson AI efficiently manages logistics for materials delivery and team assignments across multiple job sites."
-    },
-    {
-      title: "Smart scope assessment", 
-      description: "Fieson AI gathers initial info about roof type, size, and problems to prepare accurate quotes and dispatch appropriate crews."
-    },
-    {
-      title: "Weather-adaptive scheduling",
-      description: "Real-time weather data informs our AI to optimize job planning and reduce weather-related cancellations."
-    }
-  ];
-
-  const benefits = [
-    {
-      title: "Customized quoting",
-      description: "It's equipped with a deep understanding of your unique services and roofing industry terminology and installation processes."
-    },
-    {
-      title: "Always-on availability", 
-      description: "Our AI never sleeps, so you can capture after-hours emergency calls as they come in for a better, more responsive customer experience."
-    },
-    {
-      title: "Peak season support",
-      description: "Storm season? No problem. Fieson AI handles high call volumes during peak seasons without overstretching any member of your team."
-    },
-    {
-      title: "Automated follow-ups",
-      description: "Our AI features intelligent reminders for client inspections and maintenance checks to help with customer retention all year round."
-    },
-    {
-      title: "Excellent communication",
-      description: "Your customers will get clear communication about warranties and after-service support, ensuring all their questions are answered."
-    }
-  ];
-
-  const struggles = [
-    "Work delays due to weather",
-    "Managing customer expectations", 
-    "Inefficient crew assignments",
-    "High staff turnover"
-  ];
-
-  const stats = [
-    { value: "~92%", label: "Reported booking rate" },
-    { value: "4.8 out of 5", label: "Satisfaction amongst Fieson AI customers" },
-    { value: "100%", label: "Phone calls answered" }
-  ];
-
-  const testimonials = [
-    {
-      name: "Konnor Buscho",
-      title: "CMO, Way Cool Heating & Air",
-      quote: "The service has been really great! We have not been missing any calls like we were previously. We also use it for after hours which works out wonderfully! This is a great system you have set up.",
-      image: "/api/placeholder/80/80"
-    },
-    {
-      name: "Joshua Smith", 
-      title: "COO, Arizona Roofing Systems",
-      quote: "The service has been really great! We have not been missing any calls like we were previously. We also use it for after hours which works out wonderfully! This is a great system you have set up.",
-      image: "/api/placeholder/80/80"
-    },
-    {
-      name: "Taylor Craig",
-      title: "Marketing Coordinator, Cellino Plumbing", 
-      quote: "It's been a reliable solution for our business, and we look forward to continuing to work with them as we grow.",
-      image: "/api/placeholder/80/80"
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
       <main className="pt-20">
-        {/* Hero Section */}
-        <section className="py-20 bg-gradient-section">
+        <section className="py-20 bg-gradient-section text-center">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-                  Cover yourself with elevated{" "}
-                  <span className="text-accent">roofer AI</span>{" "}
-                  answering services.
-                </h1>
-                <p className="text-xl text-muted-foreground mb-8">
-                  Nail down more leads and raise the bar on customer service with 
-                  Fieson AI's dedicated roofer answering service.
-                </p>
-                <Button variant="demo" size="lg">
-                  BOOK A DEMO
-                </Button>
-              </div>
-              
-              <div className="relative">
-                <img
-                  src={rooferHero}
-                  alt="Professional roofer at work"
-                  className="w-full h-auto rounded-2xl shadow-large"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Company Logos */}
-        <section className="py-16 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <p className="text-muted-foreground font-medium">
-                Trusted by the best service professionals and their customers
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center justify-items-center opacity-60">
-              {Array.from({ length: 8 }, (_, i) => (
-                <div
-                  key={i}
-                  className="w-full max-w-[120px] h-12 bg-muted rounded-lg flex items-center justify-center"
-                >
-                  <span className="text-xs font-medium text-muted-foreground text-center px-2">
-                    Company {i + 1}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Pre-qualification Section */}
-        <section className="py-20 bg-gradient-section">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-4xl font-bold text-foreground mb-6">
-                  AI pre-qualification for installs
-                </h2>
-                <p className="text-lg text-muted-foreground mb-8">
-                  We know your struggles in the roofing industry.
-                </p>
-                
-                <div className="space-y-4">
-                  {struggles.map((struggle, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <Wrench className="w-5 h-5 text-accent" />
-                      <span className="text-muted-foreground">{struggle}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="bg-muted/30 rounded-2xl p-8">
-                <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                  <Cloud className="w-16 h-16 text-muted-foreground" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="bg-muted/30 rounded-2xl p-8">
-                <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                  <Zap className="w-16 h-16 text-muted-foreground" />
-                </div>
-              </div>
-              
-              <div>
-                <h2 className="text-4xl font-bold text-foreground mb-8">
-                  Features that reinforce your infrastructure.
-                </h2>
-                
-                <div className="space-y-6">
-                  {features.map((feature, index) => (
-                    <div key={index} className="flex items-start space-x-4">
-                      <CheckCircle className="w-6 h-6 text-accent mt-1 flex-shrink-0" />
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-2">{feature.title}</h3>
-                        <p className="text-muted-foreground">{feature.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Benefits Section */}
-        <section className="py-20 bg-gradient-section">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
-              <div>
-                <h2 className="text-4xl font-bold text-foreground mb-6">
-                  Benefits that raise your roofing success.
-                </h2>
-                <p className="text-lg text-muted-foreground mb-8">
-                  Our AI answering service for roofers withstands storms so you can manage job sites.
-                </p>
-                
-                <div className="space-y-6">
-                  {benefits.map((benefit, index) => (
-                    <div key={index}>
-                      <h3 className="font-semibold text-foreground mb-2">{benefit.title}</h3>
-                      <p className="text-muted-foreground">{benefit.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="bg-muted/30 rounded-2xl p-8">
-                <div className="aspect-square bg-muted rounded-lg flex items-center justify-center">
-                  <Users className="w-16 h-16 text-muted-foreground" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Stats Section */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center text-foreground mb-16">
-              Turn every call into a customer.
-            </h2>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-5xl font-bold text-foreground mb-2">{stat.value}</div>
-                  <p className="text-muted-foreground">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
-        <section className="py-20 bg-gradient-section">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <p className="text-accent font-semibold uppercase tracking-wide mb-4">TESTIMONIALS</p>
-              <h2 className="text-4xl font-bold text-foreground mb-6">
-                Win, again and again
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Fieson AI never misses a call, never forgets to follow up, and always shows up for work.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <Card key={index} className="p-6">
-                  <blockquote className="text-muted-foreground mb-6 leading-relaxed">
-                    "{testimonial.quote}"
-                  </blockquote>
-                  <div className="flex items-center space-x-3">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full bg-muted"
-                    />
-                    <div>
-                      <div className="font-semibold text-foreground">{testimonial.name}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.title}</div>
-                    </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 bg-primary text-primary-foreground">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl font-bold mb-6">Give Fieson AI a try!</h2>
-            <p className="text-xl mb-8 opacity-90">
-              Turn on the faucet to new, qualified appointments as soon as today. Submit your email and book a demo.
+            <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+              Industries We Serve
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+              Fieson AI provides specialized answering services tailored to the unique needs of various service industries. Discover how we can help your business thrive.
             </p>
-            <Button variant="accent" size="lg">
-              BOOK A DEMO
-            </Button>
+          </div>
+        </section>
+
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {industries.map((industry, index) => (
+                <Link to={industry.link} key={index}>
+                  <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300">
+                    <CardHeader className="flex flex-col items-center text-center">
+                      <img src={industry.icon} alt={industry.name} className="w-24 h-24 object-cover rounded-full mb-4" />
+                      <CardTitle className="text-2xl font-bold">{industry.name}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex-grow flex items-center justify-center">
+                      <CardDescription className="text-muted-foreground text-center">
+                        {industry.description}
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       </main>
-      
       <Footer />
     </div>
   );
