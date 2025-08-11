@@ -13,9 +13,9 @@ const Testimonials = () => {
 
   const testimonials = [
     {
-      name: "John Doe",
+      name: "Hans Müller",
       title: "Owner",
-      company: "Thompson Family Plumbing",
+      company: "Müller & Sons Plumbing (DE)",
       image: "/testimonial-1-men.jpg",
       quote:
         "The Fieson AI team responds so quickly that sometimes we joke that their own employees might be AI.",
@@ -24,45 +24,45 @@ const Testimonials = () => {
       responseTime: "15 mins",
     },
     {
-      name: "Jane Smith",
+      name: "Sophie Dubois",
       title: "CMO",
-      company: "Way Cool Heating & Air",
+      company: "Dubois Heating & Air (FR)",
       image: "/testimonial-2-women.jpg",
       quote:
         "The service has been really great! We have not been missing any calls like we were previously. We also use it for after hours which works out wonderfully! This is a great system you have set up.",
       rating: 5,
     },
     {
-      name: "Robert Johnson",
+      name: "Davide Rossi",
       title: "COO",
-      company: "Arizona Roofing Systems",
+      company: "Italian Roof Systems (IT)",
       image: "/testimonial-3-men.jpg",
       quote:
         "The service has been really great! We have not been missing any calls like we were previously. We also use it for after hours which works out wonderfully! This is a great system you have set up.",
       rating: 5,
     },
     {
-      name: "Emily Davis",
+      name: "Emily White",
       title: "Marketing Coordinator",
-      company: "Cellino Plumbing",
+      company: "Thames Plumbing Solutions (UK)",
       image: "/testimonial-4-women.jpg",
       quote:
         "It's been a reliable solution for our business, and we look forward to continuing to work with them as we grow.",
       rating: 5,
     },
     {
-      name: "Michael Brown",
+      name: "Björn Andersson",
       title: "COO",
-      company: "Rove Pest Control",
+      company: "Nordic Pest Control (SE)",
       image: "/testimonial-5-men.jpg",
       quote:
         "We just had our 2nd week in a row of zero missed Google Local Services calls. This is pretty cool to see since implementing Fieson AI.",
       rating: 5,
     },
     {
-      name: "Sarah Wilson",
+      name: "Lena Schmidt",
       title: "Sr Customer Ops Manager",
-      company: "ABC",
+      company: "Alpen Service GmbH (CH)",
       image: "/testimonial-6-women.jpg",
       quote:
         "It's so rare to be sold a product in that initial meeting and then have their team actually live up to their claims.",

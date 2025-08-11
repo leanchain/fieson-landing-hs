@@ -9,87 +9,101 @@
     /* Brand Colors */
     --background: 0 0% 100%;
     --foreground: 220 10% 10%;
-    
+
     /* Primary Brand (Dark Navy/Black) */
     --primary: 220 25% 8%;
     --primary-foreground: 0 0% 100%;
-    
+
     /* Secondary (Light Gray) */
     --secondary: 210 20% 96%;
     --secondary-foreground: 220 25% 8%;
-    
+
     /* Accent Colors - Red Primary */
     --accent: 0 84% 60%;
     --accent-foreground: 0 0% 100%;
     --accent-light: 0 79% 65%;
-    
+
     /* Blue Accent */
     --blue-accent: 217 91% 60%;
     --blue-accent-light: 217 91% 70%;
-    
+
     /* Muted */
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
-    
+
     /* Border & Input */
     --border: 214 32% 91%;
     --input: 214 32% 91%;
     --ring: 0 84% 60%;
-    
+
     /* Cards */
     --card: 0 0% 100%;
     --card-foreground: 220 10% 10%;
-    
+
     /* Popover */
     --popover: 0 0% 100%;
     --popover-foreground: 220 10% 10%;
-    
+
     /* Destructive */
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    
+
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(0 84% 60%), hsl(0 79% 65%));
-    --gradient-blue: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
-    --gradient-hero: linear-gradient(135deg, hsl(220 25% 8%) 0%, hsl(220 30% 15%) 100%);
-    --gradient-section: linear-gradient(180deg, hsl(210 20% 98%) 0%, hsl(0 0% 100%) 100%);
-    
+    --gradient-blue: linear-gradient(
+      135deg,
+      hsl(217 91% 60%),
+      hsl(217 91% 70%)
+    );
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(220 25% 8%) 0%,
+      hsl(220 30% 15%) 100%
+    );
+    --gradient-section: linear-gradient(
+      180deg,
+      hsl(210 20% 98%) 0%,
+      hsl(0 0% 100%) 100%
+    );
+
     /* Shadows */
-    --shadow-soft: 0 4px 6px -1px hsl(220 25% 8% / 0.1), 0 2px 4px -1px hsl(220 25% 8% / 0.06);
-    --shadow-medium: 0 10px 15px -3px hsl(220 25% 8% / 0.1), 0 4px 6px -2px hsl(220 25% 8% / 0.05);
-    --shadow-large: 0 20px 25px -5px hsl(220 25% 8% / 0.1), 0 10px 10px -5px hsl(220 25% 8% / 0.04);
-    
+    --shadow-soft: 0 4px 6px -1px hsl(220 25% 8% / 0.1),
+      0 2px 4px -1px hsl(220 25% 8% / 0.06);
+    --shadow-medium: 0 10px 15px -3px hsl(220 25% 8% / 0.1),
+      0 4px 6px -2px hsl(220 25% 8% / 0.05);
+    --shadow-large: 0 20px 25px -5px hsl(220 25% 8% / 0.1),
+      0 10px 10px -5px hsl(220 25% 8% / 0.04);
+
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    
-    --radius: 0.75rem;
 
+    --radius: 0.75rem;
   }
 
   .dark {
     --background: 220 25% 8%;
     --foreground: 0 0% 95%;
-    
+
     --primary: 0 0% 95%;
     --primary-foreground: 220 25% 8%;
-    
+
     --secondary: 220 20% 15%;
     --secondary-foreground: 0 0% 95%;
-    
+
     --muted: 220 20% 15%;
     --muted-foreground: 215 16% 65%;
-    
+
     --accent: 0 84% 60%;
     --accent-foreground: 0 0% 100%;
-    
+
     --border: 220 20% 20%;
     --input: 220 20% 20%;
     --ring: 0 84% 60%;
-    
+
     --card: 220 25% 8%;
     --card-foreground: 0 0% 95%;
-    
+
     --popover: 220 25% 8%;
     --popover-foreground: 0 0% 95%;
   }
@@ -104,24 +118,29 @@
     @apply bg-background text-foreground font-sans antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-semibold tracking-tight;
   }
-  
+
   /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   ::-webkit-scrollbar-track {
     @apply bg-muted;
   }
-  
+
   ::-webkit-scrollbar-thumb {
     @apply bg-muted-foreground/20 rounded-full;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-muted-foreground/30;
   }
@@ -131,47 +150,28 @@
   .hero-gradient {
     background: var(--gradient-hero);
   }
-  
+
   .section-gradient {
     background: var(--gradient-section);
   }
-  
+
   .green-gradient {
     background: var(--gradient-primary);
   }
-  
+
   .blue-gradient {
     background: var(--gradient-blue);
   }
-  
+
   .smooth-transition {
     transition: var(--transition-smooth);
   }
-  
+
   .bounce-transition {
     transition: var(--transition-bounce);
   }
 
-  /* Custom styles for react-phone-number-input */
-  .phone-input-custom {
-    @apply flex h-14 w-full rounded-xl border-2 bg-background text-lg ring-offset-background relative;
-  }
-
-  .phone-input-custom .PhoneInputInput {
-    @apply flex-1 px-4 py-2 text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50;
-  }
-
-  .phone-input-custom .PhoneInputCountrySelect {
-    @apply h-full rounded-l-xl border-r-2 border-border bg-muted text-foreground focus:outline-none;
-  }
-
-  .phone-input-custom .PhoneInputCountrySelectArrow {
-    @apply text-muted-foreground;
-  }
-
-  .phone-input-custom .PhoneInputCountryIcon {
-    @apply w-6 h-6;
-  }
+  
 }
 
 /* Hide scrollbar */
@@ -183,3 +183,55 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* WebKit */
 }
+
+  /* Custom styles for intl-tel-input */
+  /* Custom styles for intl-tel-input */
+  .iti.iti--allow-dropdown {
+    @apply w-full;
+  }
+
+  .iti__flag-container {
+    @apply h-full;
+  }
+
+  .iti__selected-flag {
+    @apply h-full rounded-l-xl border-r-2 border-border bg-muted text-foreground focus:outline-none;
+  }
+
+  .iti__country-list {
+    @apply rounded-md shadow-lg bg-popover text-popover-foreground p-2;
+  }
+
+  .iti__country {
+    @apply p-2 hover:bg-muted cursor-pointer rounded-md text-base;
+  }
+
+  .iti__country.highlight {
+    @apply bg-muted;
+  }
+
+  .iti__dial-code {
+    @apply text-base;
+  }
+
+  .iti__search-input {
+    @apply w-full p-2 border-b border-border focus:outline-none focus:border-blue-accent text-base rounded-t-md;
+  }
+
+  .iti-input-custom {
+    @apply flex h-14 w-full rounded-xl border-2 bg-background px-4 py-2 text-xl ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 !important;
+    padding-left: 5rem !important; /* Adjust based on flag and dial code width */
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .iti-input-custom:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .iti__selected-flag:focus,
+  .iti__selected-flag:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+  }

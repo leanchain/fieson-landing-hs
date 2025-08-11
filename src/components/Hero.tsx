@@ -1,34 +1,58 @@
 import { Button } from "@/components/ui/button";
 import { Mic, Clock, TrendingUp, Shield } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
-import { Phone } from "lucide-react";
 import { toast } from "./ui/use-toast";
 import { cn } from "@/lib/utils";
 import heroImage from "@/assets/hero-image.jpg";
-import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-import "react-phone-number-input/style.css";
+import intlTelInput from "intl-tel-input";
+import "intl-tel-input/build/css/intlTelInput.css";
 
 const Hero = () => {
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>("");
   const [isLoading, setIsLoading] = useState(false);
-  const phoneInputRef = useRef<any>(null);
+  const [isPhoneInputFocused, setIsPhoneInputFocused] = useState(false);
+  const phoneInputRef = useRef<HTMLInputElement>(null);
+  const iti = useRef<any>(null); // To store the intlTelInput instance
 
   useEffect(() => {
-    const handleFocusPhoneInput = () => {
-      if (phoneInputRef.current) {
-        phoneInputRef.current.focus();
+    if (phoneInputRef.current) {
+      iti.current = intlTelInput(phoneInputRef.current, {
+        initialCountry: "auto",
+        separateDialCode: true,
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js", // For validation
+        geoIpLookup: (callback) => {
+          fetch("https://ipapi.co/json/")
+            .then((res) => res.json())
+            .then((data) => callback(data.country_code))
+            .catch(() => callback("us")); // Default to US on error
+        },
+      });
+
+      // Set initial phone number if it exists
+      if (phoneNumber) {
+        iti.current.setNumber(phoneNumber);
       }
-    };
 
-    window.addEventListener('focusPhoneInput', handleFocusPhoneInput);
+      const handleFocusPhoneInput = () => {
+        if (iti.current) {
+          phoneInputRef.current?.focus();
+        }
+      };
 
-    return () => {
-      window.removeEventListener('focusPhoneInput', handleFocusPhoneInput);
-    };
+      window.addEventListener("focusPhoneInput", handleFocusPhoneInput);
+
+      return () => {
+        if (iti.current) {
+          iti.current.destroy();
+        }
+        window.removeEventListener("focusPhoneInput", handleFocusPhoneInput);
+      };
+    }
   }, []);
 
   const handleInitiateCall = async () => {
-    const validationResult = validatePhoneNumber(phoneNumber);
+    const fullPhoneNumber = iti.current?.getNumber();
+    const validationResult = validatePhoneNumber(fullPhoneNumber);
 
     if (!validationResult.isValid) {
       toast({
@@ -41,13 +65,16 @@ const Hero = () => {
 
     setIsLoading(true);
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/initiate-call`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ phoneNumber }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/initiate-call`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ phoneNumber: fullPhoneNumber }),
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -73,9 +100,9 @@ const Hero = () => {
   };
 
   const validatePhoneNumber = (phone: string | undefined) => {
-    if (!phone) return { isValid: false, message: "Phone number is required." };
+    if (!phone || !iti.current) return { isValid: false, message: "Phone number is required." };
 
-    if (!isValidPhoneNumber(phone)) {
+    if (!iti.current.isValidNumber()) {
       return { isValid: false, message: "Please enter a valid phone number." };
     }
 
@@ -107,20 +134,20 @@ const Hero = () => {
             <div className="space-y-6 max-w-md mx-auto lg:mx-0">
               <div className="space-y-4">
                 <div className="relative">
-                  <PhoneInput
+                  <input
+                    type="tel"
                     ref={phoneInputRef}
                     placeholder="Enter phone number"
-                    value={phoneNumber}
-                    onChange={setPhoneNumber}
-                    defaultCountry="US"
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    onFocus={() => setIsPhoneInputFocused(true)}
+                    onBlur={() => setIsPhoneInputFocused(false)}
                     className={cn(
-                      "flex h-14 w-full rounded-xl border-2 bg-background px-12 py-2 text-lg ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+                      "form-input iti-input-custom", // Custom class for styling
                       validation.isValid === false && phoneNumber !== ""
                         ? "border-red-500 focus:border-blue-accent"
                         : "border-blue-accent/30 focus:border-blue-accent"
                     )}
                   />
-                  <Phone className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 </div>
                 {validation.isValid === false && phoneNumber !== "" && (
                   <p className={`text-sm text-red-500`}>{validation.message}</p>
@@ -136,8 +163,11 @@ const Hero = () => {
                 </Button>
               </div>
 
-              <div className="text-center lg:text-left">
-                <p className="text-xs text-muted-foreground mt-2">
+              <div className="text-center lg:text-left h-10 overflow-hidden transition-all duration-300 ease-in-out">
+                <p className={cn(
+                  "text-xs text-muted-foreground mt-2",
+                  isPhoneInputFocused ? "opacity-100 translate-y-0" : "opacity-0 translate-y-full"
+                )}>
                   By calling, you confirm that you have read our{" "}
                   <Button
                     variant="link"
