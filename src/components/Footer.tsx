@@ -18,7 +18,7 @@ const Footer = () => {
     { name: "About", href: "/about" },
     { name: "Pricing", href: "/pricing" },
     { name: "Integrations", href: "/integrations" },
-    { name: "Contact Us", href: "/contact" },
+    { name: "Contact Us", href: "https://cal.com/bart-rosier/session-bart" },
   ];
 
   return (

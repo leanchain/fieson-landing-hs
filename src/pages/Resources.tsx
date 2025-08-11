@@ -1,68 +1,110 @@
-import React from 'react';
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
-const Resources: React.FC = () => {
-  const articles = [
-    {
-      title: "The Future of Lead Generation with AI",
-      description: "Explore how artificial intelligence is reshaping the landscape of lead generation for service businesses.",
-      imageUrl: "/public/test-image.jpg",
-      link: "#", // Placeholder link
-    },
-    {
-      title: "Maximizing ROI with Automated Outreach",
-      description: "Learn strategies to optimize your outreach campaigns and achieve higher conversion rates.",
-      imageUrl: "/public/test-image.jpg",
-      link: "#", // Placeholder link
-    },
-    {
-      title: "Data-Driven Decisions for Business Growth",
-      description: "Understand how leveraging data analytics can provide actionable insights for sustainable business expansion.",
-      imageUrl: "/public/test-image.jpg",
-      link: "#", // Placeholder link
-    },
-  ];
+const articles = [
+  {
+    title: "AI Voice Technology: Benefits and Challenges",
+    description: "Explores how AI voice technology enhances convenience, efficiency, and personalization in various applications, including smart home devices and home services.",
+    link: "https://auraaipro.com/blog/ai-voice-technology-benefits-and-challenges/",
+  },
+  {
+    title: "The Benefits of Voice AI for Smart Home Automation",
+    description: "Discusses how voice AI improves accessibility and user experience in smart home automation, benefiting individuals with disabilities.",
+    link: "https://respeecher.com/blog/benefits-voice-ai-smart-home-automation/",
+  },
+  {
+    title: "How Voice AI Assistants Can Help Aging Adults Live Independently",
+    description: "Focuses on the safety and assistance benefits of AI voice assistants for aging adults, including emergency calls and reminders.",
+    link: "https://www.ncsu.edu/news/2023/08/how-voice-ai-assistants-can-help-aging-adults-live-independently/",
+  },
+  {
+    title: "The Impact of AI-Driven Voice Assistants on Smart Home Ecosystems",
+    description: "An academic perspective on the positive impact of AI voice assistants in smart home environments, including challenges.",
+    link: "https://www.researchgate.net/publication/373090000_The_Impact_of_AI-Driven_Voice_Assistants_on_Smart_Home_Ecosystems",
+  },
+  {
+    title: "How AI Call Center Platforms Revolutionize Home Services",
+    description: "Explains how AI improves customer interactions, automates tasks, and enhances efficiency in home service industries like HVAC and plumbing.",
+    link: "https://www.servicebusinessmastery.com/blog/ai-call-center-platforms-home-services/",
+  },
+  {
+    title: "AI Answering and Scheduling Assistants for Home Service Leads",
+    description: "Discusses how AI-powered assistants improve responsiveness and lead management for home service businesses.",
+    link: "https://overbooked.ai/blog/ai-answering-and-scheduling-assistants-for-home-service-leads/",
+  },
+  {
+    title: "How AI is Revolutionizing the Home Services Industry",
+    description: "Explores how AI streamlines customer service, optimizes operations, and enhances home safety in the home services sector.",
+    link: "https://opticmarketinggroup.com/blog/how-ai-is-revolutionizing-the-home-services-industry/",
+  },
+  {
+    title: "The Future of Home Services: How AI is Changing the Game",
+    description: "Examines how AI is driving efficiency across the customer journey, from lead intake to post-call wrap-ups, and reducing training time.",
+    link: "https://wollyhome.com/blog/the-future-of-home-services-how-ai-is-changing-the-game/",
+  },
+  {
+    title: "AI in the Contact Center: The Future of Customer Service",
+    description: "Focuses on how AI and automation can significantly cut down training time for new agents and provide real-time guidance.",
+    link: "https://balto.ai/blog/ai-in-the-contact-center-the-future-of-customer-service/",
+  },
+  {
+    title: "Autonomous Repair Solutions: The Future of Home Services",
+    description: "Discusses the potential rise of autonomous robots and drones for maintenance tasks and inspections in home services.",
+    link: "https://innovationstrategy.com/autonomous-repair-solutions-the-future-of-home-services/",
+  },
+];
 
+const Resources = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <section className="relative bg-cover bg-center h-96" style={{ backgroundImage: 'url(/public/hero-image.jpg)' }}>
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative z-10 flex items-center justify-center h-full text-white text-center">
-          <div className="max-w-3xl px-4">
-            <h1 className="text-5xl font-bold mb-4">Resources & Articles</h1>
-            <p className="text-xl">Insights and guides to help your business thrive.</p>
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main className="pt-20">
+        <section className="py-20 bg-gradient-section text-center">
+          <div className="container mx-auto px-4">
+            <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+              Resources & Insights
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+              Explore articles and insights on AI, home services, and voice technology.
+            </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-        <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Latest Articles</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {articles.map((article, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img src={article.imageUrl} alt={article.title} className="w-full h-48 object-cover" />
-              <div className="p-6">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-3">{article.title}</h3>
-                <p className="text-md text-gray-600 mb-4">{article.description}</p>
-                <a href={article.link} className="text-blue-600 hover:underline font-semibold">
-                  Read More
-                </a>
-              </div>
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl font-bold text-center text-foreground mb-12">
+              Featured Articles
+            </h2>
+            <div className="grid grid-cols-1 gap-8">
+              {articles.map((article, index) => (
+                <Card key={index} className="flex flex-col">
+                  <CardHeader>
+                    <CardTitle className="text-xl font-semibold mb-2">
+                      {article.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <p className="text-muted-foreground mb-4">
+                      {article.description}
+                    </p>
+                    <Link
+                      to={article.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent hover:underline"
+                    >
+                      Read More
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-
-      <section className="bg-primary text-primary-foreground py-16 text-center">
-        <div className="container mx-auto max-w-4xl px-4">
-          <h2 className="text-4xl font-bold mb-6">Need More Information?</h2>
-          <p className="text-xl mb-8">
-            Our team is here to provide you with the resources you need.
-          </p>
-          <a href="/contact" className="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-200 smooth-transition">
-            Contact Us
-          </a>
-        </div>
-      </section>
+          </div>
+        </section>
+      </main>
+      <Footer />
     </div>
   );
 };

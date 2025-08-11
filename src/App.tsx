@@ -9,6 +9,7 @@ import Industries from "./pages/Industries";
 import Pricing from "./pages/Pricing";
 import IndustryPage from "./pages/IndustryPage";
 import NotFound from "./pages/NotFound";
+import Resources from "./pages/Resources";
 import MarkdownPage from "./pages/MarkdownPage";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/industries" element={<Industries />} />
           <Route path="/industries/:industryName" element={<IndustryPage />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/resources" element={<Resources />} />
           <Route path="/terms-europe" element={<MarkdownPage filename="terms-europe" />} />
           <Route path="/markdown/:filename" element={<MarkdownPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
