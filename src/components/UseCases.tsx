@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Phone, MessageSquare, DollarSign, Users } from "lucide-react";
+import { Phone, MessageSquare, DollarSign, Users, Check } from "lucide-react";
 
 const UseCases = () => {
   const [activeTab, setActiveTab] = useState("dispatcher");
@@ -45,9 +45,9 @@ const UseCases = () => {
 
   return (
     <section className="py-20 bg-gradient-section">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-24">
         <div className="text-center mb-16">
-          <p className="text-accent font-semibold uppercase tracking-wide mb-4">USE CASES</p>
+          <p className="text-blue-500 font-semibold uppercase tracking-wide mb-4">USE CASES</p>
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Instantly scale your entire contact center.
           </h2>
@@ -61,10 +61,10 @@ const UseCases = () => {
               <button
                 key={useCase.id}
                 onClick={() => setActiveTab(useCase.id)}
-                className={`flex items-center space-x-2 px-6 py-3 font-medium smooth-transition ${
+                className={`flex items-center space-x-2 px-6 py-3 font-medium smooth-transition rounded-full ${
                   activeTab === useCase.id
-                    ? "bg-accent text-accent-foreground shadow-medium rounded-full"
-                    : "bg-blue-accent text-white hover:bg-blue-accent/90 rounded-full"
+                    ? "bg-black text-white shadow-medium"
+                    : "border border-black bg-transparent text-black hover:bg-black/10"
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -88,13 +88,13 @@ const UseCases = () => {
               <div className="space-y-3 mb-8">
                 {activeUseCase.features.map((feature, index) => (
                   <div key={index} className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-accent rounded-full" />
+                    <Check className="w-5 h-5 text-blue-500" />
                     <span className="text-muted-foreground">{feature}</span>
                   </div>
                 ))}
               </div>
               
-              <Button variant="accent" size="lg">
+              <Button variant="accent" size="lg" onClick={() => window.open('https://cal.com/bart-rosier/session-bart', '_blank')}>
                 Book a demo
               </Button>
             </div>

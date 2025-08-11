@@ -8,53 +8,66 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-section overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-blue-accent/5" />
-      
-      <div className="container mx-auto px-24 py-16 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-24 py-16 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center flex-col-reverse lg:flex-row">
           {/* Left Content */}
           <div className="text-center lg:text-left">
             <div className="mb-6">
               <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-                AI Phone System for Plumbing & Heating (SHK)
+                AI Phone System for Home Services
               </span>
             </div>
-            
+
             <h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
               Every burst-pipe call booked{" "}
               <span className="text-accent">before your rival answers.</span>
             </h1>
+
             
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl">
-              46% of plumbing/HVAC phone leads become paid jobs — if you answer in &lt;30s. 
-              After-hours emergencies spike 35% post-18:00; most shops miss them.
-            </p>
 
             {/* CTA Section */}
             <div className="space-y-6">
               {/* AI Call Button */}
-              <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
-                <Button variant="hero" size="xl" className="group relative overflow-hidden">
-                  <Mic className="w-5 h-5 mr-3 group-hover:scale-110 smooth-transition" />
-                  <span>TALK WITH FIESON AI</span>
-                  <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
-                </Button>
-                
-                <div className="text-center sm:text-left">
-                  <p className="text-sm text-muted-foreground mb-2">30-minute setup. Zero fixed costs during pilot.</p>
-                  <div className="flex items-center space-x-2">
-                    <Input 
+              <div className="flex flex-col gap-4 items-center justify-center lg:items-start">
+                <div className="flex flex-col gap-4 w-full sm:w-auto">
+                  <div className="flex items-center space-x-2 w-full">
+                    <Input
                       placeholder="Enter your phone number"
-                      className="max-w-xs"
+                      className="max-w-xs w-full"
                     />
                   </div>
+                  <Button
+                    variant="destructive"
+                    size="xl"
+                    className="group relative overflow-hidden w-full sm:w-auto"
+                  >
+                    <Mic className="w-5 h-5 mr-3 group-hover:scale-110 smooth-transition" />
+                    <span>TALK WITH FIESON AI</span>
+                    <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
+                  </Button>
                 </div>
+                <p className="text-xs text-muted-foreground text-center lg:text-left mt-2">
+                  By calling, you confirm that you have read our{" "}
+                  <a href="#" className="underline">Contact Terms</a> and our{" "}
+                  <a href="#" className="underline">Privacy Policy</a>.
+                </p>
               </div>
 
               {/* Alternative CTA */}
               <div className="text-center lg:text-left">
                 <p className="text-muted-foreground inline">
                   Or simply{" "}
-                  <Button variant="link" className="p-0 h-auto text-base font-semibold underline">
+                  <Button
+                    variant="link"
+                    className="p-0 h-auto text-base font-semibold underline"
+                    onClick={() =>
+                      window.open(
+                        "https://cal.com/bart-rosier/session-bart",
+                        "_blank"
+                      )
+                    }
+                  >
                     book a demo
                   </Button>
                 </p>
@@ -72,7 +85,7 @@ const Hero = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
             </div>
-            
+
             {/* Floating Elements */}
             <div className="absolute -top-4 -right-4 w-20 h-20 bg-accent rounded-full opacity-80 animate-pulse" />
             <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-blue-accent rounded-full opacity-60 animate-pulse delay-1000" />
@@ -86,23 +99,31 @@ const Hero = () => {
               <Clock className="w-8 h-8 text-muted-foreground" />
             </div>
             <h3 className="font-bold text-xl mb-3">Instant Pickup</h3>
-            <p className="text-muted-foreground leading-relaxed">AI answers 100% of calls, day or night. No more missed emergency calls.</p>
+            <p className="text-muted-foreground leading-relaxed">
+              AI answers 100% of calls, day or night. No more missed emergency
+              calls.
+            </p>
           </div>
-          
+
           <div className="text-center p-6 rounded-xl bg-card shadow-soft hover:shadow-medium smooth-transition group">
             <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 smooth-transition">
               <TrendingUp className="w-8 h-8 text-muted-foreground" />
             </div>
             <h3 className="font-bold text-xl mb-3">+15-25% Jobs Booked</h3>
-            <p className="text-muted-foreground leading-relaxed">Pay only €3 per booked job during pilot. Zero fixed costs.</p>
+            <p className="text-muted-foreground leading-relaxed">
+              Pay only €3 per booked job during pilot. Zero fixed costs.
+            </p>
           </div>
-          
+
           <div className="text-center p-6 rounded-xl bg-card shadow-soft hover:shadow-medium smooth-transition group">
             <div className="w-16 h-16 bg-muted rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 smooth-transition">
               <Shield className="w-8 h-8 text-muted-foreground" />
             </div>
             <h3 className="font-bold text-xl mb-3">Owner Freedom</h3>
-            <p className="text-muted-foreground leading-relaxed">Get your nights and weekends back. 30-minute setup, no apps, no hardware.</p>
+            <p className="text-muted-foreground leading-relaxed">
+              Get your nights and weekends back. 30-minute setup, no apps, no
+              hardware.
+            </p>
           </div>
         </div>
       </div>

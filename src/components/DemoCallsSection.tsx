@@ -12,7 +12,7 @@ const DemoCallsSection = () => {
       title: "Emergency Leak",
       icon: Droplets,
       iconColor: "text-blue-500",
-      iconBg: "bg-blue-500/10",
+      iconBg: "bg-transparent",
       description: "Burst pipe in kitchen - urgent response needed",
       duration: "1:45",
       scenario: "Customer has water flooding from under sink",
@@ -22,8 +22,8 @@ const DemoCallsSection = () => {
       id: "boiler-repair",
       title: "Boiler Breakdown",
       icon: Flame,
-      iconColor: "text-orange-500",
-      iconBg: "bg-orange-500/10",
+      iconColor: "text-blue-500",
+      iconBg: "bg-transparent",
       description: "No heating or hot water - winter emergency",
       duration: "2:12",
       scenario: "Elderly customer with no heat in cold weather",
@@ -33,8 +33,8 @@ const DemoCallsSection = () => {
       id: "routine-service",
       title: "Annual Service",
       icon: Wrench,
-      iconColor: "text-green-500",
-      iconBg: "bg-green-500/10",
+      iconColor: "text-blue-500",
+      iconBg: "bg-transparent",
       description: "Regular maintenance appointment booking",
       duration: "1:23",
       scenario: "Commercial client scheduling routine check",
@@ -44,8 +44,8 @@ const DemoCallsSection = () => {
       id: "hvac-install",
       title: "HVAC Installation",
       icon: Thermometer,
-      iconColor: "text-purple-500",
-      iconBg: "bg-purple-500/10",
+      iconColor: "text-blue-500",
+      iconBg: "bg-transparent",
       description: "New system quote and installation planning",
       duration: "3:01",
       scenario: "New construction project requiring quote",
@@ -55,8 +55,8 @@ const DemoCallsSection = () => {
       id: "electrical-emergency",
       title: "Electrical Issue",
       icon: Zap,
-      iconColor: "text-yellow-500",
-      iconBg: "bg-yellow-500/10",
+      iconColor: "text-blue-500",
+      iconBg: "bg-transparent",
       description: "Power outage and electrical safety concern",
       duration: "1:58",
       scenario: "Restaurant losing power during service",
@@ -74,9 +74,9 @@ const DemoCallsSection = () => {
 
   return (
     <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-24">
         <div className="text-center mb-16">
-          <p className="text-accent font-semibold uppercase tracking-wide mb-4">REAL AI CONVERSATIONS</p>
+          <p className="text-blue-500 font-semibold uppercase tracking-wide mb-4">REAL AI CONVERSATIONS</p>
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Hear Fieson AI in action
           </h2>
@@ -151,7 +151,7 @@ const DemoCallsSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button variant="accent" size="lg">
+          <Button variant="accent" size="lg" onClick={() => window.open('https://cal.com/bart-rosier/session-bart', '_blank')}>
             Try Fieson AI Now
           </Button>
         </div>

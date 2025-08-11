@@ -5,17 +5,16 @@ import { TrendingUp, Calendar, Users } from "lucide-react";
 const ConversionSection = () => {
   return (
     <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-24">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
           <div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Convert every opportunity
-            </h2>
+            <p className="text-blue-500 font-semibold uppercase tracking-wide mb-4">Convert every opportunity</p>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Turn every emergency call into booked revenue with smart triage, 
-              instant calendar booking, and 24/7 availability. Never lose another 
-              after-hours burst pipe or boiler breakdown.
+              Our AI-powered system intelligently handles every incoming call, ensuring you never miss a critical opportunity. It automatically triages emergency calls, instantly books appointments based on real-time availability, and operates 24/7. Say goodbye to lost revenue from after-hours emergencies like burst pipes or boiler breakdowns.
+            </p>
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+              46% of plumbing/HVAC phone leads become paid jobs — if you answer in &lt;30s. After-hours emergencies spike 35% post-18:00; most shops miss them.
             </p>
             
             <div className="space-y-4 mb-8">
@@ -23,24 +22,24 @@ const ConversionSection = () => {
                 <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center">
                   <span className="text-white text-xs font-bold">✓</span>
                 </div>
-                <span className="text-foreground">Smart emergency detection and prioritization</span>
+                <span className="text-foreground">Intelligent emergency call detection & prioritization</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center">
                   <span className="text-white text-xs font-bold">✓</span>
                 </div>
-                <span className="text-foreground">Real-time calendar integration and booking</span>
+                <span className="text-foreground">Seamless real-time calendar integration & booking</span>
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center">
                   <span className="text-white text-xs font-bold">✓</span>
                 </div>
-                <span className="text-foreground">Automated customer and tech notifications</span>
+                <span className="text-foreground">Automated notifications for customers & technicians</span>
               </div>
             </div>
             
             <Button variant="accent" size="lg">
-              Convert more leads →
+              Start Converting More Leads →
             </Button>
           </div>
 

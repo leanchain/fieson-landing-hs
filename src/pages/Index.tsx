@@ -5,6 +5,7 @@ import UseCases from "@/components/UseCases";
 import HowItWorks from "@/components/HowItWorks";
 import ConversionSection from "@/components/ConversionSection";
 import LeadGenSection from "@/components/LeadGenSection";
+
 import DemoCallsSection from "@/components/DemoCallsSection";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
@@ -15,14 +16,12 @@ const Index = () => {
       <Header />
       <main className="pt-20">
         <Hero />
-        <CompanyLogos />
-        <UseCases />
+        <DemoCallsSection />
         <HowItWorks />
         <ConversionSection />
-        <LeadGenSection />
-        <DemoCallsSection />
-        <Testimonials />
+        <UseCases />
       </main>
+        <Testimonials />
       <Footer />
     </div>
   );

@@ -40,9 +40,9 @@ const HowItWorks = () => {
 
   return (
     <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-24">
         <div className="text-center mb-16">
-          <p className="text-accent font-semibold uppercase tracking-wide mb-4">HOW IT WORKS</p>
+          <p className="text-blue-500 font-semibold uppercase tracking-wide mb-4">HOW IT WORKS</p>
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Power your Inbound, Outbound calls, text, & email with AI.
           </h2>
@@ -59,9 +59,9 @@ const HowItWorks = () => {
                 </div>
                 
                 {/* Step Card */}
-                <Card className={`p-6 text-center ${getStepColor(step.type)}`}>
+                <Card className={`p-6 text-center border-2 border-blue-500 bg-transparent`}>
                   <div className="mb-4">
-                    <Icon className="w-8 h-8 text-muted-foreground mx-auto" />
+                    <Icon className="w-8 h-8 text-blue-500 mx-auto" />
                   </div>
                   <h4 className="font-bold text-foreground mb-3">{step.title}</h4>
                   <p className="text-muted-foreground">{step.description}</p>

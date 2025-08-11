@@ -22,7 +22,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-24 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Industries */}
           <div>
@@ -77,7 +77,7 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-lg mb-4 uppercase tracking-wide">GET STARTED</h3>
             <div className="space-y-4">
-              <Button variant="accent" size="lg" className="w-full">
+              <Button variant="demo" size="lg" className="w-full" onClick={() => window.open('https://cal.com/bart-rosier/session-bart', '_blank')}>
                 Book a demo
               </Button>
               <Button variant="outline" size="lg" className="w-full border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground hover:text-primary">
