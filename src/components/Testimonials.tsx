@@ -13,10 +13,10 @@ const Testimonials = () => {
 
   const testimonials = [
     {
-      name: "Devynn Thompson",
+      name: "John Doe",
       title: "Owner",
       company: "Thompson Family Plumbing",
-      image: "/api/placeholder/80/80",
+      image: "/testimonial-1-men.jpg",
       quote:
         "The Fieson AI team responds so quickly that sometimes we joke that their own employees might be AI.",
       rating: 5,
@@ -24,61 +24,62 @@ const Testimonials = () => {
       responseTime: "15 mins",
     },
     {
-      name: "Konnor Buscho",
+      name: "Jane Smith",
       title: "CMO",
       company: "Way Cool Heating & Air",
-      image: "/api/placeholder/80/80",
+      image: "/testimonial-2-women.jpg",
       quote:
         "The service has been really great! We have not been missing any calls like we were previously. We also use it for after hours which works out wonderfully! This is a great system you have set up.",
       rating: 5,
     },
     {
-      name: "Joshua Smith",
+      name: "Robert Johnson",
       title: "COO",
       company: "Arizona Roofing Systems",
-      image: "/api/placeholder/80/80",
+      image: "/testimonial-3-men.jpg",
       quote:
         "The service has been really great! We have not been missing any calls like we were previously. We also use it for after hours which works out wonderfully! This is a great system you have set up.",
       rating: 5,
     },
     {
-      name: "Taylor Craig",
+      name: "Emily Davis",
       title: "Marketing Coordinator",
       company: "Cellino Plumbing",
-      image: "/api/placeholder/80/80",
+      image: "/testimonial-4-women.jpg",
       quote:
         "It's been a reliable solution for our business, and we look forward to continuing to work with them as we grow.",
       rating: 5,
     },
     {
-      name: "Rob Greer",
+      name: "Michael Brown",
       title: "COO",
       company: "Rove Pest Control",
-      image: "/api/placeholder/80/80",
+      image: "/testimonial-5-men.jpg",
       quote:
         "We just had our 2nd week in a row of zero missed Google Local Services calls. This is pretty cool to see since implementing Fieson AI.",
       rating: 5,
     },
     {
-      name: "Delaney Atkinson",
+      name: "Sarah Wilson",
       title: "Sr Customer Ops Manager",
       company: "ABC",
-      image: "/api/placeholder/80/80",
+      image: "/testimonial-6-women.jpg",
       quote:
         "It's so rare to be sold a product in that initial meeting and then have their team actually live up to their claims.",
       rating: 5,
     },
   ];
 
-  // Always 1 slide per view
-  const totalSlides = testimonials.length;
+  const testimonialsPerView = 3;
+    const totalTestimonials = testimonials.length;
+  const totalSlides = Math.ceil(totalTestimonials / testimonialsPerView);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    setCurrentSlide((prev) => (prev + testimonialsPerView) % totalTestimonials);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+    setCurrentSlide((prev) => (prev - testimonialsPerView + totalTestimonials) % totalTestimonials);
   };
 
   // Drag helpers
@@ -138,19 +139,24 @@ const Testimonials = () => {
   // Compute translate with drag delta
   const containerWidth = containerRef.current?.clientWidth || 1;
   const percentDelta = (deltaX / containerWidth) * 100;
-  const translatePercent = -(currentSlide * 100) + (isDragging ? percentDelta : 0);
+  const translatePercent =
+    -((currentSlide * 100) / testimonialsPerView) +
+    (isDragging ? percentDelta : 0);
 
   return (
     <section className="py-20 bg-gradient-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <p className="text-blue-500 font-semibold uppercase tracking-wide mb-4">CUSTOMER SUPPORT</p>
+          <p className="text-blue-500 font-semibold uppercase tracking-wide mb-4">
+            CUSTOMER SUPPORT
+          </p>
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Hands-on setup and support for optimal AI performance.
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Experience firsthand how the Fieson AI team is renowned for their exceptional support 
-            and lightning-fast response times, often leading customers to think they must be AI themselves.
+            Experience firsthand how the Fieson AI team is renowned for their
+            exceptional support and lightning-fast response times, often leading
+            customers to think they must be AI themselves.
           </p>
         </div>
 
@@ -172,20 +178,37 @@ const Testimonials = () => {
             aria-live="polite"
           >
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="w-full flex-shrink-0 px-8">
-                <Card className="p-6 hover:shadow-medium smooth-transition">
+              <div
+                key={index}
+                className="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-8"
+              >
+                <Card className="p-6 hover:shadow-medium smooth-transition h-full flex flex-col">
                   <div className="flex items-center mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current text-yellow-400" />
+                      <Star
+                        key={i}
+                        className="w-4 h-4 fill-current text-yellow-400"
+                      />
                     ))}
                   </div>
-                  <blockquote className="text-muted-foreground mb-6 leading-relaxed">
+                  <blockquote className="text-muted-foreground mb-6 leading-relaxed flex-grow">
                     "{testimonial.quote}"
                   </blockquote>
-                  <div className="space-y-1">
-                    <div className="font-semibold text-foreground">{testimonial.name}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.title}</div>
-                    <div className="text-sm text-muted-foreground font-medium">{testimonial.company}</div>
+                  <div className="flex items-center space-x-3 mb-2">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full object-cover"
+                    />
+                    <div className="font-semibold text-foreground">
+                      {testimonial.name}
+                    </div>
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {testimonial.title}
+                  </div>
+                  <div className="text-sm text-muted-foreground font-medium">
+                    {testimonial.company}
                   </div>
                 </Card>
               </div>
@@ -204,21 +227,25 @@ const Testimonials = () => {
           >
             <ChevronLeft className="w-4 h-4" />
           </Button>
-          
-          <div className="flex space-x-2" role="tablist" aria-label="Testimonials pagination">
+
+          <div
+            className="flex space-x-2"
+            role="tablist"
+            aria-label="Testimonials pagination"
+          >
             {Array.from({ length: totalSlides }).map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentSlide(index)}
+                onClick={() => setCurrentSlide(index * testimonialsPerView)}
                 className={`w-2 h-2 rounded-full smooth-transition ${
-                  currentSlide === index ? "bg-blue-500" : "bg-muted"
+                  Math.floor(currentSlide / testimonialsPerView) === index ? "bg-blue-500" : "bg-muted"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
-                aria-current={currentSlide === index}
+                aria-current={Math.floor(currentSlide / testimonialsPerView) === index}
               />
             ))}
           </div>
-          
+
           <Button
             variant="outline"
             size="sm"
