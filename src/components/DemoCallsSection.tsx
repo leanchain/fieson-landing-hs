@@ -1,10 +1,103 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Play, Pause, Wrench, Droplets, Flame, Thermometer, Zap } from "lucide-react";
 
 const DemoCallsSection = () => {
   const [playingCall, setPlayingCall] = useState<string | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(2); // Start with middle item (index 2)
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollStart, setScrollStart] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Scroll to middle item on initial load for carousel view
+    if (containerRef.current && window.innerWidth < 1280) { // xl breakpoint
+      const cardWidth = 280 + 16; // card width + gap
+      const scrollPosition = cardWidth * 2; // scroll to 3rd item (index 2)
+      containerRef.current.scrollLeft = scrollPosition;
+    }
+  }, []);
+
+  // Handle scroll to update current slide indicator
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      if (window.innerWidth >= 1280) return; // Skip for grid view
+      
+      const cardWidth = 280 + 16; // card width + gap
+      const scrollLeft = container.scrollLeft;
+      const slideIndex = Math.round(scrollLeft / cardWidth);
+      setCurrentSlide(Math.max(0, Math.min(slideIndex, demoCalls.length - 1)));
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSlide = (index: number) => {
+    if (!containerRef.current) return;
+    const cardWidth = 280 + 16; // card width + gap
+    const scrollPosition = cardWidth * index;
+    containerRef.current.scrollTo({
+      left: scrollPosition,
+      behavior: 'smooth'
+    });
+    setCurrentSlide(index);
+  };
+
+  // Drag functionality
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    if (window.innerWidth >= 1280) return; // Skip for grid view
+    setIsDragging(true);
+    setStartX(e.pageX);
+    setScrollStart(containerRef.current?.scrollLeft || 0);
+    e.preventDefault();
+  }, []);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!isDragging || window.innerWidth >= 1280) return;
+    e.preventDefault();
+    const container = containerRef.current;
+    if (!container) return;
+    
+    const x = e.pageX;
+    const walk = (x - startX) * 2; // Multiply by 2 for faster scrolling
+    container.scrollLeft = scrollStart - walk;
+  }, [isDragging, startX, scrollStart]);
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  // Touch functionality
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    if (window.innerWidth >= 1280) return; // Skip for grid view
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX);
+    setScrollStart(containerRef.current?.scrollLeft || 0);
+  }, []);
+
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
+    if (!isDragging || window.innerWidth >= 1280) return;
+    const container = containerRef.current;
+    if (!container) return;
+    
+    const x = e.touches[0].pageX;
+    const walk = (x - startX) * 2;
+    container.scrollLeft = scrollStart - walk;
+  }, [isDragging, startX, scrollStart]);
+
+  const handleTouchEnd = useCallback(() => {
+    setIsDragging(false);
+  }, []);
 
   const demoCalls = [
     {
@@ -74,7 +167,11 @@ const DemoCallsSection = () => {
 
   return (
     <section className="py-20 bg-background">
+<<<<<<< HEAD
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-24">
+=======
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+>>>>>>> b258d63ba3d9ba82c2e9a4e86c3ff3fce42f5484
         <div className="text-center mb-16">
           <p className="text-blue-500 font-semibold uppercase tracking-wide mb-4">REAL AI CONVERSATIONS</p>
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
@@ -86,13 +183,24 @@ const DemoCallsSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div 
+          ref={containerRef} 
+          className={`xl:grid xl:grid-cols-5 xl:gap-6 flex xl:flex-none overflow-x-auto snap-x snap-mandatory gap-4 pl-[calc(50vw-140px)] pr-[calc(50vw-140px)] xl:px-0 xl:pl-0 xl:pr-0 pb-4 xl:pb-0 scrollbar-hide ${isDragging ? 'cursor-grabbing' : 'cursor-grab'} xl:cursor-default`}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          style={{ userSelect: isDragging ? 'none' : 'auto' }}
+        >
           {demoCalls.map((call) => {
             const Icon = call.icon;
             const isPlaying = playingCall === call.id;
             
             return (
-              <Card key={call.id} className="p-6 hover:shadow-medium smooth-transition group cursor-pointer">
+              <Card key={call.id} className="p-6 hover:shadow-medium smooth-transition group cursor-pointer flex-shrink-0 w-[280px] xl:w-auto snap-center bg-muted/30">
                 <div className="space-y-4">
                   {/* Icon and Play Button */}
                   <div className="flex items-center justify-between">
@@ -148,6 +256,19 @@ const DemoCallsSection = () => {
               </Card>
             );
           })}
+        </div>
+
+        {/* Carousel Navigation Dots */}
+        <div className="flex justify-center gap-2 mt-8 xl:hidden">
+          {demoCalls.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => scrollToSlide(index)}
+              className={`w-2 h-2 rounded-full smooth-transition ${
+                currentSlide === index ? 'bg-accent' : 'bg-muted'
+              }`}
+            />
+          ))}
         </div>
 
         <div className="text-center mt-12">

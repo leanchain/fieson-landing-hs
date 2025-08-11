@@ -5,7 +5,11 @@ import { TrendingUp, Calendar, Users } from "lucide-react";
 const ConversionSection = () => {
   return (
     <section className="py-20 bg-background">
+<<<<<<< HEAD
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-24">
+=======
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+>>>>>>> b258d63ba3d9ba82c2e9a4e86c3ff3fce42f5484
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
           <div>

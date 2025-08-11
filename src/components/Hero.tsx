@@ -1,18 +1,44 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mic, Clock, TrendingUp, Shield } from "lucide-react";
+import { useState } from "react";
 import heroImage from "@/assets/hero-image.jpg";
-
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-section overflow-hidden">
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [showValidation, setShowValidation] = useState(false);
+
+  const validatePhoneNumber = (phone: string) => {
+    if (!phone) return { isValid: false, message: "" };
+    
+    // International phone number regex: starts with +, followed by 1-3 digits for country code, then 4-14 digits
+    const phoneRegex = /^\+[1-9]\d{0,3}\d{4,14}$/;
+    
+    if (!phone.startsWith('+')) {
+      return { isValid: false, message: "Phone number must start with country code (e.g. +49)" };
+    }
+    
+    if (!/^\+[\d\s-()]+$/.test(phone.replace(/\s/g, ''))) {
+      return { isValid: false, message: "Phone number contains invalid characters" };
+    }
+    
+    const cleanPhone = phone.replace(/\s/g, '');
+    if (!phoneRegex.test(cleanPhone)) {
+      return { isValid: false, message: "Please enter a valid international phone number" };
+    }
+    
+    return { isValid: true, message: "Valid phone number" };
+  };
+
+  const validation = validatePhoneNumber(phoneNumber);
+  return <section className="relative min-h-screen flex items-center justify-center bg-gradient-section overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-blue-accent/5" />
+<<<<<<< HEAD
 
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-24 py-16 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center flex-col-reverse lg:flex-row">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left order-2 lg:order-1">
             <div className="mb-6">
               <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
                 AI Phone System for Home Services
@@ -27,62 +53,53 @@ const Hero = () => {
             
 
             {/* CTA Section */}
-            <div className="space-y-6">
-              {/* AI Call Button */}
-              <div className="flex flex-col gap-4 items-center justify-center lg:items-start">
-                <div className="flex flex-col gap-4 w-full sm:w-auto">
-                  <div className="flex items-center space-x-2 w-full">
-                    <Input
-                      placeholder="Enter your phone number"
-                      className="max-w-xs w-full"
-                    />
-                  </div>
-                  <Button
-                    variant="destructive"
-                    size="xl"
-                    className="group relative overflow-hidden w-full sm:w-auto"
-                  >
-                    <Mic className="w-5 h-5 mr-3 group-hover:scale-110 smooth-transition" />
-                    <span>TALK WITH FIESON AI</span>
-                    <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
-                  </Button>
-                </div>
-                <p className="text-xs text-muted-foreground text-center lg:text-left mt-2">
-                  By calling, you confirm that you have read our{" "}
-                  <a href="#" className="underline">Contact Terms</a> and our{" "}
-                  <a href="#" className="underline">Privacy Policy</a>.
-                </p>
+            <div className="space-y-6 max-w-md mx-auto lg:mx-0">
+              <div className="space-y-4">
+                <Input 
+                  placeholder="Enter phone number" 
+                  className={`w-full h-14 text-lg rounded-xl border-2 focus-visible:ring-0 focus-visible:ring-offset-0 ${
+                    showValidation 
+                      ? validation.isValid 
+                        ? 'border-green-500 focus:border-blue-accent' 
+                        : 'border-red-500 focus:border-blue-accent'
+                      : 'border-blue-accent/30 focus:border-blue-accent'
+                  }`}
+                  value={phoneNumber}
+                  onChange={(e) => {
+                    setPhoneNumber(e.target.value);
+                    setShowValidation(e.target.value.length > 0);
+                  }}
+                />
+                {showValidation && validation.message && (
+                  <p className={`text-sm ${validation.isValid ? 'text-green-600' : 'text-red-500'}`}>
+                    {validation.message}
+                  </p>
+                )}
+                <Button variant="hero" size="xl" className="w-full h-14 text-lg font-semibold">
+                  <span>Talk With Fieson AI</span>
+                </Button>
               </div>
-
-              {/* Alternative CTA */}
+              
               <div className="text-center lg:text-left">
-                <p className="text-muted-foreground inline">
-                  Or simply{" "}
-                  <Button
-                    variant="link"
-                    className="p-0 h-auto text-base font-semibold underline"
-                    onClick={() =>
-                      window.open(
-                        "https://cal.com/bart-rosier/session-bart",
-                        "_blank"
-                      )
-                    }
-                  >
-                    book a demo
+                <p className="text-xs text-muted-foreground mt-2">
+                  By calling, you confirm that you have read our{" "}
+                  <Button variant="link" className="p-0 h-auto text-xs underline text-blue-accent">
+                    Contact Terms
                   </Button>
+                  {" "}and our{" "}
+                  <Button variant="link" className="p-0 h-auto text-xs underline text-blue-accent">
+                    Privacy Policy
+                  </Button>
+                  .
                 </p>
               </div>
             </div>
           </div>
 
           {/* Right Content - Hero Image */}
-          <div className="relative">
+          <div className="relative order-1 lg:order-2">
             <div className="relative rounded-2xl overflow-hidden shadow-large">
-              <img
-                src={heroImage}
-                alt="AI Phone Answering Service"
-                className="w-full h-auto object-cover"
-              />
+              <img src={heroImage} alt="AI Phone Answering Service" className="w-full h-auto object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
             </div>
 
@@ -131,15 +148,14 @@ const Hero = () => {
       {/* Bottom Wave */}
       <div className="absolute bottom-0 left-0 right-0">
         <svg viewBox="0 0 1440 120" className="w-full h-auto">
-          <path
-            fill="currentColor"
-            className="text-background"
-            d="M0,64L48,69.3C96,75,192,85,288,85.3C384,85,480,75,576,64C672,53,768,43,864,48C960,53,1056,75,1152,80C1248,85,1344,75,1392,69.3L1440,64L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
-          />
+          <path fill="currentColor" className="text-background" d="M0,64L48,69.3C96,75,192,85,288,85.3C384,85,480,75,576,64C672,53,768,43,864,48C960,53,1056,75,1152,80C1248,85,1344,75,1392,69.3L1440,64L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z" />
         </svg>
       </div>
-    </section>
-  );
+    </section>;
 };
+<<<<<<< HEAD
 
 export default Hero;
+=======
+export default Hero;
+>>>>>>> b258d63ba3d9ba82c2e9a4e86c3ff3fce42f5484

@@ -7,7 +7,10 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
-  const navigation = [];
+  const navigation = [
+    { name: "Industries", href: "/industries" },
+    { name: "Pricing", href: "/pricing" },
+  ];
 
   const isActive = (path: string) => location.pathname === path;
 

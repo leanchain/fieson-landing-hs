@@ -73,6 +73,8 @@ const Testimonials = () => {
   // Always 1 slide per view
   const totalSlides = testimonials.length;
 
+  const totalSlides = testimonials.length;
+
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
   };
@@ -142,7 +144,7 @@ const Testimonials = () => {
 
   return (
     <section className="py-20 bg-gradient-section">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <p className="text-blue-500 font-semibold uppercase tracking-wide mb-4">CUSTOMER SUPPORT</p>
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
