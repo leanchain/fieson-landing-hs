@@ -5,16 +5,16 @@ FROM node:20-alpine as build
 WORKDIR /app
 
 # Copy package.json and package-lock.json (or bun.lockb) to the working directory
-COPY package.json bun.lockb ./
+COPY package.json package-lock.json ./
 
 # Install dependencies
-RUN npm install -g bun && bun install --frozen-lockfile
+RUN npm install --frozen-lockfile
 
 # Copy the rest of the application code
 COPY . .
 
 # Build the React app
-RUN bun run build
+RUN npm run build
 
 # Use a lightweight web server to serve the static files
 FROM nginx:alpine

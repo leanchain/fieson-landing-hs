@@ -68,6 +68,12 @@ export const industryContent = {
         quote: "It's been a reliable solution for our business, and we look forward to continuing to work with them as we grow.",
         image: "/public/testimonial-3-men.jpg"
       }
+    ],
+    trustedCompanies: [
+      { name: "BMI Group", image: "/public/placeholder.svg" },
+      { name: "Wienerberger AG", image: "/public/placeholder.svg" },
+      { name: "IKO Industries", image: "/public/placeholder.svg" },
+      { name: "Kingspan Group", image: "/public/placeholder.svg" },
     ]
   },
   hvac: {
@@ -139,6 +145,12 @@ export const industryContent = {
         quote: "The pre-screening feature saves our technicians so much time. They arrive prepared, leading to higher first-call resolution rates.",
         image: "/public/testimonial-2-women.jpg"
       }
+    ],
+    trustedCompanies: [
+      { name: "Daikin Industries", image: "/public/placeholder.svg" },
+      { name: "Vaillant Group", image: "/public/placeholder.svg" },
+      { name: "Johnson Controls", image: "/public/placeholder.svg" },
+      { name: "BDR Thermea Group", image: "/public/placeholder.svg" },
     ]
   },
   plumbing: {
@@ -210,6 +222,12 @@ export const industryContent = {
         quote: "The initial troubleshooting guidance from the AI helps us prepare better for each job, saving time on site.",
         image: "/public/testimonial-5-men.jpg"
       }
+    ],
+    trustedCompanies: [
+      { name: "Saint-Gobain", image: "/public/placeholder.svg" },
+      { name: "Geberit AG", image: "/public/placeholder.svg" },
+      { name: "Aliaxis Group", image: "/public/placeholder.svg" },
+      { name: "Roca Sanitario", image: "/public/placeholder.svg" },
     ]
   },
   electrical: {
@@ -281,6 +299,12 @@ export const industryContent = {
         quote: "We're now able to manage high call volumes with ease, ensuring no customer is left in the dark. Fieson AI is a must-have.",
         image: "/public/testimonial-3-men.jpg"
       }
+    ],
+    trustedCompanies: [
+      { name: "Schneider Electric", image: "/public/placeholder.svg" },
+      { name: "Siemens AG", image: "/public/placeholder.svg" },
+      { name: "ABB Ltd.", image: "/public/placeholder.svg" },
+      { name: "Legrand", image: "/public/placeholder.svg" },
     ]
   },
   landscaping: {
@@ -352,6 +376,12 @@ export const industryContent = {
         quote: "The AI handles all our routine inquiries, freeing up our team to focus on delivering top-notch landscaping services.",
         image: "/public/testimonial-1-men.jpg"
       }
+    ],
+    trustedCompanies: [
+      { name: "TruGreen", image: "/public/placeholder.svg" },
+      { name: "BrightView", image: "/public/placeholder.svg" },
+      { name: "The Davey Tree Expert Co.", image: "/public/placeholder.svg" },
+      { name: "LandCare", image: "/public/placeholder.svg" },
     ]
   },
   pestControl: {
@@ -423,6 +453,12 @@ export const industryContent = {
         quote: "Our customers are more informed and satisfied thanks to the AI's ability to provide immediate pest identification and advice. It's a fantastic tool.",
         image: "/public/testimonial-4-women.jpg"
       }
+    ],
+    trustedCompanies: [
+      { name: "Rentokil Initial", image: "/public/placeholder.svg" },
+      { name: "Orkin", image: "/public/placeholder.svg" },
+      { name: "Terminix", image: "/public/placeholder.svg" },
+      { name: "Ecolab", image: "/public/placeholder.svg" },
     ]
   },
   solar: {
@@ -494,6 +530,12 @@ export const industryContent = {
         quote: "With Fieson AI, we can handle all customer inquiries, from initial questions to technical support, without overwhelming our staff. It's truly scalable.",
         image: "/public/testimonial-3-men.jpg"
       }
+    ],
+    trustedCompanies: [
+      { name: "Enphase Energy", image: "/public/placeholder.svg" },
+      { name: "SolarEdge Technologies", image: "/public/placeholder.svg" },
+      { name: "Qcells", image: "/public/placeholder.svg" },
+      { name: "Longi Solar", image: "/public/placeholder.svg" },
     ]
   },
   windowCleaning: {
@@ -565,6 +607,12 @@ export const industryContent = {
         quote: "The automated quote system is fantastic. It saves us so much time and provides instant information to our potential clients.",
         image: "/public/testimonial-6-women.jpg"
       }
+    ],
+    trustedCompanies: [
+      { name: "Fish Window Cleaning", image: "/public/placeholder.svg" },
+      { name: "Sparkle Wash", image: "/public/placeholder.svg" },
+      { name: "Window Genie", image: "/public/placeholder.svg" },
+      { name: "Men In Kilts", image: "/public/placeholder.svg" },
     ]
   },
   commercialCleaning: {
@@ -636,6 +684,12 @@ export const industryContent = {
         quote: "The AI handles all our complex scheduling needs, allowing our teams to focus on delivering exceptional cleaning services. It's truly scalable.",
         image: "/public/testimonial-3-men.jpg"
       }
+    ],
+    trustedCompanies: [
+      { name: "ABM Industries", image: "/public/placeholder.svg" },
+      { name: "ISS A/S", image: "/public/placeholder.svg" },
+      { name: "Aramark", image: "/public/placeholder.svg" },
+      { name: "Sodexo", image: "/public/placeholder.svg" },
     ]
   }
 };

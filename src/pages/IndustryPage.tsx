@@ -56,7 +56,8 @@ const IndustryPage = () => {
           </div>
         </section>
 
-        {/* Company Logos */}
+        {/* Company Logos - Disabled */}
+        {/*
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
@@ -65,20 +66,23 @@ const IndustryPage = () => {
               </p>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center justify-items-center opacity-60">
-              {Array.from({ length: 8 }, (_, i) => (
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center justify-items-center">
+              {industry.trustedCompanies?.map((company, i) => (
                 <div
                   key={i}
-                  className="w-full max-w-[120px] h-12 bg-muted rounded-lg flex items-center justify-center"
+                  className="w-full max-w-[120px] h-12 flex items-center justify-center"
                 >
-                  <span className="text-xs font-medium text-muted-foreground text-center px-2">
-                    Company {i + 1}
-                  </span>
+                  <img
+                    src={company.image}
+                    alt={company.name}
+                    className="h-full w-auto object-contain"
+                  />
                 </div>
               ))}
             </div>
           </div>
         </section>
+        */}
 
         {/* Pre-qualification Section */}
         <section className="py-20 bg-gradient-section">
