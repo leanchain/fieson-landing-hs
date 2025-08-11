@@ -5,63 +5,28 @@ import { useState, useRef, useEffect } from "react";
 import { toast } from "./ui/use-toast";
 import { cn } from "@/lib/utils";
 import heroImage from "@/assets/hero-image.jpg";
-import intlTelInput from "intl-tel-input";
-import "intl-tel-input/build/css/intlTelInput.css";
+import IntlTelInput from "intl-tel-input/reactWithUtils";
+import "intl-tel-input/styles"; // Note: This is the correct import for styles
 
 const Hero = () => {
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>("");
+  const [isValid, setIsValid] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isPhoneInputFocused, setIsPhoneInputFocused] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const phoneInputRef = useRef<HTMLInputElement>(null);
-  const iti = useRef<any>(null); // To store the intlTelInput instance
 
-  useEffect(() => {
-    if (phoneInputRef.current) {
-      iti.current = intlTelInput(phoneInputRef.current, {
-        initialCountry: "auto",
-        separateDialCode: true,
-        utilsScript:
-          "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js", // For validation
-        geoIpLookup: (callback) => {
-          fetch("https://ipapi.co/json/")
-            .then((res) => res.json())
-            .then((data) => callback(data.country_code))
-            .catch(() => callback("us")); // Default to US on error
-        },
-      });
-
-      // Set initial phone number if it exists
-      if (phoneNumber) {
-        iti.current.setNumber(phoneNumber);
-      }
-
-      const handleFocusPhoneInput = () => {
-        if (iti.current) {
-          phoneInputRef.current?.focus();
-        }
-      };
-
-      window.addEventListener("focusPhoneInput", handleFocusPhoneInput);
-
-      return () => {
-        if (iti.current) {
-          iti.current.destroy();
-        }
-        window.removeEventListener("focusPhoneInput", handleFocusPhoneInput);
-      };
-    }
-  }, []);
+  // No need for phoneInputRef or iti ref with the React component
 
   const handleInitiateCall = async () => {
-    const fullPhoneNumber = iti.current?.getNumber();
-    const validationResult = validatePhoneNumber(fullPhoneNumber);
+    // The phoneNumber state is already updated by onChangeNumber
+    const fullPhoneNumber = phoneNumber;
+    
 
-    if (!validationResult.isValid) {
+    if (!isValid) {
       toast({
         title: "Validation Error",
-        description: validationResult.message,
+        description: "Please enter a valid phone number.",
         variant: "destructive",
       });
       return;
@@ -86,7 +51,7 @@ const Hero = () => {
       }
 
       const result = await response.json();
-      console.log("Call initiated successfully:", result);
+      
       toast({
         title: "Call Initiated",
         description: "Fieson AI is calling your number now!",
@@ -103,18 +68,8 @@ const Hero = () => {
     }
   };
 
-  const validatePhoneNumber = (phone: string | undefined) => {
-    if (!phone || !iti.current)
-      return { isValid: false, message: "Phone number is required." };
-
-    if (!iti.current.isValidNumber()) {
-      return { isValid: false, message: "Please enter a valid phone number." };
-    }
-
-    return { isValid: true, message: "Valid phone number" };
-  };
-
-  const validation = validatePhoneNumber(phoneNumber);
+  // The validation logic is now handled by the isValid state from IntlTelInput
+  const validation = { isValid: isValid, message: "Please enter a valid phone number." };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-section overflow-hidden">
@@ -139,30 +94,44 @@ const Hero = () => {
             <div className="space-y-6 max-w-md mx-auto lg:mx-0">
               <div className="space-y-4">
                 <div className="relative">
-                  <input
-                    type="tel"
-                    ref={phoneInputRef}
-                    placeholder="Enter phone number"
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                    onFocus={() => {
-                      setIsPhoneInputFocused(true);
-                      setShowDisclaimer(true);
-                      if (timeoutRef.current) {
-                        clearTimeout(timeoutRef.current);
-                      }
+                  <IntlTelInput
+                    onChangeNumber={setPhoneNumber}
+                    onChangeValidity={setIsValid}
+                    initOptions={{
+                      initialCountry: "auto",
+                      separateDialCode: true,
+                      utilsScript:
+                        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js", // For validation
+                      geoIpLookup: (callback) => {
+                        fetch("https://ipapi.co/json/")
+                          .then((res) => res.json())
+                          .then((data) => callback(data.country_code))
+                          .catch(() => callback("us")); // Default to US on error
+                      },
                     }}
-                    onBlur={() => {
-                      setIsPhoneInputFocused(false);
-                      timeoutRef.current = setTimeout(() => {
-                        setShowDisclaimer(false);
-                      }, 30000); // 30 seconds
+                    inputProps={{
+                      onFocus: () => {
+                        setIsPhoneInputFocused(true);
+                        setShowDisclaimer(true);
+                        if (timeoutRef.current) {
+                          clearTimeout(timeoutRef.current);
+                        }
+                      },
+                      onBlur: () => {
+                        setIsPhoneInputFocused(false);
+                        timeoutRef.current = setTimeout(() => {
+                          setShowDisclaimer(false);
+                        }, 30000); // 30 seconds
+                      },
+                      className: cn(
+                        "form-input iti-input-custom", // Custom class for styling
+                        validation.isValid === false && phoneNumber !== ""
+                          ? "border-red-500 focus:border-blue-accent"
+                          : "border-blue-accent/30 focus:border-blue-accent"
+                      ),
+                      placeholder: "Enter phone number",
+                      type: "tel",
                     }}
-                    className={cn(
-                      "form-input iti-input-custom", // Custom class for styling
-                      validation.isValid === false && phoneNumber !== ""
-                        ? "border-red-500 focus:border-blue-accent"
-                        : "border-blue-accent/30 focus:border-blue-accent"
-                    )}
                   />
                 </div>
                 {validation.isValid === false && phoneNumber !== "" && (
