@@ -22,11 +22,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-primary text-primary-foreground">
-<<<<<<< HEAD
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-24 py-16">
-=======
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
->>>>>>> b258d63ba3d9ba82c2e9a4e86c3ff3fce42f5484
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Industries */}
           <div>

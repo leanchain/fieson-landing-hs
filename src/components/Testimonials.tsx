@@ -73,8 +73,6 @@ const Testimonials = () => {
   // Always 1 slide per view
   const totalSlides = testimonials.length;
 
-  const totalSlides = testimonials.length;
-
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % totalSlides);
   };

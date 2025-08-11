@@ -1,7 +1,15 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Play, Pause, Wrench, Droplets, Flame, Thermometer, Zap } from "lucide-react";
+import {
+  Play,
+  Pause,
+  Wrench,
+  Droplets,
+  Flame,
+  Thermometer,
+  Zap,
+} from "lucide-react";
 
 const DemoCallsSection = () => {
   const [playingCall, setPlayingCall] = useState<string | null>(null);
@@ -13,7 +21,8 @@ const DemoCallsSection = () => {
 
   useEffect(() => {
     // Scroll to middle item on initial load for carousel view
-    if (containerRef.current && window.innerWidth < 1280) { // xl breakpoint
+    if (containerRef.current && window.innerWidth < 1280) {
+      // xl breakpoint
       const cardWidth = 280 + 16; // card width + gap
       const scrollPosition = cardWidth * 2; // scroll to 3rd item (index 2)
       containerRef.current.scrollLeft = scrollPosition;
@@ -27,15 +36,15 @@ const DemoCallsSection = () => {
 
     const handleScroll = () => {
       if (window.innerWidth >= 1280) return; // Skip for grid view
-      
+
       const cardWidth = 280 + 16; // card width + gap
       const scrollLeft = container.scrollLeft;
       const slideIndex = Math.round(scrollLeft / cardWidth);
       setCurrentSlide(Math.max(0, Math.min(slideIndex, demoCalls.length - 1)));
     };
 
-    container.addEventListener('scroll', handleScroll);
-    return () => container.removeEventListener('scroll', handleScroll);
+    container.addEventListener("scroll", handleScroll);
+    return () => container.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSlide = (index: number) => {
@@ -44,7 +53,7 @@ const DemoCallsSection = () => {
     const scrollPosition = cardWidth * index;
     containerRef.current.scrollTo({
       left: scrollPosition,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
     setCurrentSlide(index);
   };
@@ -58,16 +67,19 @@ const DemoCallsSection = () => {
     e.preventDefault();
   }, []);
 
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!isDragging || window.innerWidth >= 1280) return;
-    e.preventDefault();
-    const container = containerRef.current;
-    if (!container) return;
-    
-    const x = e.pageX;
-    const walk = (x - startX) * 2; // Multiply by 2 for faster scrolling
-    container.scrollLeft = scrollStart - walk;
-  }, [isDragging, startX, scrollStart]);
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      if (!isDragging || window.innerWidth >= 1280) return;
+      e.preventDefault();
+      const container = containerRef.current;
+      if (!container) return;
+
+      const x = e.pageX;
+      const walk = (x - startX) * 2; // Multiply by 2 for faster scrolling
+      container.scrollLeft = scrollStart - walk;
+    },
+    [isDragging, startX, scrollStart]
+  );
 
   const handleMouseUp = useCallback(() => {
     setIsDragging(false);
@@ -85,15 +97,18 @@ const DemoCallsSection = () => {
     setScrollStart(containerRef.current?.scrollLeft || 0);
   }, []);
 
-  const handleTouchMove = useCallback((e: React.TouchEvent) => {
-    if (!isDragging || window.innerWidth >= 1280) return;
-    const container = containerRef.current;
-    if (!container) return;
-    
-    const x = e.touches[0].pageX;
-    const walk = (x - startX) * 2;
-    container.scrollLeft = scrollStart - walk;
-  }, [isDragging, startX, scrollStart]);
+  const handleTouchMove = useCallback(
+    (e: React.TouchEvent) => {
+      if (!isDragging || window.innerWidth >= 1280) return;
+      const container = containerRef.current;
+      if (!container) return;
+
+      const x = e.touches[0].pageX;
+      const walk = (x - startX) * 2;
+      container.scrollLeft = scrollStart - walk;
+    },
+    [isDragging, startX, scrollStart]
+  );
 
   const handleTouchEnd = useCallback(() => {
     setIsDragging(false);
@@ -109,7 +124,7 @@ const DemoCallsSection = () => {
       description: "Burst pipe in kitchen - urgent response needed",
       duration: "1:45",
       scenario: "Customer has water flooding from under sink",
-      outcome: "Emergency slot booked within 2 hours"
+      outcome: "Emergency slot booked within 2 hours",
     },
     {
       id: "boiler-repair",
@@ -120,7 +135,7 @@ const DemoCallsSection = () => {
       description: "No heating or hot water - winter emergency",
       duration: "2:12",
       scenario: "Elderly customer with no heat in cold weather",
-      outcome: "Same-day emergency repair scheduled"
+      outcome: "Same-day emergency repair scheduled",
     },
     {
       id: "routine-service",
@@ -131,7 +146,7 @@ const DemoCallsSection = () => {
       description: "Regular maintenance appointment booking",
       duration: "1:23",
       scenario: "Commercial client scheduling routine check",
-      outcome: "Recurring maintenance contract renewed"
+      outcome: "Recurring maintenance contract renewed",
     },
     {
       id: "hvac-install",
@@ -142,7 +157,7 @@ const DemoCallsSection = () => {
       description: "New system quote and installation planning",
       duration: "3:01",
       scenario: "New construction project requiring quote",
-      outcome: "€15,000 installation project secured"
+      outcome: "€15,000 installation project secured",
     },
     {
       id: "electrical-emergency",
@@ -153,8 +168,8 @@ const DemoCallsSection = () => {
       description: "Power outage and electrical safety concern",
       duration: "1:58",
       scenario: "Restaurant losing power during service",
-      outcome: "Emergency electrician dispatched immediately"
-    }
+      outcome: "Emergency electrician dispatched immediately",
+    },
   ];
 
   const togglePlay = (callId: string) => {
@@ -167,25 +182,26 @@ const DemoCallsSection = () => {
 
   return (
     <section className="py-20 bg-background">
-<<<<<<< HEAD
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-24">
-=======
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
->>>>>>> b258d63ba3d9ba82c2e9a4e86c3ff3fce42f5484
         <div className="text-center mb-16">
-          <p className="text-blue-500 font-semibold uppercase tracking-wide mb-4">REAL AI CONVERSATIONS</p>
+          <p className="text-blue-500 font-semibold uppercase tracking-wide mb-4">
+            REAL AI CONVERSATIONS
+          </p>
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Hear Fieson AI in action
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Listen to actual AI conversations handling different home service scenarios. 
-            Each call demonstrates professional communication and successful booking.
+            Listen to actual AI conversations handling different home service
+            scenarios. Each call demonstrates professional communication and
+            successful booking.
           </p>
         </div>
 
-        <div 
-          ref={containerRef} 
-          className={`xl:grid xl:grid-cols-5 xl:gap-6 flex xl:flex-none overflow-x-auto snap-x snap-mandatory gap-4 pl-[calc(50vw-140px)] pr-[calc(50vw-140px)] xl:px-0 xl:pl-0 xl:pr-0 pb-4 xl:pb-0 scrollbar-hide ${isDragging ? 'cursor-grabbing' : 'cursor-grab'} xl:cursor-default`}
+        <div
+          ref={containerRef}
+          className={`xl:grid xl:grid-cols-5 xl:gap-6 flex xl:flex-none overflow-x-auto snap-x snap-mandatory gap-4 pl-[calc(50vw-140px)] pr-[calc(50vw-140px)] xl:px-0 xl:pl-0 xl:pr-0 pb-4 xl:pb-0 scrollbar-hide ${
+            isDragging ? "cursor-grabbing" : "cursor-grab"
+          } xl:cursor-default`}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
@@ -193,18 +209,23 @@ const DemoCallsSection = () => {
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
-          style={{ userSelect: isDragging ? 'none' : 'auto' }}
+          style={{ userSelect: isDragging ? "none" : "auto" }}
         >
           {demoCalls.map((call) => {
             const Icon = call.icon;
             const isPlaying = playingCall === call.id;
-            
+
             return (
-              <Card key={call.id} className="p-6 hover:shadow-medium smooth-transition group cursor-pointer flex-shrink-0 w-[280px] xl:w-auto snap-center bg-muted/30">
+              <Card
+                key={call.id}
+                className="p-6 hover:shadow-medium smooth-transition group cursor-pointer flex-shrink-0 w-[280px] xl:w-auto snap-center bg-muted/30"
+              >
                 <div className="space-y-4">
                   {/* Icon and Play Button */}
                   <div className="flex items-center justify-between">
-                    <div className={`w-12 h-12 ${call.iconBg} rounded-xl flex items-center justify-center`}>
+                    <div
+                      className={`w-12 h-12 ${call.iconBg} rounded-xl flex items-center justify-center`}
+                    >
                       <Icon className={`w-6 h-6 ${call.iconColor}`} />
                     </div>
                     <Button
@@ -212,7 +233,7 @@ const DemoCallsSection = () => {
                       size="sm"
                       onClick={() => togglePlay(call.id)}
                       className={`w-10 h-10 rounded-full p-0 ${
-                        isPlaying ? 'bg-accent text-accent-foreground' : ''
+                        isPlaying ? "bg-accent text-accent-foreground" : ""
                       }`}
                     >
                       {isPlaying ? (
@@ -225,7 +246,9 @@ const DemoCallsSection = () => {
 
                   {/* Content */}
                   <div>
-                    <h3 className="font-bold text-lg mb-2 text-foreground">{call.title}</h3>
+                    <h3 className="font-bold text-lg mb-2 text-foreground">
+                      {call.title}
+                    </h3>
                     <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
                       {call.description}
                     </p>
@@ -238,7 +261,10 @@ const DemoCallsSection = () => {
                   {isPlaying && (
                     <div className="space-y-2">
                       <div className="w-full bg-muted rounded-full h-1">
-                        <div className="bg-accent h-1 rounded-full animate-pulse" style={{width: '45%'}} />
+                        <div
+                          className="bg-accent h-1 rounded-full animate-pulse"
+                          style={{ width: "45%" }}
+                        />
                       </div>
                       <div className="text-xs text-muted-foreground">
                         Playing... {call.scenario}
@@ -265,14 +291,20 @@ const DemoCallsSection = () => {
               key={index}
               onClick={() => scrollToSlide(index)}
               className={`w-2 h-2 rounded-full smooth-transition ${
-                currentSlide === index ? 'bg-accent' : 'bg-muted'
+                currentSlide === index ? "bg-accent" : "bg-muted"
               }`}
             />
           ))}
         </div>
 
         <div className="text-center mt-12">
-          <Button variant="accent" size="lg" onClick={() => window.open('https://cal.com/bart-rosier/session-bart', '_blank')}>
+          <Button
+            variant="accent"
+            size="lg"
+            onClick={() =>
+              window.open("https://cal.com/bart-rosier/session-bart", "_blank")
+            }
+          >
             Try Fieson AI Now
           </Button>
         </div>
