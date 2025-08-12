@@ -207,6 +207,7 @@ const IndustryPage = () => {
                             index + 1
                           }`}
                           className="w-full h-auto rounded-2xl shadow-large object-cover aspect-[3/2]"
+                          loading="lazy"
                         />
                       </CarouselItem>
                     ))}

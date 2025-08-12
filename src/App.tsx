@@ -2,7 +2,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, useLocation } from "react-router-dom";
+import AnimatedRoutes from "./AnimatedRoutes";
 import { useEffect } from "react";
 import CookieConsent from "react-cookie-consent";
 import Index from "./pages/Index";
@@ -59,19 +60,7 @@ const App = () => (
       </CookieConsent>
       <BrowserRouter>
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/industries" element={<Industries />} />
-          <Route path="/industries/:industryName" element={<IndustryPage />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/terms-europe" element={<MarkdownPage filename="terms-europe" />} />
-          <Route path="/markdown/:filename" element={<MarkdownPage />} />
-          <Route path="/integrations" element={<Integrations />} />
-          <Route path="/about" element={<About />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AnimatedRoutes />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
