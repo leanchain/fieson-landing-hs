@@ -135,13 +135,13 @@ const Footer = () => {
             {/* Legal */}
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-sm">
               <Link
-                to="/terms-europe"
+                to="/privacy/terms-europe"
                 className="text-primary-foreground/80 hover:text-primary-foreground smooth-transition uppercase"
               >
                 TERMS OF USE
               </Link>
               <Link
-                to="/terms-europe"
+                to="/privacy/terms-europe"
                 className="text-primary-foreground/80 hover:text-primary-foreground smooth-transition uppercase"
               >
                 privacy policy

@@ -82,7 +82,7 @@ const AnimatedRoutes = () => {
           }
         />
         <Route
-          path="/terms-europe"
+          path="/privacy/terms-europe"
           element={
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -90,12 +90,12 @@ const AnimatedRoutes = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
             >
-              <MarkdownPage filename="terms-europe" />
+              <MarkdownPage directory="privacy" filename="terms-europe" />
             </motion.div>
           }
         />
         <Route
-          path="/markdown/:filename"
+          path="/resources/:filename"
           element={
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -103,7 +103,7 @@ const AnimatedRoutes = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
             >
-              <MarkdownPage />
+              <MarkdownPage directory="resources" />
             </motion.div>
           }
         />

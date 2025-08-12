@@ -3,18 +3,20 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
-const MarkdownPage: React.FC = () => {
-  const { filename } = useParams<{ filename: string }>();
+const MarkdownPage: React.FC<{ directory?: string; filename?: string }> = ({ directory: propDirectory, filename: propFilename }) => {
+  const { directory: paramDirectory, filename: paramFilename } = useParams<{ directory?: string; filename: string }>();
+  const filename = propFilename || paramFilename;
+  const directory = propDirectory || paramDirectory || 'resources';
   const [markdown, setMarkdown] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchMarkdown = async () => {
       try {
-        console.log(`Attempting to fetch: /resources/${filename}.md`);
-        const response = await fetch(`/resources/${filename}.md`);
+        console.log(`Attempting to fetch: /${directory}/${filename}.md`);
+        const response = await fetch(`/${directory}/${filename}.md`);
         if (!response.ok) {
           const errorText = await response.text();
           console.error(`Failed to fetch ${filename}.md: ${response.statusText}`, errorText);
@@ -77,14 +79,37 @@ const MarkdownPage: React.FC = () => {
               );
             },
             a: ({ node, ...props }) => {
-              const isExternal = props.href && (props.href.startsWith('http://') || props.href.startsWith('https://'));
-              return (
-                <a
-                  {...props}
-                  {...(isExternal && { target: '_blank', rel: 'noopener noreferrer' })}
-                  className="text-blue-600 hover:underline"
-                />
-              );
+              const href = props.href || '';
+              const isExternal = href.startsWith('http://') || href.startsWith('https://');
+              const isAnchor = href.startsWith('#');
+
+              if (isExternal) {
+                return (
+                  <a
+                    {...props}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                  />
+                );
+              } else if (isAnchor) {
+                return (
+                  <a
+                    {...props}
+                    className="text-blue-600 hover:underline"
+                  />
+                );
+              } else {
+                // Internal link, use React Router's Link component
+                return (
+                  <Link
+                    to={href}
+                    className="text-blue-600 hover:underline"
+                  >
+                    {props.children}
+                  </Link>
+                );
+              }
             },
           }}
         >

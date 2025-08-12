@@ -7,52 +7,52 @@ const articles = [
   {
     title: "AI Voice Technology: Benefits and Challenges",
     description: "Explores how AI voice technology enhances convenience, efficiency, and personalization in various applications, including smart home devices and home services.",
-    link: "/markdown/ai-voice-technology-benefits-and-challenges",
+    link: "/resources/ai-voice-technology-benefits-and-challenges",
   },
   {
     title: "The Benefits of Voice AI for Smart Home Automation",
     description: "Discusses how voice AI improves accessibility and user experience in smart home automation, benefiting individuals with disabilities.",
-    link: "/markdown/the-benefits-of-voice-ai-for-smart-home-automation",
+    link: "/resources/the-benefits-of-voice-ai-for-smart-home-automation",
   },
   {
     title: "How Voice AI Assistants Can Help Aging Adults Live Independently",
     description: "Focuses on the safety and assistance benefits of AI voice assistants for aging adults, including emergency calls and reminders.",
-    link: "/markdown/how-voice-ai-assistants-can-help-aging-adults-live-independently",
+    link: "/resources/how-voice-ai-assistants-can-help-aging-adults-live-independently",
   },
   {
     title: "The Impact of AI-Driven Voice Assistants on Smart Home Ecosystems",
     description: "An academic perspective on the positive impact of AI voice assistants in smart home environments, including challenges.",
-    link: "/markdown/the-impact-of-ai-driven-voice-assistants-on-smart-home-ecosystems",
+    link: "/resources/the-impact-of-ai-driven-voice-assistants-on-smart-home-ecosystems",
   },
   {
     title: "How AI Call Center Platforms Revolutionize Home Services",
     description: "Explains how AI improves customer interactions, automates tasks, and enhances efficiency in home service industries like HVAC and plumbing.",
-    link: "/markdown/how-ai-call-center-platforms-revolutionize-home-services",
+    link: "/resources/how-ai-call-center-platforms-revolutionize-home-services",
   },
   {
     title: "AI Answering and Scheduling Assistants for Home Service Leads",
     description: "Discusses how AI-powered assistants improve responsiveness and lead management for home service businesses.",
-    link: "/markdown/ai-answering-and-scheduling-assistants-for-home-service-leads",
+    link: "/resources/ai-answering-and-scheduling-assistants-for-home-service-leads",
   },
   {
     title: "How AI is Revolutionizing the Home Services Industry",
     description: "Explores how AI streamlines customer service, optimizes operations, and enhances home safety in the home services sector.",
-    link: "/markdown/how-ai-is-revolutionizing-the-home-services-industry",
+    link: "/resources/how-ai-is-revolutionizing-the-home-services-industry",
   },
   {
     title: "The Future of Home Services: How AI is Changing the Game",
     description: "Examines how AI is driving efficiency across the customer journey, from lead intake to post-call wrap-ups, and reducing training time.",
-    link: "/markdown/the-future-of-home-services-how-ai-is-changing-the-game",
+    link: "/resources/the-future-of-home-services-how-ai-is-changing-the-game",
   },
   {
     title: "AI in the Contact Center: The Future of Customer Service",
     description: "Focuses on how AI and automation can significantly cut down training time for new agents and provide real-time guidance.",
-    link: "/markdown/ai-in-the-contact-center-the-future-of-customer-service",
+    link: "/resources/ai-in-the-contact-center-the-future-of-customer-service",
   },
   {
     title: "Autonomous Repair Solutions: The Future of Home Services",
     description: "Discusses the potential rise of autonomous robots and drones for maintenance tasks and inspections in home services.",
-    link: "/markdown/autonomous-repair-solutions-the-future-of-home-services",
+    link: "/resources/autonomous-repair-solutions-the-future-of-home-services",
   },
 ];
 
@@ -89,7 +89,7 @@ const Resources = () => {
                     <p className="text-muted-foreground mb-4">
                       {article.description}
                     </p>
-                    {article.link.startsWith("/markdown/") ? (
+                    {article.link.startsWith("/resources/") ? (
                       <Link
                         to={article.link}
                         className="text-accent hover:underline"

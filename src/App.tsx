@@ -52,7 +52,7 @@ const App = () => (
         This website uses cookies to enhance the user experience.{" "}
         <span style={{ fontSize: "10px" }}>
           By continuing to use this site, you agree to our use of cookies. Read our{" "}
-          <a href="/terms-europe" style={{ color: "#fff", textDecoration: "underline" }}>
+          <a href="/privacy/terms-europe" style={{ color: "#fff", textDecoration: "underline" }}>
             Cookie Policy
           </a>
           .

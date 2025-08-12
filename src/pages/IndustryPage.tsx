@@ -303,14 +303,14 @@ const IndustryPage = () => {
                     >
                       By calling, you confirm that you have read our{" "}
                       <Link
-                        to="/terms-europe"
+                        to="/privacy/terms-europe"
                         className="p-0 h-auto text-xs underline text-blue-accent"
                       >
                         Contact Terms
                       </Link>{" "}
                       and our{" "}
                       <Link
-                        to="/terms-europe"
+                        to="/privacy/terms-europe"
                         className="p-0 h-auto text-xs underline text-blue-accent"
                       >
                         Privacy Policy
