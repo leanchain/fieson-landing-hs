@@ -1,30 +1,30 @@
-### **Privacy Policy & General Terms and Conditions**
+# Fieson AI Europe Privacy Policy & General Terms and Conditions
 
-Everything you need to know about data protection and using fonio.
+Everything you need to know about data protection and using fieson.
 
-- Privacy Policy (Landing Page)
-- Privacy Policy (Web App)
-- General Terms and Conditions (GTC)
+- [Privacy Policy (Landing Page)](/privacy-policy-landing)
+- [Privacy Policy (Web App)](/privacy-policy-webapp)
+- [General Terms and Conditions (GTC)](/general-terms-conditions)
 
 ---
 
-### **Privacy, Responsibility, and Scope**
+## **Privacy, Responsibility, and Scope**
 
 We respect the privacy of our customers and other interested parties and comply with applicable laws for the protection of your privacy. These laws include, in particular, the **General Data Protection Regulation of the European Union ("GDPR")** and UK data protection laws.
 
 This privacy notice covers:
-**Website(s):** fonio.ai
+**Website(s):** [fieson.com](https://fieson.com)
 
 The following categories of data subjects are covered by this privacy notice:
 **Website Visitors**
 
 The data controller responsible for the processing of your personal data under this privacy notice is:
 
-**fonio GmbH**
-Joanelligasse 5/16
-1060 Vienna
-Austria
-info@fonio.ai
+**fieson GmbH**
+Hugelstrasse 8,
+8002 Zurich,
+Switzerland
+<info@fieson.com>
 
 The following sections explain:
 
@@ -37,9 +37,9 @@ The following sections explain:
 
 ---
 
-### **Purposes for Which Personal Data Is Processed: fonio.ai Website**
+## **Purposes for Which Personal Data Is Processed: fieson.com Website**
 
-#### **Website Hosting**
+### **Website Hosting**
 
 Our website was created and is hosted using the online service **"Webflow."** Webflow is a product of the US company Webflow, Inc.
 
@@ -61,17 +61,7 @@ Webflow uses Content Delivery Network (CDN) providers like Fastly, Amazon CloudF
 - Consent of the data subject based on Art. 6 Para. 1 lit. a GDPR
 - Data Privacy Framework
 
-**Involved Processors:**
-
-- **Webflow, Inc.** 398 11th St., Floor 2, San Francisco, CA 94103, USA
-
-**Additional Information:**
-
-- Interest based on the legal basis: Providing or using the offered services.
-- The legal basis of consent refers to the use of CDN services.
-- You can find more information in the **Webflow Global Privacy Policy**.
-
-#### **Testing the AI Telephony Assistant**
+### **Testing the AI Telephony Assistant**
 
 On our website, we offer a function to test an AI telephony assistant. After providing the necessary data, you will receive a call from our AI telephone assistant. The test call is recorded for quality improvement purposes. When using the service, data may also be transferred to third countries.
 
@@ -114,7 +104,7 @@ On our website, we offer a function to test an AI telephony assistant. After pro
   - Data concerning sex life or sexual orientation.
 - You can avoid the collection of your data by not using the test service.
 
-#### **Contacting Us via Email**
+### **Contacting Us via Email**
 
 We publish a contact email address on our website that you can use to get in touch with us, for example, to get more information about our services or to give us feedback.
 
@@ -140,7 +130,7 @@ We publish a contact email address on our website that you can use to get in tou
   - Health data.
   - Data concerning sex life or sexual orientation.
 
-#### **Newsletter Subscription**
+### **Newsletter Subscription**
 
 You can subscribe to our newsletter on our website so that we can regularly send you news about us and our services.
 
@@ -163,9 +153,9 @@ You can subscribe to our newsletter on our website so that we can regularly send
 
 **Additional Information:**
 
-- More information on data protection at MailerLite can be found in the **MailerLite Privacy Policy** and the **MailerLite Data Processing Addendum**.
+- More information on data protection at MailerLite can be found in the [**MailerLite Privacy Policy**](https://www.mailerlite.com/legal/privacy-policy) and the [**MailerLite Data Processing Addendum**](https://www.mailerlite.com/legal/data-processing-agreement).
 
-#### **Online Appointment Scheduling**
+### **Online Appointment Scheduling**
 
 You can schedule an appointment with us on our website. To do this, we use the services of **Cal.com**. Using the appointment scheduling function may result in data being transferred to third countries.
 
@@ -190,7 +180,7 @@ You can schedule an appointment with us on our website. To do this, we use the s
 
 **Additional Information:**
 
-- You can find more information in the **Cal.com Privacy Policy**.
+- You can find more information in the [**Cal.com Privacy Policy**](https://cal.com/privacy).
 - We ask you not to transmit any particularly sensitive categories of personal data when scheduling an online appointment. These categories include, but are not limited to, the following data:
   - Racial or ethnic origin.
   - Political opinions.
@@ -202,7 +192,7 @@ You can schedule an appointment with us on our website. To do this, we use the s
   - Data concerning sex life or sexual orientation.
 - You can avoid the collection of your data by not using the online appointment booking.
 
-#### **Analysis of User Behavior**
+### **Analysis of User Behavior**
 
 We use technologies in the form of code snippets to analyze and improve user behavior on our website, and to monitor, optimize, and acquire new customers through advertising campaigns. This may involve data transfers to third countries.
 
@@ -238,13 +228,13 @@ The following technologies are in use:
 
 **Additional Information:**
 
-- More information on TikTok and data protection can be found in the **TikTok Privacy Policy**.
-- More information on Meta and data protection can be found in the **Facebook Privacy Policy**.
-- More information on LinkedIn and data protection can be found in the **LinkedIn Privacy Notice**.
-- Further information on data protection related to Google Analytics can be found on the **Google Support website**.
-- You can learn more about data processing using Google services through the **Google Privacy Policy**.
+- More information on TikTok and data protection can be found in the [**TikTok Privacy Policy**](https://www.tiktok.com/legal/page/eea/privacy-policy/de).
+- More information on Meta and data protection can be found in the [**Facebook Privacy Policy**](https://www.facebook.com/privacy/policy/).
+- More information on LinkedIn and data protection can be found in the [**LinkedIn Privacy Notice**](https://www.linkedin.com/legal/privacy/eu).
+- Further information on data protection related to Google Analytics can be found on the [**Google Support website**](https://support.google.com/analytics/answer/6004245).
+- You can learn more about data processing using Google services through the [**Google Privacy Policy**](https://policies.google.com/privacy).
 
-#### **Displaying Third-Party Content via Social Media Plug-ins and Widgets**
+### **Displaying Third-Party Content via Social Media Plug-ins and Widgets**
 
 We have integrated social media plug-ins and widgets into our site to show you content that may be of interest to you, improve your user experience, and optimize our advertisements. This may result in data being transferred to a third country.
 
@@ -272,14 +262,14 @@ We have integrated social media plug-ins and widgets into our site to show you c
 
 **Additional Information:**
 
-- You can get more information on what Facebook plug-ins exist and how they are used at **[https://developers.facebook.com/docs/plugins](https://developers.facebook.com/docs/plugins)**.
+- You can get more information on what Facebook plug-ins exist and how they are used at [**https://developers.facebook.com/docs/plugins**](https://developers.facebook.com/docs/plugins).
 - We are not responsible for the practices and policies regarding the collection, use, disclosure, and data security practices of the third-party providers mentioned. We cannot freely determine the content of the transmitted data or the nature of its use by these third-party providers.
 - When you access a page of our website that contains such a plug-in, your browser establishes a direct connection to Facebook's servers. The content of the plug-in is transmitted by Facebook directly to your browser and embedded into the website.
 - If you are logged into Facebook, Facebook can associate the visit with your Facebook account. If you want to prevent this, you must log out of Facebook before visiting our website.
-- More information on Facebook and data protection can be found in the **Facebook Privacy Policy**.
-- You can learn more about data processing using Google services through the **Google Privacy Policy**.
+- More information on Facebook and data protection can be found in the [**Facebook Privacy Policy**](https://www.facebook.com/privacy/policy/).
+- You can learn more about data processing using Google services through the [**Google Privacy Policy**](https://policies.google.com/privacy).
 
-#### **Google Fonts**
+### **Google Fonts**
 
 To display fonts on our website, we use the service **"Google Fonts,"** a free directory of fonts.
 
@@ -302,33 +292,33 @@ To display fonts on our website, we use the service **"Google Fonts,"** a free d
 
 **Additional Information:**
 
-- You can learn more about data processing using Google services through the **Google Privacy Policy**.
+- You can learn more about data processing using Google services through the [**Google Privacy Policy**](https://policies.google.com/privacy).
 
 ---
 
-### **Further Information**
+## **Further Information**
 
-#### **Data Transfer to the USA and the Data Privacy Framework**
+### **Data Transfer to the USA and the Data Privacy Framework**
 
-We would like to point out that on July 10, 2023, the EU Commission adopted an adequacy decision on the **EU-US Data Privacy Framework (DPF)** pursuant to Art. 45 Para. 1 GDPR. Accordingly, organizations or companies (as data importers) in the USA that are registered on a public list as part of the self-certification of the Data Privacy Framework offer an adequate level of protection for data transfers. This therefore represents a valid legal basis for using certified US services. For all purposes mentioned in this privacy notice that use services from US providers with an adequate level of protection, **"Data Privacy Framework"** is noted in the legal basis. You can check whether a service provider is certified directly on the **Data Privacy Framework website**.
+We would like to point out that on July 10, 2023, the EU Commission adopted an adequacy decision on the **EU-US Data Privacy Framework (DPF)** pursuant to Art. 45 Para. 1 GDPR. Accordingly, organizations or companies (as data importers) in the USA that are registered on a public list as part of the self-certification of the Data Privacy Framework offer an adequate level of protection for data transfers. This therefore represents a valid legal basis for using certified US services. For all purposes mentioned in this privacy notice that use services from US providers with an adequate level of protection, **"Data Privacy Framework"** is noted in the legal basis. You can check whether a service provider is certified directly on the [**Data Privacy Framework website**](https://www.dataprivacyframework.gov/s/participant-search).
 
 If a provider is not certified by the Data Privacy Framework, this is explicitly mentioned for the respective purpose, and a valid alternative legal basis is cited.
 
-#### **Standard Contractual Clauses**
+### **Standard Contractual Clauses**
 
-To enable data transfer to countries without an adequacy decision, the EU Commission has created contract templates (**Standard Contractual Clauses**). These Standard Contractual Clauses obligate contracting parties to maintain a level of data protection comparable to that in the EU. These contract texts are available on the **European Union website**. Standard Contractual Clauses are also abbreviated as **"SCCs."**
+To enable data transfer to countries without an adequacy decision, the EU Commission has created contract templates (**Standard Contractual Clauses**). These Standard Contractual Clauses obligate contracting parties to maintain a level of data protection comparable to that in the EU. These contract texts are available on the [**European Union website**](https://commission.europa.eu/). Standard Contractual Clauses are also abbreviated as **"SCCs."**
 
-#### **Cookies and Local Storage**
+### **Cookies and Local Storage**
 
 This website stores personal data and information in **cookies, in session storage, and in local storage**. The processing is carried out on the legal basis specified for the respective service.
 
 You can set how your web browser handles cookies and local storage, which storage processes are permitted or rejected, and for how long the data is processed in your web browser settings.
 
-#### **Storage Duration**
+### **Storage Duration**
 
 We store your personal data only as long as is necessary to fulfill the purposes mentioned above or as required by contractual or legal retention periods.
 
-#### **Data Disclosure**
+### **Data Disclosure**
 
 We only disclose your personal data to third parties if required by law, if it is necessary to provide our services, or if you have given your consent to the disclosure. We will never sell your data to third parties without your explicit consent.
 
@@ -341,21 +331,21 @@ Data may be disclosed, where necessary, to the following categories of recipient
 - Collection agencies (debt collection)
 - Lawyers (enforcement of legal claims)
 
-#### **Protection of Personal Data**
+### **Protection of Personal Data**
 
 We protect personal data using appropriate **technical and organizational measures** that comply with current industry practices. Where possible, this includes, in particular, pseudonymization and encryption of personal data during transmission and storage.
 
-#### **Withdrawal of Given Consent**
+### **Withdrawal of Given Consent**
 
 If you have given consent for the processing of your personal data for a specific purpose based on **Art. 6 Para. 1 lit. a GDPR**, you can **withdraw this consent at any time**. The lawfulness of the processing of personal data until the withdrawal is not affected by the withdrawal.
 
-#### **Mandatory Data Provision and Consequences of Non-Provision When Visiting the Website**
+### **Mandatory Data Provision and Consequences of Non-Provision When Visiting the Website**
 
 The provision of personal data for visiting our website is not required by law or contract. Non-provision of your personal data is possible if you do not visit this website. For certain functions on our website, non-provision of data means that these functions cannot be used.
 
 ---
 
-### **Data Subject Rights**
+## **Data Subject Rights**
 
 - **Right of Access:** You have the right to request access to your personal data stored by us and to receive a copy of this information at any time.
 - **Right to Rectification:** If your data is incorrect or incomplete, we will correct it upon request.
@@ -363,16 +353,16 @@ The provision of personal data for visiting our website is not required by law o
 - **Right to Restriction of Processing:** You have the right to request that we restrict the processing of your personal data under certain circumstances.
 - **Right to Erasure:** You have the right to have personal data processed by us erased, provided this is legally permissible.
 - **Right to Object:** You can object to the processing of your personal data, for example, by not using certain services.
-- **Right to Lodge a Complaint:** If you believe that we are not processing your personal data correctly, you can contact us. You also have the right to file a complaint with a supervisory authority. More information about the supervisory authorities in the European Union can be found **here**.
+- **Right to Lodge a Complaint:** If you believe that we are not processing your personal data correctly, you can contact us. You also have the right to file a complaint with a supervisory authority. More information about the supervisory authorities in the European Union can be found [**here**](https://ec.europa.eu/justice/article-29/structure/data-protection-authorities/index_en.htm).
 
 All rights can be exercised via email using the contact information provided at the beginning of this privacy policy.
 
 ---
 
-### **Changes to This Privacy Notice**
+## **Changes to This Privacy Notice**
 
 We will update this privacy notice from time to time. All changes will be published on this page with an updated modification date.
 
 **Date of Publication of the Current Version: 04/27/2025**
 
-This privacy notice was generated and provided by the **Metasoul Privacy Generator**.
+This privacy notice was generated and provided by the [**Metasoul Privacy Generator**](https://www.metasoul.com/privacy-generator).
