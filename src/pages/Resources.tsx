@@ -42,17 +42,17 @@ const articles = [
   {
     title: "The Future of Home Services: How AI is Changing the Game",
     description: "Examines how AI is driving efficiency across the customer journey, from lead intake to post-call wrap-ups, and reducing training time.",
-    link: "/resources/the-future-of-home-services-how-ai-is-changing-the-game.md",
+    link: "/markdown/the-future-of-home-services-how-ai-is-changing-the-game",
   },
   {
     title: "AI in the Contact Center: The Future of Customer Service",
     description: "Focuses on how AI and automation can significantly cut down training time for new agents and provide real-time guidance.",
-    link: "/resources/ai-in-the-contact-center-the-future-of-customer-service.md",
+    link: "/markdown/ai-in-the-contact-center-the-future-of-customer-service",
   },
   {
     title: "Autonomous Repair Solutions: The Future of Home Services",
     description: "Discusses the potential rise of autonomous robots and drones for maintenance tasks and inspections in home services.",
-    link: "/resources/autonomous-repair-solutions-the-future-of-home-services.md",
+    link: "/markdown/autonomous-repair-solutions-the-future-of-home-services",
   },
 ];
 

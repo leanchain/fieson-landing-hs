@@ -18,6 +18,7 @@ const Hero = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [callActive, setCallActive] = useState(false);
   const callDurationTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const [regionCode, setRegionCode] = useState<string | undefined>("US"); // State to store region code
 
   useEffect(() => {
     const handleFocusPhoneInput = () => {
@@ -78,7 +79,7 @@ const Hero = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ phoneNumber: fullPhoneNumber }),
+          body: JSON.stringify({ phoneNumber: fullPhoneNumber, regionCode }),
         }
       );
 
@@ -154,8 +155,14 @@ const Hero = () => {
                       geoIpLookup: (callback) => {
                         fetch("https://ipapi.co/json/")
                           .then((res) => res.json())
-                          .then((data) => callback(data.country_code))
-                          .catch(() => callback("us")); // Default to US on error
+                          .then((data) => {
+                            setRegionCode(data.country_code); // Set the region code
+                            callback(data.country_code);
+                          })
+                          .catch(() => {
+                            setRegionCode("US"); // Default to US on error
+                            callback("us"); // Default to US on error
+                          });
                       },
                     }}
                     inputProps={{
