@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm ci
 
 # Copy source code
 COPY . .
@@ -15,4 +15,5 @@ COPY . .
 EXPOSE 3000
 
 # Start development server
+RUN rm -rf .vite
 CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "5173"]
