@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Phone, MessageSquare, DollarSign, Users, Check } from "lucide-react";
+import { Phone, MessageSquare, Euro, Users, Check } from "lucide-react";
 import FiesonLogo from "@/components/FiesonLogo";
 
 const UseCases = () => {
@@ -39,7 +39,7 @@ const UseCases = () => {
     {
       id: "sales",
       name: "AI Sales",
-      icon: DollarSign,
+      icon: Euro,
       title: "AI Salesperson",
       description:
         "Sell Memberships, Negotiate Payment Plans, Upsell Packages at Any Hour of the Day with Fieson AI's AI Sales Agent",

@@ -8,10 +8,10 @@ import { Check, ChevronDown, ChevronUp } from "lucide-react";
 
 const Pricing = () => {
   const [minutes, setMinutes] = useState([500]);
-  const [calculatedCost, setCalculatedCost] = useState(500 * 0.5); // Initial cost for 500 minutes
+  const [calculatedCost, setCalculatedCost] = useState(500 * 0.15); // Initial cost for 500 minutes
   const handleMinutesChange = (newMinutes: number[]) => {
     setMinutes(newMinutes);
-    setCalculatedCost(newMinutes[0] * 0.5);
+    setCalculatedCost(newMinutes[0] * 0.15);
   };
   const [activeTab, setActiveTab] = useState("General");
   const [expandedFaq, setExpandedFaq] = useState<string | null>(null);

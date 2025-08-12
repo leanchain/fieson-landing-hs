@@ -70,16 +70,41 @@ const Testimonials = () => {
     },
   ];
 
-  const testimonialsPerView = 3;
-    const totalTestimonials = testimonials.length;
-  const totalSlides = Math.ceil(totalTestimonials / testimonialsPerView);
+  const [dynamicTestimonialsPerView, setDynamicTestimonialsPerView] = useState(3);
+  const totalTestimonials = testimonials.length;
+  const totalSlides = Math.ceil(totalTestimonials / dynamicTestimonialsPerView);
+
+  useEffect(() => {
+    const calculateTestimonialsPerView = () => {
+      if (window.innerWidth >= 1024) { // lg breakpoint
+        setDynamicTestimonialsPerView(3);
+      } else if (window.innerWidth >= 640) { // sm breakpoint
+        setDynamicTestimonialsPerView(2);
+      } else {
+        setDynamicTestimonialsPerView(1);
+      }
+    };
+
+    calculateTestimonialsPerView(); // Set initial value
+    window.addEventListener("resize", calculateTestimonialsPerView);
+
+    return () => {
+      window.removeEventListener("resize", calculateTestimonialsPerView);
+    };
+  }, []);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + testimonialsPerView) % totalTestimonials);
+    setCurrentSlide((prev) => {
+      const newSlide = prev + dynamicTestimonialsPerView;
+      return newSlide >= totalTestimonials ? 0 : newSlide;
+    });
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - testimonialsPerView + totalTestimonials) % totalTestimonials);
+    setCurrentSlide((prev) => {
+      const newSlide = prev - dynamicTestimonialsPerView;
+      return newSlide < 0 ? totalTestimonials - (totalTestimonials % dynamicTestimonialsPerView || dynamicTestimonialsPerView) : newSlide;
+    });
   };
 
   // Drag helpers
@@ -140,7 +165,7 @@ const Testimonials = () => {
   const containerWidth = containerRef.current?.clientWidth || 1;
   const percentDelta = (deltaX / containerWidth) * 100;
   const translatePercent =
-    -((currentSlide * 100) / testimonialsPerView) +
+    -((currentSlide * 100) / dynamicTestimonialsPerView) +
     (isDragging ? percentDelta : 0);
 
   return (
@@ -236,12 +261,12 @@ const Testimonials = () => {
             {Array.from({ length: totalSlides }).map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentSlide(index * testimonialsPerView)}
+                onClick={() => setCurrentSlide(index * dynamicTestimonialsPerView)}
                 className={`w-2 h-2 rounded-full smooth-transition ${
-                  Math.floor(currentSlide / testimonialsPerView) === index ? "bg-blue-500" : "bg-muted"
+                  Math.floor(currentSlide / dynamicTestimonialsPerView) === index ? "bg-blue-500" : "bg-muted"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
-                aria-current={Math.floor(currentSlide / testimonialsPerView) === index}
+                aria-current={Math.floor(currentSlide / dynamicTestimonialsPerView) === index}
               />
             ))}
           </div>
