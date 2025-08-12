@@ -41,6 +41,14 @@ const Footer = () => {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/industries"
+                  className="text-primary-foreground/80 hover:text-primary-foreground smooth-transition font-bold"
+                >
+                  View All Industries
+                </Link>
+              </li>
             </ul>
           </div>
 

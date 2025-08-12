@@ -43,13 +43,64 @@ const About: React.FC = () => {
         </div>
       </div>
 
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-gray-800 mb-12 text-center">Our Team</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {/* Pankaj Kumar */}
+            <div className="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center text-center">
+              <img
+                src="/public/images/team/pankaj-kumar.jpeg"
+                alt="Pankaj Kumar"
+                className="w-32 h-32 rounded-full object-cover mb-6"
+              />
+              <h3 className="text-2xl font-bold text-gray-800 mb-2">Pankaj Kumar</h3>
+              <p className="text-lg text-gray-600 mb-4">Founding Technical Lead</p>
+              <p className="text-md text-gray-700 mb-4">
+                Pankaj has extensive experience in software engineering, particularly in building scalable distributed systems and implementing AI/ML algorithms. He previously led development at Google (YouTube) and Amazon, focusing on data infrastructure, cost optimization, and real-time systems.
+              </p>
+              <a
+                href="https://www.linkedin.com/in/pankaj4u4m/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline font-semibold"
+              >
+                View LinkedIn Profile
+              </a>
+            </div>
+
+            {/* Bart Rosier */}
+            <div className="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center text-center">
+              <img
+                src="/public/images/team/bart-rosier.jpeg"
+                alt="Bart Rosier"
+                className="w-32 h-32 rounded-full object-cover mb-6"
+              />
+              <h3 className="text-2xl font-bold text-gray-800 mb-2">Bart Rosier</h3>
+              <p className="text-lg text-gray-600 mb-4">Co-Founder and CEO</p>
+              <p className="text-md text-gray-700 mb-4">
+                Bart is an experienced entrepreneur and startup growth expert with a strong background in product development, engineering, and commercial strategy. He co-founded Etergo (acquired by Ola Electric Mobility) and has advised numerous high-growth startups in both the US and EU.
+              </p>
+              <a
+                href="https://www.linkedin.com/in/bartrosier/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline font-semibold"
+              >
+                View LinkedIn Profile
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-primary text-primary-foreground py-16 text-center">
         <div className="container mx-auto max-w-4xl px-4">
           <h2 className="text-4xl font-bold mb-6">Join Our Journey</h2>
           <p className="text-xl mb-8">
             Learn more about how Fieson AI can help your business thrive.
           </p>
-          <a href="/contact" className="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-200 smooth-transition">
+          <a href="https://cal.com/bart-rosier/session-bart" className="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-200 smooth-transition" target="_blank" rel="noopener noreferrer">
             Contact Us
           </a>
         </div>

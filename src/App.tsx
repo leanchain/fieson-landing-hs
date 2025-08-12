@@ -11,6 +11,8 @@ import IndustryPage from "./pages/IndustryPage";
 import NotFound from "./pages/NotFound";
 import Resources from "./pages/Resources";
 import MarkdownPage from "./pages/MarkdownPage";
+import Integrations from "./pages/Integrations";
+import About from "./pages/About";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +41,8 @@ const App = () => (
           <Route path="/resources" element={<Resources />} />
           <Route path="/terms-europe" element={<MarkdownPage filename="terms-europe" />} />
           <Route path="/markdown/:filename" element={<MarkdownPage />} />
+          <Route path="/integrations" element={<Integrations />} />
+          <Route path="/about" element={<About />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

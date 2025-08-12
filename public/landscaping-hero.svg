@@ -1,0 +1,72 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0F6FF;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky -->
+  <rect width="800" height="300" fill="url(#skyGrad)"/>
+  
+  <!-- Ground -->
+  <rect x="0" y="300" width="800" height="100" fill="#22C55E"/>
+  
+  <!-- Trees -->
+  <rect x="100" y="200" width="20" height="100" fill="#92400E"/>
+  <circle cx="110" cy="200" r="40" fill="#16A34A"/>
+  
+  <rect x="200" y="180" width="25" height="120" fill="#92400E"/>
+  <circle cx="212" cy="180" r="50" fill="#16A34A"/>
+  
+  <rect x="650" y="190" width="22" height="110" fill="#92400E"/>
+  <circle cx="661" cy="190" r="45" fill="#16A34A"/>
+  
+  <!-- Bushes -->
+  <circle cx="300" cy="320" r="30" fill="#15803D"/>
+  <circle cx="350" cy="325" r="25" fill="#15803D"/>
+  <circle cx="400" cy="320" r="35" fill="#15803D"/>
+  
+  <!-- Flowers -->
+  <circle cx="320" cy="340" r="5" fill="#EF4444"/>
+  <circle cx="340" cy="345" r="5" fill="#F59E0B"/>
+  <circle cx="360" cy="340" r="5" fill="#8B5CF6"/>
+  <circle cx="380" cy="345" r="5" fill="#EC4899"/>
+  
+  <!-- Lawn mower -->
+  <rect x="450" y="320" width="80" height="40" rx="5" fill="#DC2626"/>
+  <circle cx="470" cy="350" r="15" fill="#1F2937"/>
+  <circle cx="510" cy="350" r="15" fill="#1F2937"/>
+  <rect x="530" y="330" width="30" height="10" fill="#9CA3AF"/>
+  
+  <!-- Landscaper -->
+  <circle cx="580" cy="250" r="20" fill="#FDBCB4"/>
+  <rect x="565" y="270" width="30" height="40" fill="#22C55E"/>
+  <rect x="560" y="310" width="15" height="30" fill="#1F2937"/>
+  <rect x="585" y="310" width="15" height="30" fill="#1F2937"/>
+  <rect x="555" y="340" width="20" height="10" fill="#8B4513"/>
+  <rect x="585" y="340" width="20" height="10" fill="#8B4513"/>
+  
+  <!-- Hat -->
+  <ellipse cx="580" cy="235" rx="25" ry="15" fill="#F59E0B"/>
+  
+  <!-- Shovel -->
+  <rect x="540" y="280" width="5" height="40" fill="#92400E"/>
+  <rect x="535" y="275" width="15" height="10" fill="#9CA3AF"/>
+  
+  <!-- Garden path -->
+  <ellipse cx="400" cy="350" rx="150" ry="20" fill="#D1D5DB"/>
+  
+  <!-- Sprinkler -->
+  <rect x="250" y="340" width="10" height="20" fill="#6B7280"/>
+  <path d="M240 330L260 330M245 325L255 325M250 320L250 340" stroke="#3B82F6" stroke-width="2"/>
+  
+  <!-- Clouds -->
+  <circle cx="150" cy="80" r="20" fill="white" opacity="0.8"/>
+  <circle cx="170" cy="80" r="25" fill="white" opacity="0.8"/>
+  <circle cx="190" cy="80" r="20" fill="white" opacity="0.8"/>
+  
+  <!-- Sun -->
+  <circle cx="700" cy="80" r="30" fill="#FDE047"/>
+  <path d="M700 30V50M730 80H750M700 110V130M670 80H650M720 50L730 40M720 110L730 120M680 50L670 40M680 110L670 120" stroke="#FDE047" stroke-width="3"/>
+</svg>

@@ -1,0 +1,58 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0F6FF;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky background -->
+  <rect width="800" height="400" fill="url(#skyGradient)"/>
+  
+  <!-- House structure -->
+  <rect x="200" y="200" width="400" height="200" fill="#F5F5DC" stroke="#D2B48C" stroke-width="2"/>
+  
+  <!-- Roof -->
+  <path d="M150 200L400 100L650 200L600 200L400 120L200 200Z" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+  
+  <!-- Roof tiles pattern -->
+  <path d="M200 200L400 120L600 200L580 210L400 130L220 210Z" fill="#A0522D"/>
+  <path d="M220 210L400 130L580 210L560 220L400 140L240 220Z" fill="#8B4513"/>
+  <path d="M240 220L400 140L560 220L540 230L400 150L260 230Z" fill="#A0522D"/>
+  
+  <!-- Chimney -->
+  <rect x="480" y="120" width="40" height="80" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+  <rect x="475" y="115" width="50" height="10" fill="#654321"/>
+  
+  <!-- Windows -->
+  <rect x="250" y="250" width="60" height="80" fill="#87CEEB" stroke="#4682B4" stroke-width="2"/>
+  <path d="M280 250V330M250 285H310" stroke="#4682B4" stroke-width="2"/>
+  
+  <rect x="490" y="250" width="60" height="80" fill="#87CEEB" stroke="#4682B4" stroke-width="2"/>
+  <path d="M520 250V330M490 285H550" stroke="#4682B4" stroke-width="2"/>
+  
+  <!-- Door -->
+  <rect x="360" y="280" width="80" height="120" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+  <circle cx="420" cy="340" r="3" fill="#FFD700"/>
+  
+  <!-- Worker on roof -->
+  <circle cx="350" cy="140" r="15" fill="#FDBCB4"/>
+  <rect x="340" y="155" width="20" height="30" fill="#FF6B35"/>
+  <rect x="335" y="185" width="10" height="20" fill="#4169E1"/>
+  <rect x="355" y="185" width="10" height="20" fill="#4169E1"/>
+  <rect x="330" y="205" width="15" height="8" fill="#8B4513"/>
+  <rect x="355" y="205" width="15" height="8" fill="#8B4513"/>
+  
+  <!-- Tools -->
+  <rect x="320" y="150" width="15" height="3" fill="#C0C0C0"/>
+  <rect x="315" y="148" width="8" height="8" fill="#8B4513"/>
+  
+  <!-- Clouds -->
+  <circle cx="100" cy="80" r="20" fill="white" opacity="0.8"/>
+  <circle cx="120" cy="80" r="25" fill="white" opacity="0.8"/>
+  <circle cx="140" cy="80" r="20" fill="white" opacity="0.8"/>
+  
+  <circle cx="650" cy="60" r="15" fill="white" opacity="0.8"/>
+  <circle cx="665" cy="60" r="20" fill="white" opacity="0.8"/>
+  <circle cx="680" cy="60" r="15" fill="white" opacity="0.8"/>
+</svg>

@@ -1,63 +1,79 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const industries = [
   {
     name: "Roofing",
-    description: "Elevate your roofing business with specialized AI answering services.",
+    description:
+      "Elevate your roofing business with specialized AI answering services.",
     link: "/industries/roofing",
-    icon: "/public/placeholder.svg"
+    icon: "/roofing-icon.svg",
   },
   {
     name: "HVAC",
-    description: "Keep your HVAC services running smoothly with intelligent call handling.",
+    description:
+      "Keep your HVAC services running smoothly with intelligent call handling.",
     link: "/industries/hvac",
-    icon: "/public/placeholder.svg"
+    icon: "/hvac-icon.svg",
   },
   {
     name: "Plumbing",
-    description: "Ensure no leak goes unaddressed with responsive AI for your plumbing business.",
+    description:
+      "Ensure no leak goes unaddressed with responsive AI for your plumbing business.",
     link: "/industries/plumbing",
-    icon: "/public/placeholder.svg"
+    icon: "/plumbing-icon.svg",
   },
   {
     name: "Electrical",
-    description: "Power up your electrical services with efficient and reliable AI support.",
+    description:
+      "Power up your electrical services with efficient and reliable AI support.",
     link: "/industries/electrical",
-    icon: "/public/placeholder.svg"
+    icon: "/electrical-icon.svg",
   },
   {
     name: "Landscaping",
-    description: "Grow your landscaping business with AI that handles client inquiries seamlessly.",
+    description:
+      "Grow your landscaping business with AI that handles client inquiries seamlessly.",
     link: "/industries/landscaping",
-    icon: "/public/placeholder.svg"
+    icon: "/landscaping-icon.svg",
   },
   {
     name: "Pest Control",
-    description: "Exterminate missed calls and improve customer satisfaction for pest control.",
+    description:
+      "Exterminate missed calls and improve customer satisfaction for pest control.",
     link: "/industries/pest-control",
-    icon: "/public/placeholder.svg"
+    icon: "/pest-control-icon.svg",
   },
   {
     name: "Solar",
-    description: "Harness the power of AI to manage your solar installation and service calls.",
+    description:
+      "Harness the power of AI to manage your solar installation and service calls.",
     link: "/industries/solar",
-    icon: "/public/placeholder.svg"
+    icon: "/solar-icon.svg",
   },
   {
     name: "Window Cleaning",
-    description: "Keep your window cleaning business sparkling with efficient AI call handling.",
+    description:
+      "Keep your window cleaning business sparkling with efficient AI call handling.",
     link: "/industries/window-cleaning",
-    icon: "/public/placeholder.svg"
+    icon: "/window-cleaning-icon.svg",
   },
   {
     name: "Commercial Cleaning",
-    description: "Polish your commercial cleaning operations with smart AI answering services.",
+    description:
+      "Polish your commercial cleaning operations with smart AI answering services.",
     link: "/industries/commercial-cleaning",
-    icon: "/public/placeholder.svg"
-  }
+    icon: "/commercial-cleaning-icon.svg",
+  },
 ];
 
 const Industries = () => {
@@ -71,7 +87,9 @@ const Industries = () => {
               Industries We Serve
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Fieson AI provides specialized answering services tailored to the unique needs of various service industries. Discover how we can help your business thrive.
+              Fieson AI provides specialized answering services tailored to the
+              unique needs of various service industries. Discover how we can
+              help your business thrive.
             </p>
           </div>
         </section>
@@ -83,8 +101,14 @@ const Industries = () => {
                 <Link to={industry.link} key={index}>
                   <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300">
                     <CardHeader className="flex flex-col items-center text-center">
-                      <img src={industry.icon} alt={industry.name} className="w-24 h-24 object-cover rounded-full mb-4" />
-                      <CardTitle className="text-2xl font-bold">{industry.name}</CardTitle>
+                      <img
+                        src={industry.icon}
+                        alt={industry.name}
+                        className="w-24 h-24 object-cover rounded-full mb-4"
+                      />
+                      <CardTitle className="text-2xl font-bold">
+                        {industry.name}
+                      </CardTitle>
                     </CardHeader>
                     <CardContent className="flex-grow flex items-center justify-center">
                       <CardDescription className="text-muted-foreground text-center">

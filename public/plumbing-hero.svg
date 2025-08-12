@@ -1,0 +1,65 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wallGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F3F4F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E5E7EB;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background wall -->
+  <rect width="800" height="400" fill="url(#wallGradient)"/>
+  
+  <!-- Floor -->
+  <rect x="0" y="350" width="800" height="50" fill="#9CA3AF"/>
+  
+  <!-- Main water pipe -->
+  <rect x="100" y="100" width="20" height="250" fill="#6B7280" stroke="#4B5563" stroke-width="2"/>
+  
+  <!-- Horizontal pipes -->
+  <rect x="120" y="140" width="200" height="20" fill="#6B7280" stroke="#4B5563" stroke-width="2"/>
+  <rect x="120" y="200" width="150" height="20" fill="#6B7280" stroke="#4B5563" stroke-width="2"/>
+  <rect x="120" y="260" width="180" height="20" fill="#6B7280" stroke="#4B5563" stroke-width="2"/>
+  
+  <!-- Pipe joints -->
+  <circle cx="120" cy="150" r="15" fill="#4B5563" stroke="#374151" stroke-width="2"/>
+  <circle cx="120" cy="210" r="15" fill="#4B5563" stroke="#374151" stroke-width="2"/>
+  <circle cx="120" cy="270" r="15" fill="#4B5563" stroke="#374151" stroke-width="2"/>
+  
+  <!-- Valves -->
+  <rect x="200" y="135" width="30" height="30" rx="5" fill="#DC2626" stroke="#B91C1C" stroke-width="2"/>
+  <circle cx="215" cy="150" r="8" fill="#FFFFFF"/>
+  <path d="M210 145L220 155M220 145L210 155" stroke="#DC2626" stroke-width="2"/>
+  
+  <rect x="180" y="195" width="30" height="30" rx="5" fill="#DC2626" stroke="#B91C1C" stroke-width="2"/>
+  <circle cx="195" cy="210" r="8" fill="#FFFFFF"/>
+  <path d="M190 205L200 215M200 205L190 215" stroke="#DC2626" stroke-width="2"/>
+  
+  <!-- Water drops -->
+  <path d="M250 180C250 175 255 170 260 170C265 170 270 175 270 180C270 185 265 190 260 190C255 190 250 185 250 180Z" fill="#3B82F6"/>
+  <path d="M280 220C280 215 285 210 290 210C295 210 300 215 300 220C300 225 295 230 290 230C285 230 280 225 280 220Z" fill="#3B82F6"/>
+  
+  <!-- Sink -->
+  <rect x="450" y="180" width="120" height="80" rx="10" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+  <circle cx="510" cy="220" r="25" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="2"/>
+  
+  <!-- Faucet -->
+  <rect x="505" y="160" width="10" height="20" fill="#9CA3AF"/>
+  <path d="M500 160C500 155 505 150 510 150C515 150 520 155 520 160" stroke="#9CA3AF" stroke-width="3" fill="none"/>
+  
+  <!-- Plumber -->
+  <circle cx="350" cy="120" r="20" fill="#FDBCB4"/>
+  <rect x="335" y="140" width="30" height="40" fill="#059669"/>
+  <rect x="330" y="180" width="15" height="30" fill="#1F2937"/>
+  <rect x="355" y="180" width="15" height="30" fill="#1F2937"/>
+  <rect x="325" y="210" width="20" height="10" fill="#8B4513"/>
+  <rect x="355" y="210" width="20" height="10" fill="#8B4513"/>
+  
+  <!-- Wrench -->
+  <rect x="380" y="160" width="25" height="5" fill="#9CA3AF"/>
+  <rect x="400" y="155" width="8" height="15" fill="#9CA3AF"/>
+  
+  <!-- Toolbox -->
+  <rect x="600" y="320" width="80" height="30" fill="#DC2626" stroke="#B91C1C" stroke-width="2"/>
+  <rect x="610" y="310" width="60" height="10" fill="#B91C1C"/>
+  <circle cx="640" cy="315" r="3" fill="#FFFFFF"/>
+</svg>

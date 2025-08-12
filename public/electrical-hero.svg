@@ -1,0 +1,73 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FEF3C7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FDE68A;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#wallGrad)"/>
+  
+  <!-- Electrical panel -->
+  <rect x="200" y="100" width="150" height="200" fill="#374151" stroke="#1F2937" stroke-width="3"/>
+  <rect x="210" y="110" width="130" height="180" fill="#4B5563"/>
+  
+  <!-- Circuit breakers -->
+  <rect x="220" y="130" width="25" height="15" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+  <rect x="250" y="130" width="25" height="15" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+  <rect x="280" y="130" width="25" height="15" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+  <rect x="310" y="130" width="25" height="15" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+  
+  <rect x="220" y="150" width="25" height="15" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+  <rect x="250" y="150" width="25" height="15" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+  <rect x="280" y="150" width="25" height="15" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+  <rect x="310" y="150" width="25" height="15" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+  
+  <!-- Main breaker -->
+  <rect x="240" y="200" width="40" height="30" fill="#DC2626" stroke="#B91C1C" stroke-width="2"/>
+  <text x="260" y="220" text-anchor="middle" fill="#FFFFFF" font-family="Arial" font-size="12">MAIN</text>
+  
+  <!-- Wires -->
+  <path d="M350 150L450 150L450 200L500 200" stroke="#000000" stroke-width="3" fill="none"/>
+  <path d="M350 170L480 170L480 250L520 250" stroke="#DC2626" stroke-width="3" fill="none"/>
+  <path d="M350 190L460 190L460 300L540 300" stroke="#3B82F6" stroke-width="3" fill="none"/>
+  
+  <!-- Outlet -->
+  <rect x="500" y="190" width="40" height="20" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+  <circle cx="510" cy="200" r="3" fill="#000000"/>
+  <circle cx="530" cy="200" r="3" fill="#000000"/>
+  <rect x="518" y="195" width="4" height="10" fill="#000000"/>
+  
+  <!-- Light switch -->
+  <rect x="520" y="240" width="30" height="20" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="2"/>
+  <rect x="525" y="245" width="20" height="10" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="1"/>
+  
+  <!-- Light fixture -->
+  <circle cx="550" cy="290" r="20" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+  <circle cx="550" cy="290" r="15" fill="#FBBF24"/>
+  
+  <!-- Lightning bolt -->
+  <path d="M600 120L580 160L590 160L570 200L590 160L580 160L600 120Z" fill="#F59E0B"/>
+  
+  <!-- Electrician -->
+  <circle cx="120" cy="140" r="20" fill="#FDBCB4"/>
+  <rect x="105" y="160" width="30" height="40" fill="#F59E0B"/>
+  <rect x="100" y="200" width="15" height="30" fill="#1F2937"/>
+  <rect x="125" y="200" width="15" height="30" fill="#1F2937"/>
+  <rect x="95" y="230" width="20" height="10" fill="#8B4513"/>
+  <rect x="125" y="230" width="20" height="10" fill="#8B4513"/>
+  
+  <!-- Hard hat -->
+  <ellipse cx="120" cy="125" rx="22" ry="15" fill="#F59E0B"/>
+  
+  <!-- Multimeter -->
+  <rect x="80" y="180" width="20" height="15" fill="#1F2937"/>
+  <rect x="82" y="182" width="16" height="8" fill="#10B981"/>
+  <text x="90" y="188" text-anchor="middle" fill="#000000" font-family="monospace" font-size="6">120V</text>
+  
+  <!-- Wire nuts -->
+  <circle cx="650" cy="150" r="8" fill="#F59E0B"/>
+  <circle cx="670" cy="150" r="8" fill="#DC2626"/>
+  <circle cx="690" cy="150" r="8" fill="#3B82F6"/>
+</svg>

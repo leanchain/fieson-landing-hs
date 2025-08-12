@@ -1,0 +1,80 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#93C5FD;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky -->
+  <rect width="800" height="400" fill="url(#skyGradient2)"/>
+  
+  <!-- House -->
+  <rect x="200" y="200" width="400" height="200" fill="#F5F5DC" stroke="#D2B48C" stroke-width="2"/>
+  
+  <!-- Roof with solar panels -->
+  <path d="M150 200L400 100L650 200L600 200L400 120L200 200Z" fill="#1F2937"/>
+  
+  <!-- Solar panels -->
+  <rect x="250" y="130" width="80" height="50" fill="#1E40AF" stroke="#1D4ED8" stroke-width="2"/>
+  <rect x="340" y="130" width="80" height="50" fill="#1E40AF" stroke="#1D4ED8" stroke-width="2"/>
+  <rect x="430" y="130" width="80" height="50" fill="#1E40AF" stroke="#1D4ED8" stroke-width="2"/>
+  
+  <rect x="270" y="150" width="80" height="50" fill="#1E40AF" stroke="#1D4ED8" stroke-width="2"/>
+  <rect x="360" y="150" width="80" height="50" fill="#1E40AF" stroke="#1D4ED8" stroke-width="2"/>
+  <rect x="450" y="150" width="80" height="50" fill="#1E40AF" stroke="#1D4ED8" stroke-width="2"/>
+  
+  <!-- Panel grid lines -->
+  <path d="M260 140H320M260 150H320M260 160H320M260 170H320" stroke="#1D4ED8" stroke-width="1"/>
+  <path d="M270 130V180M280 130V180M290 130V180M300 130V180M310 130V180" stroke="#1D4ED8" stroke-width="1"/>
+  
+  <path d="M350 140H410M350 150H410M350 160H410M350 170H410" stroke="#1D4ED8" stroke-width="1"/>
+  <path d="M360 130V180M370 130V180M380 130V180M390 130V180M400 130V180" stroke="#1D4ED8" stroke-width="1"/>
+  
+  <!-- Sun -->
+  <circle cx="150" cy="80" r="40" fill="#FDE047"/>
+  <path d="M150 20V40M190 80H210M150 120V140M110 80H90M175 55L185 45M175 105L185 115M125 55L115 45M125 105L115 115" stroke="#FDE047" stroke-width="4"/>
+  
+  <!-- Sun rays hitting panels -->
+  <path d="M190 120L260 140M190 120L270 150M190 120L280 160" stroke="#FDE047" stroke-width="2" opacity="0.7"/>
+  <path d="M190 120L350 140M190 120L360 150M190 120L370 160" stroke="#FDE047" stroke-width="2" opacity="0.7"/>
+  
+  <!-- Electrical meter -->
+  <rect x="650" y="250" width="60" height="80" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="2"/>
+  <circle cx="680" cy="280" r="15" fill="#10B981"/>
+  <text x="680" y="285" text-anchor="middle" fill="#FFFFFF" font-family="Arial" font-size="10">kWh</text>
+  <rect x="660" y="300" width="40" height="20" fill="#000000"/>
+  <text x="680" y="315" text-anchor="middle" fill="#00FF00" font-family="monospace" font-size="12">1247</text>
+  
+  <!-- Power lines -->
+  <path d="M710 290L750 290L750 100" stroke="#1F2937" stroke-width="3"/>
+  <circle cx="750" cy="100" r="5" fill="#1F2937"/>
+  
+  <!-- Inverter -->
+  <rect x="120" y="280" width="60" height="40" fill="#4B5563" stroke="#374151" stroke-width="2"/>
+  <circle cx="140" cy="300" r="5" fill="#10B981"/>
+  <circle cx="160" cy="300" r="5" fill="#EF4444"/>
+  
+  <!-- Cables -->
+  <path d="M400 200L400 250L180 250L180 280" stroke="#000000" stroke-width="3"/>
+  <path d="M180 320L180 350L650 350L650 330" stroke="#000000" stroke-width="3"/>
+  
+  <!-- Technician -->
+  <circle cx="100" cy="320" r="15" fill="#FDBCB4"/>
+  <rect x="90" y="335" width="20" height="30" fill="#F59E0B"/>
+  <rect x="85" y="365" width="10" height="20" fill="#1F2937"/>
+  <rect x="105" y="365" width="10" height="20" fill="#1F2937"/>
+  <rect x="80" y="385" width="15" height="8" fill="#8B4513"/>
+  <rect x="105" y="385" width="15" height="8" fill="#8B4513"/>
+  
+  <!-- Hard hat -->
+  <ellipse cx="100" cy="310" rx="18" ry="12" fill="#F59E0B"/>
+  
+  <!-- Tablet -->
+  <rect x="70" y="345" width="20" height="15" fill="#1F2937"/>
+  <rect x="72" y="347" width="16" height="11" fill="#3B82F6"/>
+  
+  <!-- Energy flow arrows -->
+  <path d="M400 180L400 170M395 175L400 170L405 175" stroke="#10B981" stroke-width="3"/>
+  <path d="M680 250L680 240M675 245L680 240L685 245" stroke="#10B981" stroke-width="3"/>
+</svg>
