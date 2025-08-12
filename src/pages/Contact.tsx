@@ -42,7 +42,7 @@ const Contact: React.FC = () => {
                 <label htmlFor="message" className="block text-lg font-medium text-gray-700">Message</label>
                 <textarea id="message" name="message" rows={5} className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-lg" placeholder="Your message..."></textarea>
               </div>
-              <button type="submit" className="w-full bg-primary text-primary-foreground px-6 py-3 rounded-md text-lg font-semibold hover:bg-primary-dark smooth-transition">
+              <button type="submit" className="w-full bg-primary text-primary-foreground px-6 py-3 rounded-md text-lg font-semibold hover:bg-primary-dark smooth-transition transition-all duration-300 hover:scale-105">
                 Send Message
               </button>
             </form>

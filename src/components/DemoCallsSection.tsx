@@ -290,7 +290,7 @@ const DemoCallsSection = () => {
             <button
               key={index}
               onClick={() => scrollToSlide(index)}
-              className={`w-2 h-2 rounded-full smooth-transition ${
+              className={`w-2 h-2 rounded-full smooth-transition transition-all duration-300 hover:scale-150 ${
                 currentSlide === index ? "bg-accent" : "bg-muted"
               }`}
             />

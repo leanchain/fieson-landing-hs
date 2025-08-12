@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { toast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 import { cn } from "@/lib/utils";
 import IntlTelInput from "intl-tel-input/reactWithUtils";
 import "intl-tel-input/styles"; // Note: This is the correct import for styles
@@ -31,6 +32,8 @@ const IndustryPage = () => {
   const [isPhoneInputFocused, setIsPhoneInputFocused] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [callActive, setCallActive] = useState(false);
+  const callDurationTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleFocusPhoneInput = () => {
@@ -46,6 +49,25 @@ const IndustryPage = () => {
       window.removeEventListener("focusPhoneInput", handleFocusPhoneInput);
     };
   }, []);
+
+  useEffect(() => {
+    if (callActive) {
+      callDurationTimerRef.current = setTimeout(() => {
+        setCallActive(false);
+        toast({
+          title: "Call Ended",
+          description: "Your call has ended after 2 minutes. Please book a demo to know more.",
+          variant: "default",
+        });
+      }, 2 * 60 * 1000); // 2 minutes in milliseconds
+    }
+
+    return () => {
+      if (callDurationTimerRef.current) {
+        clearTimeout(callDurationTimerRef.current);
+      }
+    };
+  }, [callActive]);
 
   const handleInitiateCall = async () => {
     const fullPhoneNumber = phoneNumber;
@@ -74,7 +96,7 @@ const IndustryPage = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.detail?.error || "Failed to initiate call");
+        throw new Error(errorData.detail?.error || errorData.detail || "Failed to initiate call");
       }
 
       const result = await response.json();
@@ -83,12 +105,24 @@ const IndustryPage = () => {
         title: "Call Initiated",
         description: "Fieson AI is calling your number now!",
       });
+      setCallActive(true);
     } catch (error) {
       console.error("Error initiating call:", error);
       toast({
         title: "Call Failed",
         description: error.message || "There was an error initiating the call.",
         variant: "destructive",
+        duration: Infinity,
+        action: (
+          <ToastAction
+            altText="Book a Demo"
+            onClick={() =>
+              window.open("https://cal.com/bart-rosier/session-bart", "_blank")
+            }
+          >
+            Book a Demo
+          </ToastAction>
+        ),
       });
     } finally {
       setIsLoading(false);

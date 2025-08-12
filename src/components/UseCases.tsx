@@ -88,7 +88,7 @@ const UseCases = () => {
               <button
                 key={useCase.id}
                 onClick={() => setActiveTab(useCase.id)}
-                className={`flex items-center space-x-2 px-6 py-3 font-medium smooth-transition rounded-full ${
+                className={`flex items-center space-x-2 px-6 py-3 font-medium smooth-transition transition-all duration-300 hover:scale-105 rounded-full ${
                   activeTab === useCase.id
                     ? "bg-black text-white shadow-medium"
                     : "border border-black bg-transparent text-black hover:bg-black/10"

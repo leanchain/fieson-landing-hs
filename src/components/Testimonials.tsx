@@ -262,7 +262,7 @@ const Testimonials = () => {
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index * dynamicTestimonialsPerView)}
-                className={`w-2 h-2 rounded-full smooth-transition ${
+                className={`w-2 h-2 rounded-full smooth-transition transition-all duration-300 hover:scale-150 ${
                   Math.floor(currentSlide / dynamicTestimonialsPerView) === index ? "bg-blue-500" : "bg-muted"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
