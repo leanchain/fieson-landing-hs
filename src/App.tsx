@@ -22,6 +22,14 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    // Manually send page_view event to GA4 on route change
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_path: pathname,
+        page_location: window.location.href,
+        page_title: document.title,
+      });
+    }
   }, [pathname]);
 
   return null;
