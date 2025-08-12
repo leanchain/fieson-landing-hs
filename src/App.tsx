@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import CookieConsent from "react-cookie-consent";
 import Index from "./pages/Index";
 import Industries from "./pages/Industries";
 import Pricing from "./pages/Pricing";
@@ -31,6 +32,19 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <CookieConsent
+        location="bottom"
+        buttonText="I understand"
+        cookieName="myAwesomeCookieConsent"
+        style={{ background: "#2B373B" }}
+        buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+        expires={150}
+      >
+        This website uses cookies to enhance the user experience.{" "}
+        <span style={{ fontSize: "10px" }}>
+          By continuing to use this site, you agree to our use of cookies.
+        </span>
+      </CookieConsent>
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
