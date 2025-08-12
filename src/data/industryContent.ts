@@ -2,9 +2,9 @@ export const industryContent = {
   roofing: {
     industryName: "Roofing",
     heroImages: [
-      "/public/images/hero/roofing/roofing1.jpeg",
-      "/public/images/hero/roofing/roofing2.jpeg",
-      "/public/images/hero/roofing/roofing3.jpeg",
+      "/images/hero/roofing/roofing1.jpeg",
+      "/images/hero/roofing/roofing2.jpeg",
+      "/images/hero/roofing/roofing3.jpeg",
     ],
     features: [
       {
@@ -97,9 +97,9 @@ export const industryContent = {
   hvac: {
     industryName: "HVAC",
     heroImages: [
-      "/public/images/hero/hvac/hvac1.jpeg",
-      "/public/images/hero/hvac/hvac2.jpeg",
-      "/public/images/hero/hvac/hvac3.jpeg",
+      "/images/hero/hvac/hvac1.jpeg",
+      "/images/hero/hvac/hvac2.jpeg",
+      "/images/hero/hvac/hvac3.jpeg",
     ],
     features: [
       {
@@ -189,9 +189,9 @@ export const industryContent = {
   plumbing: {
     industryName: "Plumbing",
     heroImages: [
-      "/public/images/hero/plumbing/plumbing1.jpeg",
-      "/public/images/hero/plumbing/plumbing2.jpeg",
-      "/public/images/hero/plumbing/plumbing3.jpeg",
+      "/images/hero/plumbing/plumbing1.jpeg",
+      "/images/hero/plumbing/plumbing2.jpeg",
+      "/images/hero/plumbing/plumbing3.jpeg",
     ],
     features: [
       {
@@ -281,9 +281,9 @@ export const industryContent = {
   electrical: {
     industryName: "Electrical",
     heroImages: [
-      "/public/images/hero/electrical/electrical1.jpeg",
-      "/public/images/hero/electrical/electrical2.jpeg",
-      "/public/images/hero/electrical/electrical3.jpeg",
+      "/images/hero/electrical/electrical1.jpeg",
+      "/images/hero/electrical/electrical2.jpeg",
+      "/images/hero/electrical/electrical3.jpeg",
     ],
     features: [
       {
@@ -373,9 +373,9 @@ export const industryContent = {
   landscaping: {
     industryName: "Landscaping",
     heroImages: [
-      "/public/images/hero/landscaping/landscaping1.jpeg",
-      "/public/images/hero/landscaping/landscaping2.jpeg",
-      "/public/images/hero/landscaping/landscaping3.jpeg",
+      "/images/hero/landscaping/landscaping1.jpeg",
+      "/images/hero/landscaping/landscaping2.jpeg",
+      "/images/hero/landscaping/landscaping3.jpeg",
     ],
     features: [
       {
@@ -465,9 +465,9 @@ export const industryContent = {
   pestControl: {
     industryName: "Pest Control",
     heroImages: [
-      "/public/images/hero/pestControl/pestControl1.jpeg",
-      "/public/images/hero/pestControl/pestControl2.jpeg",
-      "/public/images/hero/pestControl/pestControl3.jpeg",
+      "/images/hero/pestControl/pestControl1.jpeg",
+      "/images/hero/pestControl/pestControl2.jpeg",
+      "/images/hero/pestControl/pestControl3.jpeg",
     ],
     features: [
       {
@@ -557,9 +557,9 @@ export const industryContent = {
   solar: {
     industryName: "Solar",
     heroImages: [
-      "/public/images/hero/solar/solar1.jpeg",
-      "/public/images/hero/solar/solar2.jpeg",
-      "/public/images/hero/solar/solar3.jpeg",
+      "/images/hero/solar/solar1.jpeg",
+      "/images/hero/solar/solar2.jpeg",
+      "/images/hero/solar/solar3.jpeg",
     ],
     features: [
       {
@@ -649,9 +649,9 @@ export const industryContent = {
   windowCleaning: {
     industryName: "Window Cleaning",
     heroImages: [
-      "/public/images/hero/windowCleaning/windowCleaning1.jpeg",
-      "/public/images/hero/windowCleaning/windowCleaning2.jpeg",
-      "/public/images/hero/windowCleaning/windowCleaning3.jpeg",
+      "/images/hero/windowCleaning/windowCleaning1.jpeg",
+      "/images/hero/windowCleaning/windowCleaning2.jpeg",
+      "/images/hero/windowCleaning/windowCleaning3.jpeg",
     ],
     features: [
       {
@@ -741,9 +741,9 @@ export const industryContent = {
   commercialCleaning: {
     industryName: "Commercial Cleaning",
     heroImages: [
-      "/public/images/hero/commercialCleaning/commercialCleaning1.jpeg",
-      "/public/images/hero/commercialCleaning/commercialCleaning2.jpeg",
-      "/public/images/hero/commercialCleaning/commercialCleaning3.jpeg",
+      "/images/hero/commercialCleaning/commercialCleaning1.jpeg",
+      "/images/hero/commercialCleaning/commercialCleaning2.jpeg",
+      "/images/hero/commercialCleaning/commercialCleaning3.jpeg",
     ],
     features: [
       {

@@ -32,6 +32,21 @@ const IndustryPage = () => {
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  useEffect(() => {
+    const handleFocusPhoneInput = () => {
+      const inputElement = document.querySelector(".iti-input-custom");
+      if (inputElement instanceof HTMLElement) {
+        inputElement.focus();
+      }
+    };
+
+    window.addEventListener("focusPhoneInput", handleFocusPhoneInput);
+
+    return () => {
+      window.removeEventListener("focusPhoneInput", handleFocusPhoneInput);
+    };
+  }, []);
+
   const handleInitiateCall = async () => {
     const fullPhoneNumber = phoneNumber;
 
