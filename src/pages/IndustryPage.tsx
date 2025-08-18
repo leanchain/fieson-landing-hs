@@ -57,7 +57,8 @@ const IndustryPage = () => {
         setCallActive(false);
         toast({
           title: "Call Ended",
-          description: "Your call has ended after 2 minutes. Please book a demo to know more.",
+          description:
+            "Your call has ended after 2 minutes. Please book a demo to know more.",
           variant: "default",
         });
       }, 2 * 60 * 1000); // 2 minutes in milliseconds
@@ -85,7 +86,7 @@ const IndustryPage = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/api/initiate-call`,
+        `${import.meta.env.NEXT_PUBLIC_BACKEND_URL}/api/initiate-call`,
         {
           method: "POST",
           headers: {
@@ -97,7 +98,11 @@ const IndustryPage = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.detail?.error || errorData.detail || "Failed to initiate call");
+        throw new Error(
+          errorData.detail?.error ||
+            errorData.detail ||
+            "Failed to initiate call"
+        );
       }
 
       const result = await response.json();

@@ -41,7 +41,8 @@ const Hero = () => {
         setCallActive(false);
         toast({
           title: "Call Ended",
-          description: "Your call has ended after 2 minutes. Please book a demo to know more.",
+          description:
+            "Your call has ended after 2 minutes. Please book a demo to know more.",
           variant: "default",
         });
       }, 2 * 60 * 1000); // 2 minutes in milliseconds
@@ -59,7 +60,6 @@ const Hero = () => {
   const handleInitiateCall = async () => {
     // The phoneNumber state is already updated by onChangeNumber
     const fullPhoneNumber = phoneNumber;
-    
 
     if (!isValid) {
       toast({
@@ -73,7 +73,7 @@ const Hero = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/api/initiate-call`,
+        `${import.meta.env.NEXT_PUBLIC_BACKEND_URL}/api/initiate-call`,
         {
           method: "POST",
           headers: {
@@ -85,11 +85,15 @@ const Hero = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.detail?.error || errorData.detail || "Failed to initiate call");
+        throw new Error(
+          errorData.detail?.error ||
+            errorData.detail ||
+            "Failed to initiate call"
+        );
       }
 
       const result = await response.json();
-      
+
       toast({
         title: "Call Initiated",
         description: "Fieson AI is calling your number now!",
@@ -119,7 +123,10 @@ const Hero = () => {
   };
 
   // The validation logic is now handled by the isValid state from IntlTelInput
-  const validation = { isValid: isValid, message: "Please enter a valid phone number." };
+  const validation = {
+    isValid: isValid,
+    message: "Please enter a valid phone number.",
+  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-section overflow-hidden">
