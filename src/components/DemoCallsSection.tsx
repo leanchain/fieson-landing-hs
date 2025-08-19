@@ -12,12 +12,12 @@ import {
 } from "lucide-react";
 
 const DemoCallsSection = () => {
-  const [playingCall, setPlayingCall] = useState<string | null>(null);
+  const [playingCall, setPlayingCall] = useState<string | undefined>(undefined);
   const [currentSlide, setCurrentSlide] = useState(2); // Start with middle item (index 2)
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollStart, setScrollStart] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(undefined);
 
   useEffect(() => {
     // Scroll to middle item on initial load for carousel view
@@ -174,7 +174,7 @@ const DemoCallsSection = () => {
 
   const togglePlay = (callId: string) => {
     if (playingCall === callId) {
-      setPlayingCall(null);
+      setPlayingCall(undefined);
     } else {
       setPlayingCall(callId);
     }

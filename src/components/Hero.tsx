@@ -15,9 +15,9 @@ const Hero = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isPhoneInputFocused, setIsPhoneInputFocused] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
   const [callActive, setCallActive] = useState(false);
-  const callDurationTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const callDurationTimerRef = useRef<NodeJS.Timeout | undefined>(undefined);
   const [regionCode, setRegionCode] = useState<string | undefined>("US"); // State to store region code
 
   useEffect(() => {

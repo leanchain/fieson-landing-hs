@@ -9,7 +9,7 @@ const Testimonials = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [deltaX, setDeltaX] = useState(0);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | undefined>(undefined);
 
   const testimonials = [
     {
@@ -70,15 +70,18 @@ const Testimonials = () => {
     },
   ];
 
-  const [dynamicTestimonialsPerView, setDynamicTestimonialsPerView] = useState(3);
+  const [dynamicTestimonialsPerView, setDynamicTestimonialsPerView] =
+    useState(3);
   const totalTestimonials = testimonials.length;
   const totalSlides = Math.ceil(totalTestimonials / dynamicTestimonialsPerView);
 
   useEffect(() => {
     const calculateTestimonialsPerView = () => {
-      if (window.innerWidth >= 1024) { // lg breakpoint
+      if (window.innerWidth >= 1024) {
+        // lg breakpoint
         setDynamicTestimonialsPerView(3);
-      } else if (window.innerWidth >= 640) { // sm breakpoint
+      } else if (window.innerWidth >= 640) {
+        // sm breakpoint
         setDynamicTestimonialsPerView(2);
       } else {
         setDynamicTestimonialsPerView(1);
@@ -103,7 +106,11 @@ const Testimonials = () => {
   const prevSlide = () => {
     setCurrentSlide((prev) => {
       const newSlide = prev - dynamicTestimonialsPerView;
-      return newSlide < 0 ? totalTestimonials - (totalTestimonials % dynamicTestimonialsPerView || dynamicTestimonialsPerView) : newSlide;
+      return newSlide < 0
+        ? totalTestimonials -
+            (totalTestimonials % dynamicTestimonialsPerView ||
+              dynamicTestimonialsPerView)
+        : newSlide;
     });
   };
 
@@ -261,12 +268,20 @@ const Testimonials = () => {
             {Array.from({ length: totalSlides }).map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentSlide(index * dynamicTestimonialsPerView)}
+                onClick={() =>
+                  setCurrentSlide(index * dynamicTestimonialsPerView)
+                }
                 className={`w-2 h-2 rounded-full smooth-transition transition-all duration-300 hover:scale-150 ${
-                  Math.floor(currentSlide / dynamicTestimonialsPerView) === index ? "bg-blue-500" : "bg-muted"
+                  Math.floor(currentSlide / dynamicTestimonialsPerView) ===
+                  index
+                    ? "bg-blue-500"
+                    : "bg-muted"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
-                aria-current={Math.floor(currentSlide / dynamicTestimonialsPerView) === index}
+                aria-current={
+                  Math.floor(currentSlide / dynamicTestimonialsPerView) ===
+                  index
+                }
               />
             ))}
           </div>
