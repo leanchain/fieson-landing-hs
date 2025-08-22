@@ -41,7 +41,8 @@ const Hero = () => {
         setCallActive(false);
         toast({
           title: "Call Ended",
-          description: "Your call has ended after 2 minutes. Please book a demo to know more.",
+          description:
+            "Your call has ended after 2 minutes. Please book a demo to know more.",
           variant: "default",
         });
       }, 2 * 60 * 1000); // 2 minutes in milliseconds
@@ -59,7 +60,6 @@ const Hero = () => {
   const handleInitiateCall = async () => {
     // The phoneNumber state is already updated by onChangeNumber
     const fullPhoneNumber = phoneNumber;
-    
 
     if (!isValid) {
       toast({
@@ -85,11 +85,15 @@ const Hero = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.detail?.error || errorData.detail || "Failed to initiate call");
+        throw new Error(
+          errorData.detail?.error ||
+            errorData.detail ||
+            "Failed to initiate call"
+        );
       }
 
       const result = await response.json();
-      
+
       toast({
         title: "Call Initiated",
         description: "Fieson AI is calling your number now!",
@@ -119,7 +123,10 @@ const Hero = () => {
   };
 
   // The validation logic is now handled by the isValid state from IntlTelInput
-  const validation = { isValid: isValid, message: "Please enter a valid phone number." };
+  const validation = {
+    isValid: isValid,
+    message: "Please enter a valid phone number.",
+  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-section overflow-hidden">
@@ -131,14 +138,22 @@ const Hero = () => {
           <div className="text-center lg:text-left order-2 lg:order-1">
             <div className="mb-6">
               <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-                AI Phone System for Home Services
+                Never Miss a Call
               </span>
             </div>
 
-            <h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-              Every burst-pipe call booked{" "}
-              <span className="text-accent">before your rival answers.</span>
+            <h1 className="text-4xl lg:text-6xl font-bold text-foreground mb-4 leading-tight">
+              The <span className="text-accent">AI Phone Expert</span> for Home
+              Services
             </h1>
+
+            <div className="max-w-2xl mx-auto lg:mx-0 mb-8">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Answers the phone 24/7, books jobs and delivers better service
+                with less admin - integrated with trade/CRM/FSM & Calendar
+                tools.
+              </p>
+            </div>
 
             {/* CTA Section */}
             <div className="space-y-6 max-w-md mx-auto lg:mx-0">
