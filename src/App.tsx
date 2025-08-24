@@ -16,6 +16,8 @@ import MarkdownPage from "./pages/MarkdownPage";
 import Integrations from "./pages/Integrations";
 import About from "./pages/About";
 
+import { ThemeProvider } from "./contexts/ThemeContext";
+
 const queryClient = new QueryClient();
 
 const ScrollToTop = () => {
@@ -37,33 +39,35 @@ const ScrollToTop = () => {
 };
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <CookieConsent
-        location="bottom"
-        buttonText="I understand"
-        cookieName="myAwesomeCookieConsent"
-        style={{ background: "#2B373B" }}
-        buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
-        expires={150}
-      >
-        This website uses cookies to enhance the user experience.{" "}
-        <span style={{ fontSize: "10px" }}>
-          By continuing to use this site, you agree to our use of cookies. Read our{" "}
-          <a href="/privacy/terms-europe" style={{ color: "#fff", textDecoration: "underline" }}>
-            Cookie Policy
-          </a>
-          .
-        </span>
-      </CookieConsent>
-      <BrowserRouter>
-        <ScrollToTop />
-        <AnimatedRoutes />
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <CookieConsent
+          location="bottom"
+          buttonText="I understand"
+          cookieName="myAwesomeCookieConsent"
+          style={{ background: "#2B373B" }}
+          buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+          expires={150}
+        >
+          This website uses cookies to enhance the user experience.{" "}
+          <span style={{ fontSize: "10px" }}>
+            By continuing to use this site, you agree to our use of cookies. Read our{" "}
+            <a href="/privacy/terms-europe" style={{ color: "#fff", textDecoration: "underline" }}>
+              Cookie Policy
+            </a>
+            .
+          </span>
+        </CookieConsent>
+        <BrowserRouter>
+          <ScrollToTop />
+          <AnimatedRoutes />
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </ThemeProvider>
 );
 
 export default App;
