@@ -73,7 +73,7 @@ const Hero = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `${import.meta.env.NEXT_PUBLIC_BACKEND_URL}/api/initiate-call`,
+        `${import.meta.env.NEXT_PUBLIC_API_URL}/api/initiate-call`,
         {
           method: "POST",
           headers: {
