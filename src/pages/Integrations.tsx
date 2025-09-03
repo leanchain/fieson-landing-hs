@@ -114,7 +114,6 @@ const Integrations: React.FC = () => {
             Explore the full potential of Fieson AI integrations.
           </p>
           <a
-            href="https://cal.com/bart-rosier/session-bart"
             className="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-200 smooth-transition"
             target="_blank" rel="noopener noreferrer"
             onClick={handleBookDemoClick}

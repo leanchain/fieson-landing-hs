@@ -6,7 +6,9 @@ import useBookDemo from "@/hooks/use-book-demo";
 
 const Footer = () => {
   const { trackEvent } = useAnalytics();
-  const { handleBookDemoClick } = useBookDemo({ label: "Footer - Book a Demo Button" });
+  const { handleBookDemoClick } = useBookDemo({
+    label: "Footer - Book a Demo Button",
+  });
 
   const industries = [
     { name: "Commercial Cleaning", href: "/industries/commercial-cleaning" },
@@ -23,7 +25,7 @@ const Footer = () => {
     { name: "About", href: "/about" },
     { name: "Pricing", href: "/pricing" },
     { name: "Integrations", href: "/integrations" },
-    { name: "Contact Us", href: "https://cal.com/bart-rosier/session-bart" },
+    { name: "Contact Us", href: "/book-a-demo" },
   ];
 
   const handleNavLinkClick = (name: string, href: string) => {
@@ -58,7 +60,9 @@ const Footer = () => {
                   <Link
                     to={industry.href}
                     className="text-primary-foreground/80 hover:text-primary-foreground smooth-transition"
-                    onClick={() => handleNavLinkClick(industry.name, industry.href)}
+                    onClick={() =>
+                      handleNavLinkClick(industry.name, industry.href)
+                    }
                   >
                     {industry.name}
                   </Link>
@@ -68,7 +72,9 @@ const Footer = () => {
                 <Link
                   to="/industries"
                   className="text-primary-foreground/80 hover:text-primary-foreground smooth-transition font-bold"
-                  onClick={() => handleNavLinkClick("View All Industries", "/industries")}
+                  onClick={() =>
+                    handleNavLinkClick("View All Industries", "/industries")
+                  }
                 >
                   View All Industries
                 </Link>
@@ -156,14 +162,18 @@ const Footer = () => {
               <Link
                 to="/privacy/terms-europe"
                 className="text-primary-foreground/80 hover:text-primary-foreground smooth-transition uppercase"
-                onClick={() => handleNavLinkClick("Terms of Use", "/privacy/terms-europe")}
+                onClick={() =>
+                  handleNavLinkClick("Terms of Use", "/privacy/terms-europe")
+                }
               >
                 TERMS OF USE
               </Link>
               <Link
                 to="/privacy/terms-europe"
                 className="text-primary-foreground/80 hover:text-primary-foreground smooth-transition uppercase"
-                onClick={() => handleNavLinkClick("Privacy Policy", "/privacy/terms-europe")}
+                onClick={() =>
+                  handleNavLinkClick("Privacy Policy", "/privacy/terms-europe")
+                }
               >
                 privacy policy
               </Link>

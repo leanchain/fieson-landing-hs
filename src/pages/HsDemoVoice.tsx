@@ -81,12 +81,7 @@ const HsDemoVoice: React.FC = () => {
             {/* Book Demo Button */}
             <div className="flex justify-center flex-shrink-0">
               <Button
-                onClick={() =>
-                  window.open(
-                    "https://cal.com/bart-rosier/session-bart",
-                    "_blank"
-                  )
-                }
+                onClick={handleBookDemoClick}
                 className="flex w-full items-center justify-center px-4 py-2 text-base sm:px-8 sm:py-8 sm:text-lg font-semibold text-white bg-gradient-to-r from-purple-700 to-purple-900 hover:from-purple-800 hover:to-purple-950 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 👉 Start Your Free Pilot

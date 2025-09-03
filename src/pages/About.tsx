@@ -166,7 +166,6 @@ const About: React.FC = () => {
             Learn more about how Fieson AI can help your business thrive.
           </p>
           <a
-            href="https://cal.com/bart-rosier/session-bart"
             className="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-200 smooth-transition"
             target="_blank"
             rel="noopener noreferrer"

@@ -81,7 +81,7 @@ const Contact: React.FC = () => {
           <p className="text-xl mb-8 text-gray-600">
             See Fieson AI in action and discover how it can transform your business.
           </p>
-          <a href="https://cal.com/bart-rosier/session-bart" target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 smooth-transition" onClick={handleBookDemoClick}>
+          <a target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 smooth-transition" onClick={handleBookDemoClick}>
             Schedule a Demo
           </a>
         </div>

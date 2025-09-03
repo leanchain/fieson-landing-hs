@@ -6,10 +6,12 @@ import { toast } from "./ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 import { cn } from "@/lib/utils";
 import heroImage from "@/assets/hero-image.jpg";
+import useBookDemo from "@/hooks/use-book-demo";
 import IntlTelInput from "intl-tel-input/reactWithUtils";
 import "intl-tel-input/styles"; // Note: This is the correct import for styles
 
 const Hero = () => {
+  const { handleBookDemoClick } = useBookDemo({ label: "Hero Section - Book a Demo Button" });
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>("");
   const [isValid, setIsValid] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -109,9 +111,7 @@ const Hero = () => {
         action: (
           <ToastAction
             altText="Book a Demo"
-            onClick={() =>
-              window.open("https://cal.com/bart-rosier/session-bart", "_blank")
-            }
+            onClick={handleBookDemoClick}
           >
             Book a Demo
           </ToastAction>
