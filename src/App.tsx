@@ -15,6 +15,9 @@ import Resources from "./pages/Resources";
 import MarkdownPage from "./pages/MarkdownPage";
 import Integrations from "./pages/Integrations";
 import About from "./pages/About";
+import HsDemoVoice from "./pages/HsDemoVoice";
+import HsDemoChat from "./pages/HsDemoChat";
+import HsDemoForm from "./pages/HsDemoForm";
 
 const queryClient = new QueryClient();
 
@@ -25,7 +28,7 @@ const ScrollToTop = () => {
     window.scrollTo(0, 0);
     // Manually send page_view event to GA4 on route change
     if (window.gtag) {
-      window.gtag('event', 'page_view', {
+      window.gtag("event", "page_view", {
         page_path: pathname,
         page_location: window.location.href,
         page_title: document.title,
@@ -51,8 +54,12 @@ const App = () => (
       >
         This website uses cookies to enhance the user experience.{" "}
         <span style={{ fontSize: "10px" }}>
-          By continuing to use this site, you agree to our use of cookies. Read our{" "}
-          <a href="/privacy/terms-europe" style={{ color: "#fff", textDecoration: "underline" }}>
+          By continuing to use this site, you agree to our use of cookies. Read
+          our{" "}
+          <a
+            href="/privacy/terms-europe"
+            style={{ color: "#fff", textDecoration: "underline" }}
+          >
             Cookie Policy
           </a>
           .

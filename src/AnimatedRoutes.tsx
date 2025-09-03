@@ -9,6 +9,9 @@ import Resources from "./pages/Resources";
 import MarkdownPage from "./pages/MarkdownPage";
 import Integrations from "./pages/Integrations";
 import About from "./pages/About";
+import HsDemoVoice from "./pages/HsDemoVoice";
+import HsDemoChat from "./pages/HsDemoChat";
+import HsDemoForm from "./pages/HsDemoForm";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -130,6 +133,45 @@ const AnimatedRoutes = () => {
               transition={{ duration: 0.3 }}
             >
               <About />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/hs-demo-voice"
+          element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              <HsDemoVoice />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/hs-demo-chat"
+          element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              <HsDemoChat />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/hs-demo-form"
+          element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              <HsDemoForm />
             </motion.div>
           }
         />
