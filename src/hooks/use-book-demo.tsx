@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import useAnalytics from './use-analytics';
+import { useNavigate } from 'react-router-dom';
 
 interface UseBookDemoOptions {
   label: string;
@@ -7,6 +8,7 @@ interface UseBookDemoOptions {
 
 const useBookDemo = (options: UseBookDemoOptions) => {
   const { trackEvent } = useAnalytics();
+  const navigate = useNavigate();
 
   const handleBookDemoClick = useCallback(() => {
     trackEvent({
@@ -14,8 +16,8 @@ const useBookDemo = (options: UseBookDemoOptions) => {
       category: "Demo Call to Action",
       label: options.label,
     });
-    window.open("https://cal.com/bart-rosier/session-bart", "_blank");
-  }, [trackEvent, options.label]);
+    navigate('/book-a-demo');
+  }, [trackEvent, options.label, navigate]);
 
   return { handleBookDemoClick };
 };

@@ -12,6 +12,7 @@ import About from "./pages/About";
 import HsDemoVoice from "./pages/HsDemoVoice";
 import HsDemoChat from "./pages/HsDemoChat";
 import HsDemoForm from "./pages/HsDemoForm";
+import CalendarPage from "./pages/CalendarPage";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -19,6 +20,19 @@ const AnimatedRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
+        <Route
+          path="/book-a-demo"
+          element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              <CalendarPage />
+            </motion.div>
+          }
+        />
         <Route
           path="/"
           element={
