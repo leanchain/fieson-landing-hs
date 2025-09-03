@@ -48,17 +48,19 @@ const App = () => (
         location="bottom"
         buttonText="I understand"
         cookieName="myAwesomeCookieConsent"
-        style={{ background: "#2B373B" }}
-        buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+        disableStyles={true}
+        containerClasses="fixed bottom-0 left-0 right-0 flex items-center justify-between p-2 bg-gray-800 text-white text-sm z-50"
+        contentClasses="flex-grow text-sm mr-4"
+        buttonClasses="bg-gray-200 text-gray-800 px-3 py-1 rounded-md text-xs whitespace-nowrap"
         expires={150}
       >
         This website uses cookies to enhance the user experience.{" "}
-        <span style={{ fontSize: "10px" }}>
+        <span className="text-xs">
           By continuing to use this site, you agree to our use of cookies. Read
           our{" "}
           <a
             href="/privacy/terms-europe"
-            style={{ color: "#fff", textDecoration: "underline" }}
+            className="text-white underline"
           >
             Cookie Policy
           </a>

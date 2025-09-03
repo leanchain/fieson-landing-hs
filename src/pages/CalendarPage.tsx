@@ -24,14 +24,12 @@ const CalendarPage: React.FC = () => {
         />
       </Helmet>
       <h1 className="text-4xl font-bold mb-8">Start Your Free Trial</h1>
-      <div className="w-full max-w-4xl h-[700px] shadow-lg rounded-lg overflow-hidden">
-        <Cal
-          namespace="session-bart"
-          calLink="bart-rosier/session-bart"
-          style={{ width: "100%", height: "100%", overflow: "hidden" }}
-          config={{ layout: "month_view", theme: "light" }}
-        />
-      </div>
+      <Cal
+        namespace="session-bart"
+        calLink="bart-rosier/session-bart"
+        style={{ width: "100%", height: "100%", overflow: "hidden" }}
+        config={{ layout: "month_view", theme: "light" }}
+      />
     </div>
   );
 };
