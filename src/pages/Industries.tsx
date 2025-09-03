@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import SeoHead from "@/components/SeoHead";
+import useAnalytics from "@/hooks/use-analytics";
 
 const industries = [
   {
@@ -77,8 +79,22 @@ const industries = [
 ];
 
 const Industries = () => {
+  const { trackEvent } = useAnalytics();
+
+  const handleIndustryClick = (industryName: string, industryLink: string) => {
+    trackEvent({
+      action: "industry_click",
+      category: "Industries Page",
+      label: `Industry: ${industryName} (${industryLink})`,
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <SeoHead
+        title="Industries We Serve - Fieson AI"
+        description="Discover how Fieson AI provides specialized AI answering services tailored to the unique needs of various service industries, including HVAC, Plumbing, Roofing, and more."
+      />
       <Header />
       <main className="pt-20">
         <section className="py-20 bg-gradient-section text-center">
@@ -98,7 +114,7 @@ const Industries = () => {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {industries.map((industry, index) => (
-                <Link to={industry.link} key={index}>
+                <Link to={industry.link} key={index} onClick={() => handleIndustryClick(industry.name, industry.link)}>
                   <Card className="h-full flex flex-col hover:shadow-lg transition-shadow duration-300">
                     <CardHeader className="flex flex-col items-center text-center">
                       <img

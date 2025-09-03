@@ -19,6 +19,9 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
+import SeoHead from "@/components/SeoHead";
+import useAnalytics from "@/hooks/use-analytics";
+import useBookDemo from "@/hooks/use-book-demo";
 
 import { industryContent } from "../data/industryContent";
 
@@ -36,11 +39,19 @@ const IndustryPage = () => {
   const callDurationTimerRef = useRef<NodeJS.Timeout | null>(null);
   const [regionCode, setRegionCode] = useState<string | undefined>("US"); // State to store region code
 
+  const { trackEvent } = useAnalytics();
+  const { handleBookDemoClick } = useBookDemo({ label: `Industry Page - Book a Demo Button (${paramIndustryName})` });
+
   useEffect(() => {
     const handleFocusPhoneInput = () => {
       const inputElement = document.querySelector(".iti-input-custom");
       if (inputElement instanceof HTMLElement) {
         inputElement.focus();
+        trackEvent({
+          action: "input_focus",
+          category: "Industry Page",
+          label: `Phone Input Focused - ${paramIndustryName}`,
+        });
       }
     };
 
@@ -49,7 +60,7 @@ const IndustryPage = () => {
     return () => {
       window.removeEventListener("focusPhoneInput", handleFocusPhoneInput);
     };
-  }, []);
+  }, [trackEvent, paramIndustryName]);
 
   useEffect(() => {
     if (callActive) {
@@ -83,6 +94,12 @@ const IndustryPage = () => {
     }
 
     setIsLoading(true);
+    trackEvent({
+      action: "button_click",
+      category: "Industry Page",
+      label: `Talk With Fieson AI Button - ${paramIndustryName}`,
+    });
+
     try {
       const response = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/api/initiate-call`,
@@ -117,9 +134,7 @@ const IndustryPage = () => {
         action: (
           <ToastAction
             altText="Book a Demo"
-            onClick={() =>
-              window.open("https://cal.com/bart-rosier/session-bart", "_blank")
-            }
+            onClick={handleBookDemoClick}
           >
             Book a Demo
           </ToastAction>
@@ -171,8 +186,13 @@ const IndustryPage = () => {
 
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1);
+      trackEvent({
+        action: "carousel_slide_change",
+        category: "Industry Page Carousel",
+        label: `Slide ${api.selectedScrollSnap() + 1} - ${industryName}`,
+      });
     });
-  }, [api]);
+  }, [api, industryName, trackEvent]);
 
   useEffect(() => {
     if (!api) return;
@@ -190,6 +210,10 @@ const IndustryPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SeoHead
+        title={`${industryName} AI Answering Service - Fieson AI`}
+        description={`Streamline operations and enhance customer satisfaction with Fieson AI's dedicated AI answering service for the ${industryName} industry.`}
+      />
       <Header />
 
       <main className="pt-20">
@@ -213,8 +237,16 @@ const IndustryPage = () => {
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious />
-                  <CarouselNext />
+                  <CarouselPrevious onClick={() => trackEvent({
+                    action: "carousel_navigation",
+                    category: "Industry Page Carousel",
+                    label: `Previous Button - ${industryName}`,
+                  })} />
+                  <CarouselNext onClick={() => trackEvent({
+                    action: "carousel_navigation",
+                    category: "Industry Page Carousel",
+                    label: `Next Button - ${industryName}`,
+                  })} />
                 </Carousel>
               </div>
               <div className="text-center lg:text-left order-2 lg:order-1">
@@ -258,12 +290,22 @@ const IndustryPage = () => {
                             if (timeoutRef.current) {
                               clearTimeout(timeoutRef.current);
                             }
+                            trackEvent({
+                              action: "input_focus",
+                              category: "Industry Page",
+                              label: `Phone Input Focused - ${industryName}`,
+                            });
                           },
                           onBlur: () => {
                             setIsPhoneInputFocused(false);
                             timeoutRef.current = setTimeout(() => {
                               setShowDisclaimer(false);
                             }, 30000); // 30 seconds
+                            trackEvent({
+                              action: "input_blur",
+                              category: "Industry Page",
+                              label: `Phone Input Blurred - ${industryName}`,
+                            });
                           },
                           className: cn(
                             "form-input iti-input-custom", // Custom class for styling
@@ -305,6 +347,11 @@ const IndustryPage = () => {
                       <Link
                         to="/privacy/terms-europe"
                         className="p-0 h-auto text-xs underline text-blue-accent"
+                        onClick={() => trackEvent({
+                          action: "link_click",
+                          category: "Industry Page",
+                          label: `Contact Terms Link - ${industryName}`,
+                        })}
                       >
                         Contact Terms
                       </Link>{" "}
@@ -312,6 +359,11 @@ const IndustryPage = () => {
                       <Link
                         to="/privacy/terms-europe"
                         className="p-0 h-auto text-xs underline text-blue-accent"
+                        onClick={() => trackEvent({
+                          action: "link_click",
+                          category: "Industry Page",
+                          label: `Privacy Policy Link - ${industryName}`,
+                        })}
                       >
                         Privacy Policy
                       </Link>
@@ -528,12 +580,7 @@ const IndustryPage = () => {
             <Button
               variant="accent"
               size="lg"
-              onClick={() =>
-                window.open(
-                  "https://cal.com/bart-rosier/session-bart",
-                  "_blank"
-                )
-              }
+              onClick={handleBookDemoClick}
             >
               BOOK A DEMO
             </Button>

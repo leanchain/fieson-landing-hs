@@ -1,8 +1,16 @@
 import React from "react";
+import SeoHead from "@/components/SeoHead";
+import useBookDemo from "@/hooks/use-book-demo";
 
 const Integrations: React.FC = () => {
+  const { handleBookDemoClick } = useBookDemo({ label: "Integrations Page - Get in Touch Button" });
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <SeoHead
+        title="Fieson AI Integrations - Connect Your Tools"
+        description="Seamlessly connect Fieson AI with your existing CRM, email marketing, and communication tools. Explore our integrations and custom API options."
+      />
       <section
         className="relative bg-cover bg-center h-96"
         style={{ backgroundImage: "url(/public/hero-image.jpg)" }}
@@ -18,7 +26,8 @@ const Integrations: React.FC = () => {
         </div>
       </section>
 
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <section className="py-16">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="mb-16">
           <h2 className="text-4xl font-bold text-gray-800 mb-6">
             Connect Your Workflow
@@ -94,6 +103,7 @@ const Integrations: React.FC = () => {
           </p>
         </div>
       </div>
+      </section>
 
       <section className="bg-primary text-primary-foreground py-16 text-center">
         <div className="container mx-auto max-w-4xl px-4">
@@ -107,6 +117,7 @@ const Integrations: React.FC = () => {
             href="https://cal.com/bart-rosier/session-bart"
             className="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-200 smooth-transition"
             target="_blank" rel="noopener noreferrer"
+            onClick={handleBookDemoClick}
           >
             Get in Touch
           </a>

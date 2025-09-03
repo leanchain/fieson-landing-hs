@@ -1,8 +1,29 @@
 import React from 'react';
+import SeoHead from "@/components/SeoHead";
+import useAnalytics from "@/hooks/use-analytics";
+import useBookDemo from "@/hooks/use-book-demo";
 
 const Contact: React.FC = () => {
+  const { trackEvent } = useAnalytics();
+  const { handleBookDemoClick } = useBookDemo({ label: "Contact Page - Schedule a Demo Button" });
+
+  const handleSendMessage = (e: React.FormEvent) => {
+    e.preventDefault();
+    trackEvent({
+      action: "form_submission",
+      category: "Contact Form",
+      label: "Contact Form Submitted",
+    });
+    // Add actual form submission logic here
+    alert("Message sent! (Analytics tracked)");
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <SeoHead
+        title="Contact Fieson AI - Get in Touch"
+        description="Have questions about Fieson AI? Contact us via email, phone, or send us a message directly. Schedule a demo to see our AI in action."
+      />
       <section className="relative bg-cover bg-center h-96" style={{ backgroundImage: 'url(/public/hero-image.jpg)' }}>
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative z-10 flex items-center justify-center h-full text-white text-center">
@@ -21,7 +42,11 @@ const Contact: React.FC = () => {
               Whether you have a question about our features, pricing, need a demo, or anything else, our team is ready to answer all your questions.
             </p>
             <div className="space-y-4 text-lg text-gray-700">
-              <p><strong>Email:</strong> <a href="mailto:info@fiesonai.com" className="text-blue-600 hover:underline">info@fiesonai.com</a></p>
+              <p><strong>Email:</strong> <a href="mailto:info@fiesonai.com" className="text-blue-600 hover:underline" onClick={() => trackEvent({
+                action: "email_click",
+                category: "Contact Info",
+                label: "info@fiesonai.com",
+              })}>info@fiesonai.com</a></p>
               <p><strong>Phone:</strong> +1 (555) 123-4567</p>
               <p><strong>Address:</strong> 123 AI Street, Innovation City, CA 90210</p>
             </div>
@@ -29,7 +54,7 @@ const Contact: React.FC = () => {
 
           <div>
             <h2 className="text-4xl font-bold text-gray-800 mb-6">Send Us a Message</h2>
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSendMessage}>
               <div>
                 <label htmlFor="name" className="block text-lg font-medium text-gray-700">Name</label>
                 <input type="text" id="name" name="name" className="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-lg" placeholder="Your Name" />
@@ -56,7 +81,7 @@ const Contact: React.FC = () => {
           <p className="text-xl mb-8 text-gray-600">
             See Fieson AI in action and discover how it can transform your business.
           </p>
-          <a href="https://cal.com/bart-rosier/session-bart" target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 smooth-transition">
+          <a href="https://cal.com/bart-rosier/session-bart" target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 smooth-transition" onClick={handleBookDemoClick}>
             Schedule a Demo
           </a>
         </div>

@@ -1,8 +1,18 @@
 import React from "react";
+import SeoHead from "@/components/SeoHead";
+import useAnalytics from "@/hooks/use-analytics";
+import useBookDemo from "@/hooks/use-book-demo";
 
 const About: React.FC = () => {
+  const { trackEvent } = useAnalytics();
+  const { handleBookDemoClick } = useBookDemo({ label: "About Page - Contact Us Button" });
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <SeoHead
+        title="About Fieson AI - Our Mission, Vision, and Team"
+        description="Learn about Fieson AI's mission to empower service businesses with AI, our vision for the future, and meet our dedicated team."
+      />
       <section
         className="relative bg-cover bg-center h-96"
         style={{ backgroundImage: "url(/public/hero-image.jpg)" }}
@@ -103,6 +113,11 @@ const About: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:underline font-semibold"
+                onClick={() => trackEvent({
+                  action: "link_click",
+                  category: "About Page - Team",
+                  label: "Pankaj Kumar LinkedIn Profile",
+                })}
               >
                 View LinkedIn Profile
               </a>
@@ -131,6 +146,11 @@ const About: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:underline font-semibold"
+                onClick={() => trackEvent({
+                  action: "link_click",
+                  category: "About Page - Team",
+                  label: "Bart Rosier LinkedIn Profile",
+                })}
               >
                 View LinkedIn Profile
               </a>
@@ -150,6 +170,7 @@ const About: React.FC = () => {
             className="bg-white text-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-200 smooth-transition"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={handleBookDemoClick}
           >
             Contact Us
           </a>

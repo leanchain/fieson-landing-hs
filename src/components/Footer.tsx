@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import FiesonLogo from "@/components/FiesonLogo";
+import useAnalytics from "@/hooks/use-analytics";
+import useBookDemo from "@/hooks/use-book-demo";
 
 const Footer = () => {
+  const { trackEvent } = useAnalytics();
+  const { handleBookDemoClick } = useBookDemo({ label: "Footer - Book a Demo Button" });
+
   const industries = [
     { name: "Commercial Cleaning", href: "/industries/commercial-cleaning" },
     { name: "Window Cleaning", href: "/industries/window-cleaning" },
@@ -21,6 +26,23 @@ const Footer = () => {
     { name: "Contact Us", href: "https://cal.com/bart-rosier/session-bart" },
   ];
 
+  const handleNavLinkClick = (name: string, href: string) => {
+    trackEvent({
+      action: "navigation_click",
+      category: "Footer Navigation",
+      label: `Nav Link: ${name} (${href})`,
+    });
+  };
+
+  const handleTalkToFiesonAIClick = () => {
+    trackEvent({
+      action: "button_click",
+      category: "Footer Call to Action",
+      label: "Talk to Fieson AI Button",
+    });
+    window.dispatchEvent(new Event("focusPhoneInput"));
+  };
+
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-24 py-16">
@@ -36,6 +58,7 @@ const Footer = () => {
                   <Link
                     to={industry.href}
                     className="text-primary-foreground/80 hover:text-primary-foreground smooth-transition"
+                    onClick={() => handleNavLinkClick(industry.name, industry.href)}
                   >
                     {industry.name}
                   </Link>
@@ -45,6 +68,7 @@ const Footer = () => {
                 <Link
                   to="/industries"
                   className="text-primary-foreground/80 hover:text-primary-foreground smooth-transition font-bold"
+                  onClick={() => handleNavLinkClick("View All Industries", "/industries")}
                 >
                   View All Industries
                 </Link>
@@ -62,6 +86,7 @@ const Footer = () => {
                 <Link
                   to="/resources"
                   className="text-primary-foreground/80 hover:text-primary-foreground smooth-transition"
+                  onClick={() => handleNavLinkClick("Articles", "/resources")}
                 >
                   Articles
                 </Link>
@@ -80,6 +105,7 @@ const Footer = () => {
                   <Link
                     to={item.href}
                     className="text-primary-foreground/80 hover:text-primary-foreground smooth-transition"
+                    onClick={() => handleNavLinkClick(item.name, item.href)}
                   >
                     {item.name}
                   </Link>
@@ -98,12 +124,7 @@ const Footer = () => {
                 variant="demo"
                 size="lg"
                 className="w-full"
-                onClick={() =>
-                  window.open(
-                    "https://cal.com/bart-rosier/session-bart",
-                    "_blank"
-                  )
-                }
+                onClick={handleBookDemoClick}
               >
                 Book a demo
               </Button>
@@ -111,9 +132,7 @@ const Footer = () => {
                 variant="hero"
                 size="xl"
                 className="w-full h-14 text-lg font-semibold"
-                onClick={() =>
-                  window.dispatchEvent(new Event("focusPhoneInput"))
-                }
+                onClick={handleTalkToFiesonAIClick}
               >
                 Talk to Fieson AI
               </Button>
@@ -137,12 +156,14 @@ const Footer = () => {
               <Link
                 to="/privacy/terms-europe"
                 className="text-primary-foreground/80 hover:text-primary-foreground smooth-transition uppercase"
+                onClick={() => handleNavLinkClick("Terms of Use", "/privacy/terms-europe")}
               >
                 TERMS OF USE
               </Link>
               <Link
                 to="/privacy/terms-europe"
                 className="text-primary-foreground/80 hover:text-primary-foreground smooth-transition uppercase"
+                onClick={() => handleNavLinkClick("Privacy Policy", "/privacy/terms-europe")}
               >
                 privacy policy
               </Link>

@@ -1,8 +1,14 @@
 import React, { useEffect } from "react";
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
+import SeoHead from "@/components/SeoHead";
+import useAnalytics from "@/hooks/use-analytics";
+import useBookDemo from "@/hooks/use-book-demo";
 
 const HsDemoVoice: React.FC = () => {
+  const { trackEvent } = useAnalytics();
+  const { handleBookDemoClick } = useBookDemo({ label: "Start Your Free Pilot - Voice Demo" });
+
   useEffect(() => {
     // Load Wistia player script
     const script1 = document.createElement("script");
@@ -22,16 +28,38 @@ const HsDemoVoice: React.FC = () => {
     style.innerHTML = `wistia-player[media-id='hmtlgosnrm']:not(:defined) { display: block; filter: blur(5px); }`;
     document.head.appendChild(style);
 
+    // Wistia video play tracking
+    window._wq = window._wq || [];
+    window._wq.push({
+      id: "hmtlgosnrm",
+      onReady: function(video: any) {
+        video.bind("play", function() {
+          trackEvent({
+            action: "video_play",
+            category: "Demo Video",
+            label: "Voice Demo Video Play",
+          });
+          return video.unbind; // Unbind to avoid multiple events
+        });
+      },
+    });
+
     return () => {
       // Clean up scripts and style on component unmount
       document.body.removeChild(script1);
       document.body.removeChild(script2);
       document.head.removeChild(style);
     };
-  }, []);
+  }, [trackEvent]);
+
+
 
   return (
     <div className="min-h-screen bg-background">
+      <SeoHead
+        title="Fieson AI - Voice Demo"
+        description="Discover Fieson AI's voice capabilities for home services. See how our AI handles calls and enhances customer interactions."
+      />
       <div className="w-1/2 mx-auto">
         <Header />
       </div>

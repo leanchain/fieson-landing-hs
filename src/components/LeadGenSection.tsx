@@ -1,8 +1,20 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageSquare, Calendar, Star } from "lucide-react";
+import useAnalytics from "@/hooks/use-analytics";
 
 const LeadGenSection = () => {
+  const { trackEvent } = useAnalytics();
+
+  const handleRecoverLeadsClick = () => {
+    trackEvent({
+      action: "button_click",
+      category: "Lead Generation Section",
+      label: "Recover Lost Leads Button",
+    });
+    // Add any navigation or other actions here if applicable
+  };
+
   return (
     <section className="py-20 bg-gradient-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -29,7 +41,7 @@ const LeadGenSection = () => {
                         <div className="text-xs text-muted-foreground">Mrs. Johnson - Recurring customer</div>
                       </div>
                     </div>
-                    <div className="text-xs font-medium text-green-600">€180</div>
+                    <div className="text-xs text-medium text-green-600">€180</div>
                   </div>
 
                   <div className="flex items-center justify-between p-3 bg-accent/10 rounded-lg border border-accent/20">
@@ -40,7 +52,7 @@ const LeadGenSection = () => {
                         <div className="text-xs text-muted-foreground">New customer - High priority</div>
                       </div>
                     </div>
-                    <div className="text-xs font-medium text-accent">€340</div>
+                    <div className="text-xs text-medium text-accent">€340</div>
                   </div>
 
                   <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
@@ -51,7 +63,7 @@ const LeadGenSection = () => {
                         <div className="text-xs text-muted-foreground">Commercial project quote</div>
                       </div>
                     </div>
-                    <div className="text-xs font-medium text-blue-accent">€2,400</div>
+                    <div className="text-xs text-medium text-blue-accent">€2,400</div>
                   </div>
                 </div>
 
@@ -98,7 +110,7 @@ const LeadGenSection = () => {
               </div>
             </div>
             
-            <Button variant="blue" size="lg">
+            <Button variant="blue" size="lg" onClick={handleRecoverLeadsClick}>
               Recover lost leads →
             </Button>
           </div>

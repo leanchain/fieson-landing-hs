@@ -4,6 +4,8 @@ import remarkGfm from 'remark-gfm';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useParams, Link } from 'react-router-dom';
+import SeoHead from "@/components/SeoHead";
+import useAnalytics from "@/hooks/use-analytics";
 
 const MarkdownPage: React.FC<{ directory?: string; filename?: string }> = ({ directory: propDirectory, filename: propFilename }) => {
   const { directory: paramDirectory, filename: paramFilename } = useParams<{ directory?: string; filename: string }>();
@@ -11,6 +13,8 @@ const MarkdownPage: React.FC<{ directory?: string; filename?: string }> = ({ dir
   const directory = propDirectory || paramDirectory || 'resources';
   const [markdown, setMarkdown] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
+
+  const { trackEvent } = useAnalytics();
 
   useEffect(() => {
     const fetchMarkdown = async () => {
@@ -49,8 +53,13 @@ const MarkdownPage: React.FC<{ directory?: string; filename?: string }> = ({ dir
     );
   }
 
+  // Derive title and description from filename or markdown content if possible
+  const pageTitle = filename ? filename.replace(/-/g, ' ').split('.')[0].replace(/\b\w/g, (char) => char.toUpperCase()) : 'Markdown Page';
+  const pageDescription = `Content from ${pageTitle} in ${directory} directory.`;
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <SeoHead title={pageTitle} description={pageDescription} />
       <Header />
       <main className="flex-grow container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 pb-16 prose prose-lg dark:prose-invert">
         <ReactMarkdown
@@ -90,6 +99,11 @@ const MarkdownPage: React.FC<{ directory?: string; filename?: string }> = ({ dir
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline"
+                    onClick={() => trackEvent({
+                      action: "external_link_click",
+                      category: "Markdown Page",
+                      label: `External Link: ${href}`,
+                    })}
                   />
                 );
               } else if (isAnchor) {
@@ -97,6 +111,11 @@ const MarkdownPage: React.FC<{ directory?: string; filename?: string }> = ({ dir
                   <a
                     {...props}
                     className="text-blue-600 hover:underline"
+                    onClick={() => trackEvent({
+                      action: "anchor_link_click",
+                      category: "Markdown Page",
+                      label: `Anchor Link: ${href}`,
+                    })}
                   />
                 );
               } else {
@@ -105,6 +124,11 @@ const MarkdownPage: React.FC<{ directory?: string; filename?: string }> = ({ dir
                   <Link
                     to={href}
                     className="text-blue-600 hover:underline"
+                    onClick={() => trackEvent({
+                      action: "internal_link_click",
+                      category: "Markdown Page",
+                      label: `Internal Link: ${href}`,
+                    })}
                   >
                     {props.children}
                   </Link>

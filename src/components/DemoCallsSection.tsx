@@ -10,6 +10,8 @@ import {
   Thermometer,
   Zap,
 } from "lucide-react";
+import useAnalytics from "@/hooks/use-analytics";
+import useBookDemo from "@/hooks/use-book-demo";
 
 const DemoCallsSection = () => {
   const [playingCall, setPlayingCall] = useState<string | null>(null);
@@ -18,6 +20,9 @@ const DemoCallsSection = () => {
   const [startX, setStartX] = useState(0);
   const [scrollStart, setScrollStart] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const { trackEvent } = useAnalytics();
+  const { handleBookDemoClick } = useBookDemo({ label: "Demo Calls Section - Try Fieson AI Now Button" });
 
   useEffect(() => {
     // Scroll to middle item on initial load for carousel view
@@ -56,6 +61,11 @@ const DemoCallsSection = () => {
       behavior: "smooth",
     });
     setCurrentSlide(index);
+    trackEvent({
+      action: "carousel_navigation",
+      category: "Demo Calls Section",
+      label: `Slide ${index + 1} selected`,
+    });
   };
 
   // Drag functionality
@@ -172,11 +182,21 @@ const DemoCallsSection = () => {
     },
   ];
 
-  const togglePlay = (callId: string) => {
+  const togglePlay = (callId: string, callTitle: string) => {
     if (playingCall === callId) {
       setPlayingCall(null);
+      trackEvent({
+        action: "video_pause",
+        category: "Demo Calls Section",
+        label: `Demo Call Paused: ${callTitle}`,
+      });
     } else {
       setPlayingCall(callId);
+      trackEvent({
+        action: "video_play",
+        category: "Demo Calls Section",
+        label: `Demo Call Played: ${callTitle}`,
+      });
     }
   };
 
@@ -231,7 +251,7 @@ const DemoCallsSection = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => togglePlay(call.id)}
+                      onClick={() => togglePlay(call.id, call.title)}
                       className={`w-10 h-10 rounded-full p-0 ${
                         isPlaying ? "bg-accent text-accent-foreground" : ""
                       }`}
@@ -301,9 +321,7 @@ const DemoCallsSection = () => {
           <Button
             variant="accent"
             size="lg"
-            onClick={() =>
-              window.open("https://cal.com/bart-rosier/session-bart", "_blank")
-            }
+            onClick={handleBookDemoClick}
           >
             Try Fieson AI Now
           </Button>

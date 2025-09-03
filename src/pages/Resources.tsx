@@ -2,6 +2,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import SeoHead from "@/components/SeoHead";
+import useAnalytics from "@/hooks/use-analytics";
 
 const articles = [
   {
@@ -57,8 +59,22 @@ const articles = [
 ];
 
 const Resources = () => {
+  const { trackEvent } = useAnalytics();
+
+  const handleArticleClick = (articleTitle: string, articleLink: string) => {
+    trackEvent({
+      action: "article_click",
+      category: "Resources Page",
+      label: `Article: ${articleTitle} (${articleLink})`,
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <SeoHead
+        title="Resources & Insights - Fieson AI"
+        description="Explore articles and insights on AI, home services, and voice technology from Fieson AI. Stay informed on the latest trends and innovations."
+      />
       <Header />
       <main className="pt-20">
         <section className="py-20 bg-gradient-section text-center">
@@ -93,6 +109,7 @@ const Resources = () => {
                       <Link
                         to={article.link}
                         className="text-accent hover:underline"
+                        onClick={() => handleArticleClick(article.title, article.link)}
                       >
                         Read More
                       </Link>
@@ -102,6 +119,7 @@ const Resources = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-accent hover:underline"
+                        onClick={() => handleArticleClick(article.title, article.link)}
                       >
                         Read More
                       </a>

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import useAnalytics from "@/hooks/use-analytics";
 
 const Testimonials = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -10,6 +11,8 @@ const Testimonials = () => {
   const [startX, setStartX] = useState(0);
   const [deltaX, setDeltaX] = useState(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const { trackEvent } = useAnalytics();
 
   const testimonials = [
     {
@@ -96,14 +99,26 @@ const Testimonials = () => {
   const nextSlide = () => {
     setCurrentSlide((prev) => {
       const newSlide = prev + dynamicTestimonialsPerView;
-      return newSlide >= totalTestimonials ? 0 : newSlide;
+      const slideToSet = newSlide >= totalTestimonials ? 0 : newSlide;
+      trackEvent({
+        action: "carousel_navigation",
+        category: "Testimonials Section",
+        label: `Next Slide (to ${slideToSet})`,
+      });
+      return slideToSet;
     });
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) => {
       const newSlide = prev - dynamicTestimonialsPerView;
-      return newSlide < 0 ? totalTestimonials - (totalTestimonials % dynamicTestimonialsPerView || dynamicTestimonialsPerView) : newSlide;
+      const slideToSet = newSlide < 0 ? totalTestimonials - (totalTestimonials % dynamicTestimonialsPerView || dynamicTestimonialsPerView) : newSlide;
+      trackEvent({
+        action: "carousel_navigation",
+        category: "Testimonials Section",
+        label: `Previous Slide (to ${slideToSet})`,
+      });
+      return slideToSet;
     });
   };
 
@@ -261,7 +276,14 @@ const Testimonials = () => {
             {Array.from({ length: totalSlides }).map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentSlide(index * dynamicTestimonialsPerView)}
+                onClick={() => {
+                  setCurrentSlide(index * dynamicTestimonialsPerView);
+                  trackEvent({
+                    action: "carousel_pagination_click",
+                    category: "Testimonials Section",
+                    label: `Pagination Dot ${index + 1}`,
+                  });
+                }}
                 className={`w-2 h-2 rounded-full smooth-transition transition-all duration-300 hover:scale-150 ${
                   Math.floor(currentSlide / dynamicTestimonialsPerView) === index ? "bg-blue-500" : "bg-muted"
                 }`}

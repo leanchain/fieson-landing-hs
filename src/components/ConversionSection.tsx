@@ -1,8 +1,20 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TrendingUp, Calendar, Users } from "lucide-react";
+import useAnalytics from "@/hooks/use-analytics";
 
 const ConversionSection = () => {
+  const { trackEvent } = useAnalytics();
+
+  const handleConvertLeadsClick = () => {
+    trackEvent({
+      action: "button_click",
+      category: "Conversion Section",
+      label: "Start Converting More Leads Button",
+    });
+    // Add any navigation or other actions here if applicable
+  };
+
   return (
     <section className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,7 +65,7 @@ const ConversionSection = () => {
               </div>
             </div>
 
-            <Button variant="accent" size="lg">
+            <Button variant="accent" size="lg" onClick={handleConvertLeadsClick}>
               Start Converting More Leads →
             </Button>
           </div>

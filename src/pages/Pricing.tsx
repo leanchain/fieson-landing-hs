@@ -5,13 +5,25 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
+import SeoHead from "@/components/SeoHead";
+import useAnalytics from "@/hooks/use-analytics";
+import useBookDemo from "@/hooks/use-book-demo";
 
 const Pricing = () => {
   const [minutes, setMinutes] = useState([500]);
   const [calculatedCost, setCalculatedCost] = useState(500 * 0.15); // Initial cost for 500 minutes
+  const { trackEvent } = useAnalytics();
+  const { handleBookDemoClick } = useBookDemo({ label: "Pricing Page - Book a Demo Button" });
+
   const handleMinutesChange = (newMinutes: number[]) => {
     setMinutes(newMinutes);
     setCalculatedCost(newMinutes[0] * 0.15);
+    trackEvent({
+      action: "slider_change",
+      category: "Pricing Calculator",
+      label: `Minutes: ${newMinutes[0]}`, 
+      value: newMinutes[0],
+    });
   };
   const [activeTab, setActiveTab] = useState("General");
   const [expandedFaq, setExpandedFaq] = useState<string | null>(null);
@@ -77,69 +89,30 @@ const Pricing = () => {
 
   const faqTabs = ["General", "Features", "Integration", "Other"];
 
-  const faqs = {
-    General: [
-      {
-        id: "residential-commercial",
-        question: "Can Fieson AI handle both residential and commercial jobs?",
-        answer: "Yes! Fieson AI adapts to the unique needs of both. It understands the priorities of residential customers and the SLAs of commercial clients, ensuring the right response and scheduling every time."
-      },
-      {
-        id: "phone-number",
-        question: "Do I need to change by business phone number?", 
-        answer: "No! Fieson AI provides a number you can forward calls to or integrate directly with your phone system, like ServiceTitan Phones Pro. Miss a call? Just transfer it to your AI agent."
-      },
-      {
-        id: "contract",
-        question: "Do I have to sign a contract to use Fieson AI?",
-        answer: "No, never! As former home service business owners, we believe in earning your business every day—no long-term commitments, just results."
-      },
-      {
-        id: "sign-up",
-        question: "How do I sign up for Fieson AI?",
-        answer: "Schedule a demo! Our AI experts will walk you through the platform and customize Fieson AI to fit seamlessly into your daily operations. Most people can start taking calls in just 15 minutes."
-      }
-    ],
-    Features: [
-      {
-        id: "voice-cloning",
-        question: "What is voice cloning?",
-        answer: "Voice cloning allows the AI to sound like you or your team members, creating a more personalized experience for your customers."
-      },
-      {
-        id: "complex-requests",
-        question: "How does Fieson AI handle complex or unusual customer requests?",
-        answer: "Fieson AI is designed with advanced natural language understanding to interpret a wide range of inquiries. For highly complex or unusual requests that require human nuance, it seamlessly transfers the call to your team, providing them with a detailed summary of the conversation for a smooth handover."
-      },
-      {
-        id: "analytics-reports",
-        question: "What kind of reports or analytics does Fieson AI provide?",
-        answer: "Fieson AI provides comprehensive analytics on call volume, peak times, common customer inquiries, lead qualification rates, and more. These insights help you optimize staffing, marketing efforts, and overall business strategy."
-      }
-    ],
-    Integration: [
-      {
-        id: "servicetitan",
-        question: "Does Fieson integrate with ServiceTitan?", 
-        answer: "Yes! Fieson has deep integration with ServiceTitan and other popular field service management platforms."
-      },
-      {
-        id: "other-integrations",
-        question: "What other CRM or scheduling systems does Fieson AI integrate with?",
-        answer: "Beyond ServiceTitan, Fieson AI offers robust integrations with a variety of popular CRM and field service management platforms. Our goal is to ensure seamless data flow and operational efficiency with your existing tools. Please contact us for a full list of supported integrations."
-      }
-    ],
-    Other: [
-      {
-        id: "partnership",
-        question: "Are you looking to partner with or resell Fieson's AI?",
-        answer: "We would love to help. Give us a call to talk about our partnership and reseller benefits."
-      }
-    ]
+  const handleFaqTabClick = (tab: string) => {
+    setActiveTab(tab);
+    trackEvent({
+      action: "tab_click",
+      category: "Pricing FAQ",
+      label: `FAQ Tab: ${tab}`,
+    });
+  };
+
+  const handleFaqToggle = (faqId: string, question: string) => {
+    setExpandedFaq(expandedFaq === faqId ? null : faqId);
+    trackEvent({
+      action: "accordion_toggle",
+      category: "Pricing FAQ",
+      label: `FAQ: ${question} - ${expandedFaq === faqId ? "Collapsed" : "Expanded"}`,
+    });
   };
 
   return (
     <div className="min-h-screen bg-background">
+      <SeoHead
+        title="Fieson AI Pricing - Transparent AI Answering Service Costs"
+        description="Explore Fieson AI's transparent pricing for AI answering services. No contracts, no hidden fees, just straightforward costs tailored for your home service business."
+      />
       <Header />
       
       <main className="pt-20">
@@ -233,7 +206,14 @@ const Pricing = () => {
                       variant={plan.popular ? "accent" : "outline"}
                       size="lg"
                       className="w-full"
-                      onClick={() => window.open("https://cal.com/bart-rosier/session-bart", "_blank")}
+                      onClick={() => {
+                        handleBookDemoClick();
+                        trackEvent({
+                          action: "button_click",
+                          category: "Pricing Plan",
+                          label: `${plan.name} - ${plan.name === "Free Trial" ? "Start Free Trial" : "Get Started"}`,
+                        });
+                      }}
                     >
                       {plan.name === "Free Trial" ? "Start Free Trial" : "Get started"}
                     </Button>
@@ -269,7 +249,14 @@ const Pricing = () => {
                     <span className="text-base font-normal text-muted-foreground">per month</span>
                   </div>
                 </div>
-                <Button variant="accent" size="lg" className="w-full" onClick={() => window.open("https://cal.com/bart-rosier/session-bart", "_blank")}>
+                <Button variant="accent" size="lg" className="w-full" onClick={() => {
+                  handleBookDemoClick();
+                  trackEvent({
+                    action: "button_click",
+                    category: "Pricing Plan",
+                    label: "Contact Sales for Enterprise",
+                  });
+                }}>
                   Contact Sales for Enterprise
                 </Button>
                 <div className="space-y-2 mt-6 text-sm text-muted-foreground">
@@ -287,7 +274,14 @@ const Pricing = () => {
             <div className="text-center mt-12">
               <p className="text-muted-foreground">
                 Need assistance?{" "}
-                <Button variant="link" className="p-0 h-auto font-semibold" onClick={() => window.open("https://cal.com/bart-rosier/session-bart", "_blank")}>
+                <Button variant="link" className="p-0 h-auto font-semibold" onClick={() => {
+                  handleBookDemoClick();
+                  trackEvent({
+                    action: "link_click",
+                    category: "Pricing Page",
+                    label: "Contact Sales Link (Need Assistance)",
+                  });
+                }}>
                   Contact Sales
                 </Button>
               </p>
@@ -314,7 +308,7 @@ const Pricing = () => {
                 {faqTabs.map((tab) => (
                   <button
                     key={tab}
-                    onClick={() => setActiveTab(tab)}
+                    onClick={() => handleFaqTabClick(tab)}
                     className={`px-6 py-3 rounded-lg font-medium smooth-transition ${
                       activeTab === tab
                         ? "bg-accent text-accent-foreground"
@@ -331,7 +325,7 @@ const Pricing = () => {
                 {faqs[activeTab as keyof typeof faqs]?.map((faq) => (
                   <Card key={faq.id} className="overflow-hidden">
                     <button
-                      onClick={() => setExpandedFaq(expandedFaq === faq.id ? null : faq.id)}
+                      onClick={() => handleFaqToggle(faq.id, faq.question)}
                       className="w-full p-6 text-left flex items-center justify-between hover:bg-muted/50 smooth-transition"
                     >
                       <span className="font-semibold text-foreground">{faq.question}</span>
@@ -364,7 +358,14 @@ const Pricing = () => {
               <p className="text-lg text-muted-foreground mb-8">
                 Contact us to discuss partnership and reseller opportunities.
               </p>
-              <Button variant="accent" size="lg" onClick={() => window.open("https://cal.com/bart-rosier/session-bart", "_blank")}>
+              <Button variant="accent" size="lg" onClick={() => {
+                handleBookDemoClick();
+                trackEvent({
+                  action: "button_click",
+                  category: "Pricing Page",
+                  label: "Partnership Contact Us Button",
+                });
+              }}>
                 contact us
               </Button>
             </div>

@@ -3,9 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Phone, MessageSquare, Euro, Users, Check } from "lucide-react";
 import FiesonLogo from "@/components/FiesonLogo";
+import useAnalytics from "@/hooks/use-analytics";
+import useBookDemo from "@/hooks/use-book-demo";
 
 const UseCases = () => {
   const [activeTab, setActiveTab] = useState("dispatcher");
+  const { trackEvent } = useAnalytics();
+  const { handleBookDemoClick } = useBookDemo({ label: `Use Cases - Book a Demo Button (${activeTab})` });
 
   const useCases = [
     {
@@ -68,6 +72,15 @@ const UseCases = () => {
 
   const activeUseCase = useCases.find((useCase) => useCase.id === activeTab);
 
+  const handleTabClick = (tabId: string, tabName: string) => {
+    setActiveTab(tabId);
+    trackEvent({
+      action: "tab_click",
+      category: "Use Cases Section",
+      label: `Tab: ${tabName}`,
+    });
+  };
+
   return (
     <section className="py-20 bg-gradient-section">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-24">
@@ -87,7 +100,7 @@ const UseCases = () => {
             return (
               <button
                 key={useCase.id}
-                onClick={() => setActiveTab(useCase.id)}
+                onClick={() => handleTabClick(useCase.id, useCase.name)}
                 className={`flex items-center space-x-2 px-6 py-3 font-medium smooth-transition transition-all duration-300 hover:scale-105 rounded-full ${
                   activeTab === useCase.id
                     ? "bg-black text-white shadow-medium"
@@ -124,12 +137,7 @@ const UseCases = () => {
               <Button
                 variant="accent"
                 size="lg"
-                onClick={() =>
-                  window.open(
-                    "https://cal.com/bart-rosier/session-bart",
-                    "_blank"
-                  )
-                }
+                onClick={handleBookDemoClick}
               >
                 Book a demo
               </Button>
