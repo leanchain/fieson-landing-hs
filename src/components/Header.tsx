@@ -9,8 +9,8 @@ const Header = () => {
   const { handleBookDemoClick } = useBookDemo({ label: "Header - Book a Demo Button" });
 
   const navigation = [
-    { name: "Industries", href: "/industries" },
-    { name: "Pricing", href: "/pricing" },
+    // { name: "Industries", href: "/industries" },
+    // { name: "Pricing", href: "/pricing" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
